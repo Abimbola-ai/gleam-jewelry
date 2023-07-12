@@ -1,0 +1,32 @@
+@font-face {
+    font-family: ;
+    src: url();
+}
+.container-fluid{
+    padding: 0 !important;
+    background-color: #FFFFFF;
+}
+
+.products-on-demand > h3 {
+    color: #000;
+    font-family: Noto Serif;
+    font-size: 3.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.products-on-demand > p {
+    color: #000;
+    font-family: Noto Serif;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.product-scroll {
+    height: 43.5625rem;
+    background: #D0B0A3;
+}

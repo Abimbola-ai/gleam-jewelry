@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gleam Jewelry</title>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- Bootstrap CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!--Script for Font awesome icons-->
+   
+    <!-- importing header and footer templates -->
+    <script>
+      $(function () {
+        $("#header").load("templates/header.html");
+        $("#footer").load("templates/footer.html");
+      });
+    </script>
+</head>
+<body>
+    <div id="header"></div>
+    <!--Beginning of main/body-->
+    <div class="container-fluid">
+      <div class="home-banner">
+        <img class=" img-fluid" src="/images/home-banner.jpg" alt="image of lady with multiple jewelry" class="top-banner-img">
+      </div>
+      <div class="products-on-demand m-5 p-1 text-center">
+        <h3>Accessories on demand</h3>
+        <p>Lorem ipsum dolor sit amet consectetur. Neque viverra
+          leo ultrices egestas dictum ultrices.</p>
+      </div>
+      <div class="product-scroll ">
+        <div class="image-scroll">
+          <img src="images/necklace.JPG" alt="necklace">
+        </div>
+        <div class="image-scroll">
+          <img src="images/rings.JPG" alt="rings">
+        </div>
+        <div class="image-scroll">
+          <img src="images/bracelet.JPG" alt="bracelet">
+        </div>
+        <div class="image-scroll">
+          <img src="images/earrings.JPG" alt="earrings">
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <!--end of main/body-->
+    <div id="footer"></div>
+
+</body>
+</html>
