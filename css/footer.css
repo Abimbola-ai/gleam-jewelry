@@ -13,3 +13,9 @@ footer a {
   color: white;
   font-size: 300;
 }
+
+.socials {
+  margin: 30px;
+  display: flex;
+  justify-content: space-around;
+}
