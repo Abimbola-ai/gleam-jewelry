@@ -84,4 +84,4 @@ var faNext = {
   ],
 };
 
-FontAwesome.library.add(faPrev, faNext);
+// FontAwesome.library.add(faPrev, faNext);
