@@ -13,3 +13,20 @@ footer a {
   color: white;
   font-size: 300;
 }
+
+footer button {
+  border: 1px solid white;
+  border-radius: 12px;
+  padding: 5px 16px;
+  background-color: transparent;
+  color: white;
+}
+
+footer input {
+  background-color: transparent;
+  border: none;
+}
+
+footer input::placeholder {
+  color: white;
+}
