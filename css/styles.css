@@ -26,30 +26,69 @@
     line-height: normal;
 }
 
-.product-scroll {
+.slider {
     height: 43.5625rem;
     background: #D0B0A3;
-    /* position: relative; */
+    padding: 3rem;
 }
 
-.product-scroll img {
+.slider img {
     border-radius: 1.875rem;
     width: 32.5rem;
     height: 33.375rem;
+    padding-right: 1rem;
 }
 
 .scroll-text {
     position: absolute;
-    bottom: 0;
-    right: 0;
-    /* width: 30.375rem;
-    height: 3.5rem; */
-    /* background: rgba(255, 255, 255, 0.70);
+    text-decoration: none;
+    bottom: 3.81rem;
+    right: 1rem;
+    width: 30.375rem;
+    height: 3.5rem; 
+    background: rgba(255, 255, 255, 0.70);
     color: #000;
     font-family: Poppins;
     font-size: 2.3125rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    text-transform: uppercase; */
+    text-transform: uppercase;
+    cursor: none;
 }
+
+&.animation-reveal {
+    animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+
+/* Flickity settings  */
+.flickity-enabled {
+    position: relative;
+}
+  
+.flickity-enabled:focus {
+    outline: none;
+}
+  
+.flickity-viewport {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    transform: translate(0%, 8%);
+    vertical-align: middle;
+}
+  
+.flickity-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+      
