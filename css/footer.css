@@ -14,12 +14,22 @@ footer a {
   font-size: 300;
 }
 
+footer a:hover {
+  color: black;
+}
+
 footer button {
   border: 1px solid white;
   border-radius: 12px;
-  padding: 5px 16px;
+  padding: 8px 16px;
   background-color: transparent;
   color: white;
+  transform: translate(0px, 5px);
+  transition: 0.3s;
+}
+
+footer button:hover {
+  padding: 10px 24px;
 }
 
 footer input {
@@ -29,6 +39,10 @@ footer input {
 
 footer input::placeholder {
   color: white;
+}
+
+footer hr {
+  margin-top: 16px;
 }
 
 .socials {
