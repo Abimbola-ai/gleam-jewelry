@@ -1,0 +1,15 @@
+footer {
+  font-family: Poppins;
+  height: 30%;
+  background-color: #985b42;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 36px;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  font-size: 300;
+}
