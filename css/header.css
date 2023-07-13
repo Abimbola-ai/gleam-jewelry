@@ -1,0 +1,27 @@
+header {
+  width: 100%;
+  height: 80px;
+  /* background-color: black; */
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h2 {
+  font-family: 'Aclonica', sans-serif;
+}
+
+h2 span {
+  color: #d15902;
+}
