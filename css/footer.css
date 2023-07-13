@@ -14,6 +14,7 @@ footer a {
   font-size: 300;
 }
 
+<<<<<<< HEAD
 footer button {
   border: 1px solid white;
   border-radius: 12px;
@@ -29,4 +30,10 @@ footer input {
 
 footer input::placeholder {
   color: white;
+=======
+.socials {
+  margin: 30px;
+  display: flex;
+  justify-content: space-around;
+>>>>>>> main
 }
