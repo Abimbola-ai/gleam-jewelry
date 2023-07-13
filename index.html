@@ -1,88 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gleam Jewelry</title>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <!-- Bootstrap CSS & JS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/index.js"></script>
     <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
     <!--fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- css -->
-    <link rel="stylesheet" href="css/styles.css">
-    
+    <link rel="stylesheet" href="css/styles.css" />
+
     <!--Script for Font awesome icons-->
-   
+
     <!-- importing header and footer templates -->
     <script>
       $(function () {
-        $("#header").load("templates/header.html");
-        $("#footer").load("templates/footer.html");
+        $('#header').load('templates/header.html');
+        $('#footer').load('templates/footer.html');
       });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="header"></div>
     <!--Beginning of main/body-->
 
-      <div>
-        <img class="img-fluid home-banner col-md-12" src="/images/home-banner.jpg" alt="image of lady with multiple jewelry" class="top-banner-img">
-      </div>
-      <div class="products-on-demand m-5 p-1 text-center">
-        <h3>Accessories on demand</h3>
-        <p>Lorem ipsum dolor sit amet consectetur. Neque viverra
-          leo ultrices egestas dictum ultrices.</p>
-      </div>
-      <!-- <div class="product-scroll "> -->
-        <!-- <button class="button previous"><i class="fac fa-prev"></i></button>
+    <div>
+      <img
+        class="img-fluid home-banner col-md-12"
+        src="/images/home-banner.jpg"
+        alt="image of lady with multiple jewelry"
+        class="top-banner-img"
+      />
+    </div>
+    <div class="products-on-demand m-5 p-1 text-center">
+      <h3>Accessories on demand</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur. Neque viverra leo ultrices
+        egestas dictum ultrices.
+      </p>
+    </div>
+    <!-- <div class="product-scroll "> -->
+    <!-- <button class="button previous"><i class="fac fa-prev"></i></button>
         <div class="strip_of paper1"></div> -->
-        <!-- <div class="carousel-slider "> -->
-          <div class="slider row">
-            <div class="col">
-              <img class="img-fluid" src="images/necklace.JPG" alt="necklace" >
-              <a href="#" class="scroll-text">necklace</a>
-            </div>
-            
-   
-            <div class="col">
-              <img class="img-fluid" src="images/rings.JPG" alt="rings" >
-              <a href="#" class="scroll-text">rings</a>
-            </div>
-            
-      
-            <div class="col">
-              <img class="img-fluid" src="images/bracelet.JPG" alt="bracelet">
-              <a href="#" class="scroll-text">bracelet</a>
-            </div>
-  
-            <div class="col">
-              <img class="col img-fluid" src="images/earrings.JPG" alt="earrings">
-              <a href="#" class="scroll-text">earrings</a>
-            </div>
-          </div>  
-          <!-- </div> -->
-          <!-- <div class="strip_of paper2"></div>
+    <!-- <div class="carousel-slider "> -->
+    <div class="slider row">
+      <div class="col">
+        <img class="img-fluid" src="images/necklace.JPG" alt="necklace" />
+        <a href="#" class="scroll-text">necklace</a>
+      </div>
+
+      <div class="col">
+        <img class="img-fluid" src="images/rings.JPG" alt="rings" />
+        <a href="#" class="scroll-text">rings</a>
+      </div>
+
+      <div class="col">
+        <img class="img-fluid" src="images/bracelet.JPG" alt="bracelet" />
+        <a href="#" class="scroll-text">bracelet</a>
+      </div>
+
+      <div class="col">
+        <img class="col img-fluid" src="images/earrings.JPG" alt="earrings" />
+        <a href="#" class="scroll-text">earrings</a>
+      </div>
+    </div>
+    <!-- </div> -->
+    <!-- <div class="strip_of paper2"></div>
             <button class="button next"><i class="fac fa-next"></i></button>
           </div> -->
-        <!-- </div> -->
-
-      
-      
-      </div>
+    <!-- </div> -->
 
     <!--end of main/body-->
     <div id="footer"></div>
-
-</body>
+  </body>
 </html>

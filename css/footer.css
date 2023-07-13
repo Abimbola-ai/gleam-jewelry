@@ -8,6 +8,10 @@ footer {
   padding: 36px;
 }
 
+footer h3 {
+  font-size: larger;
+  font-weight: 700;
+}
 footer a {
   text-decoration: none;
   color: white;
@@ -33,6 +37,8 @@ footer button:hover {
 }
 
 footer input {
+  margin-top: 30px;
+  margin-bottom: 16px;
   background-color: transparent;
   border: none;
 }
