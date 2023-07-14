@@ -118,6 +118,9 @@ body {
   
  
 }
+.leading-text a:hover {
+  color: #d15902;
+}
 
 .leading-text h3 {
   color: #000;
