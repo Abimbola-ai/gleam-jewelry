@@ -3,6 +3,11 @@
   background-color: #ffffff;
 }
 
+.home-banner {
+  /* height: 600px; */
+  /* width: 100%; */
+}
+
 .products-on-demand > h3 {
   color: #000;
   font-family: Noto Serif;

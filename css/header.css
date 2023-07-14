@@ -11,6 +11,18 @@ header {
   z-index: 1;
 }
 
+header:hover {
+  background-color: #fff;
+
+  .header-icon {
+    color: black;
+  }
+
+  #currency {
+    color: black;
+  }
+}
+
 .logo {
   text-decoration: none;
 }
@@ -49,7 +61,7 @@ h2 span {
 select {
   border: none;
   background-color: inherit;
-  /* color: #fff; */
+  color: #fff;
   position: relative;
   top: -7px;
   right: -6px;
