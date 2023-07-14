@@ -40,3 +40,8 @@ h2 span {
 .header-icon:hover {
   color: black;
 }
+
+select {
+  border: none;
+  background-color: #fff;
+}
