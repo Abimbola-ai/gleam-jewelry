@@ -48,5 +48,12 @@ h2 span {
 
 select {
   border: none;
-  background-color: #fff;
+  /* background-color: #fff; */
+  /* color: #FFF; */
+  font-family: Poppins;
+  font-size: 1.5625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.19531rem;
 }
