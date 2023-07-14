@@ -68,6 +68,9 @@ body {
   text-transform: uppercase;
   cursor: none;
 }
+.carousel-slider {
+  width: 100%;
+}
 
 &.animation-reveal {
   animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1);
@@ -119,6 +122,9 @@ body {
   font-weight: 600;
   line-height: normal;
   padding: 1em;
+}
+.leading-text a:hover {
+  color: #d15902;
 }
 
 .leading-text h3 {
