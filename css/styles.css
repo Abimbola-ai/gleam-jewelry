@@ -1,10 +1,14 @@
+body {
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
 .container-fluid {
   padding: 0 !important;
   background-color: #ffffff;
-}
-
-body {
-  font-size: 16px;
 }
 
 /* .home-banner {
@@ -100,7 +104,7 @@ body {
 }
 
 .leading-text {
-  text-transform: uppercase;  
+  text-transform: uppercase;
 }
 
 .leading-text a {
@@ -115,8 +119,6 @@ body {
   font-weight: 600;
   line-height: normal;
   padding: 1em;
-  
- 
 }
 
 .leading-text h3 {
@@ -127,10 +129,9 @@ body {
   font-weight: 800;
   line-height: normal;
   margin-bottom: 1.8rem;
-  
 }
 
 .col-md-6 {
-	margin:0!important;
-	padding:0!important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
