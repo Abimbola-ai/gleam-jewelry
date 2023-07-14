@@ -50,6 +50,9 @@ select {
   border: none;
   /* background-color: #fff; */
   /* color: #FFF; */
+  position: relative;
+  top: -7px;
+  right: -6px;
   font-family: Poppins;
   font-size: 1.5625rem;
   font-style: normal;
