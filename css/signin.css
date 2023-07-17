@@ -1,0 +1,126 @@
+.container-fluid {
+    padding: 0 !important;
+  }
+
+.sign-in-wrapper {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.sign-in form{
+    /* To center the sign-in div */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sign-in form{
+    align-items: center;
+    justify-content: center;
+    width: 70.4375rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    background: #fff;
+}
+
+.sign-in h3 {
+    margin-top: 3.98rem;
+    color: #000;
+    font-family: Poppins;
+    font-size: 3.125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.14063rem;
+}
+
+.sign-in p {
+    color: #000;
+    font-family: Poppins;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 0.09844rem;
+}
+
+.sign-in input {
+    width: 29.8125rem;
+    height: 4.625rem;
+    flex-shrink: 0;
+    border-radius: 0.6875rem;
+    border: 1px solid #985B42;
+    background: #F6F4F4;
+    margin-top: 1rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.06188rem;
+    text-align: center;
+    color: rgba(30, 29, 29, 0.62);
+}
+
+.sign-in input:visited {
+    color: #985B42;
+}
+
+.sign-in input::placeholder {
+    color: rgba(30, 29, 29, 0.62);
+    font-family: Poppins;
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.06188rem;
+    text-align: center;
+}
+
+.sign-in a {
+    text-decoration: none;
+    color: #985B42;
+    font-family: Poppins;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.15625rem;
+    position: relative;
+    left: -8rem;
+    padding-bottom: 1.12rem;
+}
+
+.sign-in a:hover {
+    text-decoration: underline;
+}
+
+input[type="submit"] {
+    background: #985B42;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.06188rem;
+    margin-top: 3.38rem;
+    margin-bottom: 2.98rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+   
+}
+
+input[type="submit"]:hover {
+    background: #be8169;
+}
+
+
