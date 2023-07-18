@@ -17,8 +17,9 @@ body {
 } */
 .products-on-demand > h3 {
   color: #000;
-  font-family: Noto Serif;
-  font-size: 2em;
+  color: #000;
+  font-family: Lora;
+  font-size: 3.125rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -26,12 +27,13 @@ body {
 }
 
 .products-on-demand > p {
-  color: #000;
-  font-family: Noto Serif;
-  font-size: 1.25em;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  color: #616161;
+text-align: center;
+font-family: Lora;
+font-size: 1.25rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
 .slider {

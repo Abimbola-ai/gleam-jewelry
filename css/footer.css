@@ -56,3 +56,29 @@ footer hr {
   display: flex;
   justify-content: space-around;
 }
+
+.about-us {
+  margin: 10rem 6rem;
+  background: #FFF;
+  
+}
+
+.about-us h3 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.15625rem;
+}
+
+.about-us p{
+  color: #000;
+  font-family: Poppins;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.11719rem;
+}
