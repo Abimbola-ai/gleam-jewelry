@@ -95,7 +95,8 @@
     line-height: normal;
     letter-spacing: 0.15625rem;
     position: relative;
-    left: -8rem;
+    margin-right: 2rem;
+    left: 1rem;
     padding-bottom: 1.12rem;
 }
 

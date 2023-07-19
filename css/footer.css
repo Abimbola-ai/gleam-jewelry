@@ -57,13 +57,13 @@ footer hr {
   justify-content: space-around;
 }
 
-.about-us {
+.about-us, .terms {
   margin: 10rem 6rem;
   background: #FFF;
   
 }
 
-.about-us h3 {
+.about-us h3, .terms h3 {
   color: #000;
   font-family: Poppins;
   font-size: 1.25rem;
@@ -73,7 +73,7 @@ footer hr {
   letter-spacing: 0.15625rem;
 }
 
-.about-us p{
+.about-us p, .terms p{
   color: #000;
   font-family: Poppins;
   font-size: 0.9375rem;
