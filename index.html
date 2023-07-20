@@ -7,6 +7,7 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
     <!-- Bootstrap CSS & JS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -19,8 +20,6 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-    <script src="js/index.js"></script>
-    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
     <!--fonts-->
@@ -34,6 +33,8 @@
 
     <!-- css -->
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Script for Font awesome icons-->
 
@@ -55,16 +56,13 @@
         src="/images/homepage/homebanner.png"
         alt="image of lady with multiple jewelry"
       />
-        <!-- <h1 class="text-nowrap centered">HOME OF REAL GOLD</h1>
-        <button class="centered"><a href="#">SHOP NOW</a></button> -->
+        
       <div class="image-caption centered">
         <h1 class="text-nowrap">HOME OF REAL GOLD</h1> 
       </div>
       <div class="centered-shop">
         <button class="shop-now"><a href="empty_page.html">SHOP NOW</a></button>
-      </div>
-      
-      
+      </div>  
     </div>
 
     <div class="products-on-demand m-5 p-1 align-items-center text-center">
@@ -74,46 +72,34 @@
         egestas dictum ultrices.
       </p>
     </div>
-  
-    <!-- <div class="carousel-slider">
-      <div class="slider row">
-        <div class="col">
-          <img
-            class="img-fluid"
-            src="images/homepage/necklace.png"
-            alt="necklace"
-          />
+
+      <!-- Beggining of carousel -->
+    
+      <div class="carousel-slider owl-carousel owl-theme" style=" height: 40.5625rem;
+      background: #d0b0a3;
+      padding: 3rem;">          
+        <div class="item img-fluid">
+          <img src="images/homepage/necklace.png" alt="necklace Image">
           <a href="#" class="scroll-text">necklace</a>
         </div>
-  
-        <div class="col">
-          <img class="img-fluid" src="images/homepage/rings.png" alt="rings" />
+        <div class="item img-fluid">
+          <img src="images/homepage/rings.png" alt="rings Image">
           <a href="#" class="scroll-text">rings</a>
         </div>
-  
-        <div class="col">
-          <img
-            class="img-fluid"
-            src="images/homepage/bracelet.png"
-            alt="bracelet"
-          />
+        <div class="item img-fluid">
+          <img src="images/homepage/bracelet.png" alt="bracelet Image">
           <a href="#" class="scroll-text">bracelet</a>
         </div>
-  
-        <div class="col">
-          <img
-            class="col img-fluid"
-            src="images/homepage/earrings.png"
-            alt="earrings"
-          />
+        <div class="item img-fluid">
+          <img src="images/homepage/earrings.png" alt="earrings Image">
           <a href="#" class="scroll-text">earrings</a>
         </div>
       </div>
-  
-    </div> -->
 
+    <!-- end of carousel -->
+  
     
-    <div>
+ 
       <div class="row text-center align-items-center ">
           <div class="leading-text col-md-6 ">
             <h3>engagement rings</h3>
@@ -137,9 +123,30 @@
         <img class="leading-img img-fluid col-md-6" src="images/homepage/rings2.png" alt="engagement ring image">
       </div>  
 
-    </div>
+  
 
     <!--end of main/body-->
     <div id="footer"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   
+    <script>
+      $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:15,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    }
+})
+    </script>
   </body>
 </html>

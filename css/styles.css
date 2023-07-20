@@ -40,25 +40,14 @@ body {
   line-height: normal;
 }
 
-.slider {
-  height: 43.5625rem;
-  background: #d0b0a3;
-  padding: 3rem;
-}
-
-.slider img {
-  border-radius: 1.875rem;
-  width: 32.5rem;
-  height: 33.375rem;
-  padding-right: 1rem;
-}
 
 .scroll-text {
   position: absolute;
   text-decoration: none;
   bottom: 3.81rem;
-  right: 1rem;
-  width: 30.375rem;
+  right: 0rem;
+  /* width: 30.375rem; */
+  width: 23rem;
   height: 3.5rem;
   background: rgba(255, 255, 255, 0.7);
   color: #000;
@@ -71,83 +60,6 @@ body {
   cursor: none;
 }
 
-.carousel-slider {
-  max-width: 100%;
-  overflow-x: auto;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-
-/* .carousel {
-  display: inline;
- 
-}
-
-.wrapper {
-  height: 43.5625rem;
-  background: #d0b0a3;
-  padding: 5.5rem;
-}
-
-.wrapper .carousel {
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.carousel img {
-  height: 30rem;
-  width: calc(100% / 3);
-  object-fit: cover;
-  border-radius: 1.875rem;
-  margin-left: 2rem;
-
-}
-
-.carousel img:first-child {
-  margin-left: 0px;
-} */
-/* .carousel-slider {
-  width: 100%;
-  cursor: pointer;
-}
-
-.carousel-slider .slider {
-  overflow: hidden;
-} */
-
-&.animation-reveal {
-  animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-/* Flickity settings  */
-.flickity-enabled {
-  position: relative;
-}
-
-.flickity-enabled:focus {
-  outline: none;
-}
-
-.flickity-viewport {
-  position: relative;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  transform: translate(0%, 8%);
-  vertical-align: middle;
-}
-
-.flickity-slider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
 
 .leading-text {
   text-transform: uppercase;
@@ -166,6 +78,7 @@ body {
   line-height: normal;
   padding: 1em;
 }
+
 .leading-text a:hover {
   color: #d15902;
 }
@@ -282,3 +195,6 @@ body {
 .shop-now:hover {
   background: #be8169;
 }
+
+
+
