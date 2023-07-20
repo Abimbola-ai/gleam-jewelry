@@ -58,17 +58,23 @@
     <div class="signin-wrapper">
         <div class="sign-in">
             <form action="index.html">
-                <h3>Welcome!</h3>
-                <p>Please enter your email and password</p>
-                <input type="email" placeholder="Enter your email" required>
-                <input type="password" placeholder="Password" required>
-                <div class="mx-2 reset-pass">
-                  <a href="empty_page.html">forgot password?.</a>
-                  <!-- <a href="signup.html">Create account.</a> -->
+                <h3>Create an account</h3>
+                <div class="name-section">
+                    <input class="mx-3" type="text" placeholder="First name" required>
+                    <input type="text" placeholder="Last name" required>
                 </div>
+                <div>
+                    <select class="mx-3" name="countryCode" id="countryCode">
+                        <option value="+1">+1</option> 
+                    </select>
+                    <input type="phone" id="phoneNumber" placeholder="Phone number (optional)">
+                </div>
+                <input type="email" placeholder="Enter email" required>
+                <input type="password" id="password" placeholder="Create password" required>
+                <input type="password" id="confirm_password" placeholder="Confirm password" required>
                 
-                <input class="submit" type="submit" value="CONTINUE" >
-                <p class="create-acct">Not a member?<a href="signup.html">Create account.</a></p>
+                <input class="submit" type="submit" value="REGISTER" >
+                <p class="create-acct">Already a member?<a href="signin.html">Sign In.</a></p>
                 
             </form>
 
@@ -78,5 +84,6 @@
 
     <!--end of main/body-->
     <!-- <div id="footer"></div> -->
+    <script src="script.js"></script>
   </body>
 </html>
