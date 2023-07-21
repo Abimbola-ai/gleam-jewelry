@@ -110,7 +110,7 @@ select{
     text-align: center;
 }
 
-.sign-in a {
+.sign-in a, label {
     text-decoration: none;
     color: #985B42;
     font-family: Poppins;
@@ -164,4 +164,28 @@ p.create-acct {
     padding-bottom: 2rem;
 }
 
+input[type="checkbox"] {
+    width: 21px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid #985B42;
+    background: #F6F4F4;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    position: relative;
+    top: 22.5px;
+
+}
+
+input[type="checkbox"]:focus {
+    outline: 1px solid #985B42;;
+}
+
+input[type=checkbox]:checked
+{
+    background-color: #985B42;
+    background: #985B42 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
+}
 
