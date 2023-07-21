@@ -57,35 +57,48 @@
     </div>
     <div class="signin-wrapper">
       <div class="sign-in">
-        <form action="index.html">
+        <form method="post" action="/signup">
           <h3>Create an account</h3>
           <div class="name-section">
-            <input class="mx-3" type="text" placeholder="First name" required />
-            <input type="text" placeholder="Last name" required />
+            <input
+              class="mx-3"
+              type="text"
+              placeholder="First name"
+              name="first_name"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Last name"
+              name="last_name"
+              required
+            />
           </div>
           <div>
-            <select class="mx-3" name="countryCode" id="countryCode">
+            <!-- <select class="mx-3" name="countryCode" id="countryCode">
               <option value="+1">+1</option>
-            </select>
-            <input
+            </select> -->
+            <!-- <input
               type="phone"
               id="phoneNumber"
               placeholder="Phone number (optional)"
-            />
+            /> -->
           </div>
-          <input type="email" placeholder="Enter email" required />
+          <input type="email" placeholder="Enter email" name="email" required />
           <input
             type="password"
             id="password"
             placeholder="Create password"
+            name="password"
             required
           />
-          <input
+          <!-- <input
             type="password"
             id="confirm_password"
             placeholder="Confirm password"
+            name="confirm_password"
             required
-          />
+          /> -->
 
           <input class="submit" type="submit" value="REGISTER" />
           <p class="create-acct">
@@ -97,6 +110,6 @@
 
     <!--end of main/body-->
     <!-- <div id="footer"></div> -->
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
   </body>
 </html>
