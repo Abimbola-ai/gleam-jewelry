@@ -61,7 +61,7 @@
         <!-- Icons -->
         <div>
           <!--  placeholder for displaying user name -->
-          <span id="welcome_user">Hello, User</span>
+          <span id="welcome_user"></span>
           <a href="" class="header-icon"
             ><iconify-icon
               icon="iconamoon:search-light"
@@ -78,20 +78,13 @@
               ></iconify-icon
             ></a>
             <div class="dropdown-content">
-              <a href="signin.html">Sign In</a>
-              <a href="signup.html">Create an account</a>
+              <a href="signin.html" id="signin">Sign In</a>
+              <a href="signup.html" id="signup">Create an account</a>
               <!--log out should only be visible when the user is
               logged in -->
-              <a href="#">Log out</a>
+              <a href="#" id="logout">Log out</a>
             </div>
           </div>
-          <!-- <a href="" class="header-icon"
-            ><iconify-icon
-              icon="clarity:avatar-line"
-              width="36"
-              height="36"
-            ></iconify-icon
-          ></a> -->
 
           <a href="" class="header-icon"
             ><iconify-icon
@@ -101,13 +94,6 @@
             ></iconify-icon
           ></a>
 
-          <!-- <a href="" class="header-icon"
-            ><iconify-icon
-              icon="grommet-icons:favorite"
-              width="36"
-              height="36"
-            ></iconify-icon
-          ></a> -->
           <select name="header-icon" id="currency">
             <option
               value="cad"

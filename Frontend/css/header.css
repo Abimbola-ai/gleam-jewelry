@@ -110,7 +110,3 @@ select .scrolled {
   text-decoration: underline;
   color: #985b42;
 }
-
-#welcome_user {
-  display: none;
-}

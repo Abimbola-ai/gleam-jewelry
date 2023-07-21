@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -15,6 +16,9 @@ app.use(bodyParser.json());
 
 // Parse incoming requests with urlencoded payloads (form data)
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// use cookie-parser
+app.use(cookieParser());
 
 // users object - database
 const usersDb = {
@@ -36,7 +40,17 @@ const usersDb = {
 
 // sendFile will go here
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '/frontend/index.html'));
+  // check if there is a logged in user
+  // retrieve the cookie
+  const userId = req.cookies['user_id'];
+  const currentUser = usersDb[userId];
+
+  if (currentUser && usersDb[currentUser]) {
+    res.sendFile(path.join(__dirname, '/frontend/index.html'), {
+      user: usersDb[userId],
+    });
+  }
+  res.sendFile(path.join(__dirname, '/frontend/index.html'), {});
 });
 
 // authentication routes
@@ -51,10 +65,10 @@ app.get('/users.json', (req, res) => {
   res.json(usersDb);
 });
 
+// post request to create user
 app.post('/signup', (req, res) => {
   // extract the user information from the request(form)
   const { first_name, last_name, email, password } = req.body;
-  // const body = req.body;
   // console.log({ 'Body:': req.body });
 
   // validation - check if user already exists.
@@ -67,8 +81,6 @@ app.post('/signup', (req, res) => {
     }
   }
 
-  // post request to create user
-
   // creating user
   const userId = generateRandomString(12);
   // add name, email and password to usersDb
@@ -79,8 +91,6 @@ app.post('/signup', (req, res) => {
     email,
     password,
   };
-
-  // console.log(usersDb);
 
   // set the cookie
   res.cookie('user_id', userId);
