@@ -3,11 +3,11 @@ body {
 min-width:1200px;
 }
 
-.icon::after {
+/* .icon::after {
     display: inline-block;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
-  }
+  } */
 .wrapper{
     padding: 0px 99px;
 }
@@ -106,26 +106,28 @@ form {
     line-height: normal;
 }
 
-/* .col img {
-    position: absolute;
-} */
+.image-icon img {
+    display: block;
+}
 
 .image-icon {
-    color: black;
+
     position: relative;  
 }
 
-.image-icon::after {
-    font-family: 'Font Awesome 5 Free';
-    display: block; 
-    /* font: var(--fa-font-solid); */
-    content: "\f04a";
-    font-weight: 900;
-    position: absolute;
-    top: 5%;
-    left: 90%;
-    z-index: 1000;
+.image-icon .fa-heart {
+    position: absolute; 
+    top:5%; 
+    right:10%;
+    font-weight: 700;
+    color: #FFF;
 }
+
+.image-icon .fa-heart:hover {
+    color: red;
+}
+
+
 
 .col h3, .col p{
     text-align: center;
