@@ -35,6 +35,10 @@
     <link rel="stylesheet" href="css/signin.css" />
 
     <!--Script for Font awesome icons-->
+    <!-- iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+  </head>
 
     <!-- importing header and footer templates -->
     <script>
@@ -57,7 +61,13 @@
     </div>
     <div class="signin-wrapper">
       <div class="sign-in">
+        
         <form action="index.html">
+          <a href="index.html" class="signup-icon"
+            ><iconify-icon icon="bi:x" width="50"
+            height="50"></iconify-icon>
+            <span class="hover-text">Click to cancel</span>
+          </a>
           <h3>Create an account</h3>
           <div class="name-section">
             <input class="mx-3" type="text" placeholder="First name" required />
