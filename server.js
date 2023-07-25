@@ -116,8 +116,10 @@ app.post('/login', (req, res) => {
     return;
   }
 
-  // const user = usersDb.find((user) => (user.email = email));
+  // use email and password fields
+  //if email exists then you want to check the password matches then log in and set cookie. authenticate login function handles this.
   const user = authenticateLogin(usersDb, email, password);
+  console.log('User:', user);
   // if email does not exist you want to send an error and exit.
   if (!user) {
     res
@@ -129,9 +131,9 @@ app.post('/login', (req, res) => {
     return;
   }
   // console.log('did not log in');
-  req.cookies.user_id = user.id;
-  // res.sendFile(path.join(__dirname, '/frontend/index.html'));
-  res.redirect('/login');
+  // res.cookie.user_id = user.id;
+  res.cookie('user_id', user.id);
+  res.redirect('/');
   console.log('logged in');
 });
 

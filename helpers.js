@@ -66,6 +66,16 @@ const authenticateLogin = (usersDb, email, password) => {
   return false;
 };
 
+// const authenticateLogin = (usersDb, email, password) => {
+//   for (let userId in usersDb) {
+//     const user = usersDb[userId];
+//     if (user.email === email && bcrypt.compareSync(password, user.password)) {
+//       return user;
+//     }
+//   }
+//   return false;
+// };
+
 module.exports = {
   generateRandomString,
   findExistingUser,
