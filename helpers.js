@@ -1,3 +1,21 @@
+// users object - database
+const usersDb = {
+  userRandomID: {
+    id: 'userRandomID',
+    first_name: 'jane',
+    last_name: 'smith',
+    email: 'user@example.com',
+    password: 'this-is-my-password',
+  },
+  user2RandomID: {
+    id: 'user2RandomID',
+    first_name: 'john',
+    last_name: 'doe',
+    email: 'user2@example.com',
+    password: 'this-is-my-password2',
+  },
+};
+
 // function generating random string.
 const generateRandomString = function (length) {
   const characters =
@@ -10,6 +28,22 @@ const generateRandomString = function (length) {
   return result;
 };
 
+const addNewUser = (first_name, last_name, email, password) => {
+  // creating user
+  const userId = generateRandomString(12);
+  // add name, email and password to usersDb and create new user object
+  const newUser = {
+    id: userId,
+    first_name,
+    last_name,
+    email,
+    password,
+  };
+  // push new user to usersDb
+  usersDb[userId] = newUser;
+  return userId;
+};
+
 const findExistingUser = function (email, database) {
   for (let user in database) {
     if (database[user].email === email) {
@@ -19,7 +53,23 @@ const findExistingUser = function (email, database) {
   return null;
 };
 
+const authenticateLogin = (usersDb, email, password) => {
+  for (let user in usersDb) {
+    const userEmailFound = findExistingUser(email, usersDb);
+    if (
+      userEmailFound &&
+      bcrypt.compareSync(password, usersDb[user].password)
+    ) {
+      return usersDb[user];
+    }
+  }
+  return false;
+};
+
 module.exports = {
   generateRandomString,
   findExistingUser,
+  addNewUser,
+  usersDb,
+  authenticateLogin,
 };

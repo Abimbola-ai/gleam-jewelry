@@ -2,11 +2,20 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+// const sessions = require('express-session');
+// to encrypt password.
+const bcrypt = require('bcrypt');
 
 const app = express();
 const port = process.env.PORT || 8080;
 
-const { generateRandomString } = require('./helpers');
+const {
+  generateRandomString,
+  addNewUser,
+  findExistingUser,
+  usersDb,
+  authenticateLogin,
+} = require('./helpers');
 
 // express.static, serves the static files - i.e. css & html files
 app.use(express.static('frontend'));
@@ -20,34 +29,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // use cookie-parser
 app.use(cookieParser());
 
-// users object - database
-const usersDb = {
-  userRandomID: {
-    id: 'userRandomID',
-    first_name: 'jane',
-    last_name: 'smith',
-    email: 'user@example.com',
-    password: 'this-is-my-password',
-  },
-  user2RandomID: {
-    id: 'user2RandomID',
-    first_name: 'john',
-    last_name: 'doe',
-    email: 'user2@example.com',
-    password: 'this-is-my-password2',
-  },
-};
-
-// sendFile will go here
+// response when a get request is sent to the homepage.
 app.get('/', function (req, res) {
   // check if there is a logged in user
   // retrieve the cookie
   const userId = req.cookies['user_id'];
-  const currentUser = usersDb[userId];
+  const loggedInUser = usersDb[userId];
 
-  if (currentUser && usersDb[currentUser]) {
+  if (loggedInUser && usersDb[loggedInUser]) {
     res.sendFile(path.join(__dirname, '/frontend/index.html'), {
-      user: usersDb[userId],
+      user: loggedInUser,
     });
   }
   res.sendFile(path.join(__dirname, '/frontend/index.html'), {});
@@ -60,9 +51,25 @@ app.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, '/frontend/signup.html'));
 });
 
-// helper route to view users
+app.get('/login', (req, res) => {
+  // get request for signup form to load
+  res.sendFile(path.join(__dirname, '/frontend/signin.html'));
+});
+
+// helper route to view users in the db
 app.get('/users.json', (req, res) => {
   res.json(usersDb);
+});
+
+app.get('/api/user', function (req, res) {
+  const userId = req.cookies['user_id'];
+  const loggedInUser = usersDb[userId];
+
+  if (loggedInUser && usersDb[userId]) {
+    res.json(usersDb[userId]); // Return the user data as JSON response
+  } else {
+    res.json({}); // Return an empty object if no user is logged in
+  }
 });
 
 // post request to create user
@@ -72,26 +79,22 @@ app.post('/signup', (req, res) => {
   // console.log({ 'Body:': req.body });
 
   // validation - check if user already exists.
-
-  for (let userId in usersDb) {
-    if (usersDb[userId].email === email) {
-      // user exists
-      res.status(403).send('User already exists');
-      return;
-    }
+  const user = findExistingUser(email, usersDb);
+  if (user) {
+    res
+      .status(403)
+      .send(
+        'User already exists! <a href="http://localhost:8080/signup">Try Again!</a>'
+      );
+    return;
   }
 
-  // creating user
-  const userId = generateRandomString(12);
-  // add name, email and password to usersDb
-  usersDb[userId] = {
-    id: userId,
-    first_name,
-    last_name,
-    email,
-    password,
-  };
-
+  // if not existing user, create new user.
+  const salt = bcrypt.genSaltSync(10); //10 is the default. an increase in number makes the password more secure, however it takes longer to generate.
+  const hashPassword = bcrypt.hashSync(password, salt);
+  console.log(salt);
+  console.log(hashPassword);
+  const userId = addNewUser(first_name, last_name, email, hashPassword);
   // set the cookie
   res.cookie('user_id', userId);
 
@@ -100,8 +103,45 @@ app.post('/signup', (req, res) => {
 });
 
 // LOGIN ROUTE
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // if email or password field is empty send back response with 400 status code.
+  if (email === '' || password === '') {
+    res
+      .status(400)
+      .send(
+        `Invalid input - email/password field cannot be empty!!! <a href="http://localhost:8080/login">Try Again!</a>`
+      );
+    return;
+  }
+
+  // const user = usersDb.find((user) => (user.email = email));
+  const user = authenticateLogin(usersDb, email, password);
+  // if email does not exist you want to send an error and exit.
+  if (!user) {
+    res
+      .status(403)
+      .send(
+        'This email/password combination does not exist!!! <a href="http://localhost:8080/login">Try Again!</a>'
+      );
+    console.log('did not log in');
+    return;
+  }
+  // console.log('did not log in');
+  req.cookies.user_id = user.id;
+  // res.sendFile(path.join(__dirname, '/frontend/index.html'));
+  res.redirect('/login');
+  console.log('logged in');
+});
 
 // LOGOUT ROUTE
+// app.post('/logout', (req, res) => {
+//   // to clear cookies
+//   req.session = null;
+//   // to redirect to /urls
+//   res.redirect('/login');
+// });
 
 // Port running
 app.listen(port);
