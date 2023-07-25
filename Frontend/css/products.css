@@ -10,6 +10,7 @@ min-width:1200px;
   } */
 .wrapper{
     padding: 0px 99px;
+
 }
 
 .product-category h3{
@@ -115,25 +116,25 @@ form {
     position: relative;  
 }
 
-.image-icon .fa-heart {
-    position: absolute; 
-    top:5%; 
-    right:10%;
-    font-weight: 700;
-    color: #FFF;
-}
-
-.image-icon .fa-heart:hover {
-    color: red;
+.heart-icon {
+  /* transition: color 0.3s ease; */
+  position: absolute; 
+  top:5%; 
+  right:15%;
+  font-weight: 700;
+  color: #FFF;
+  font-size: 2em;
+  cursor: pointer;
 }
 
 
 
 .col h3, .col p{
-    text-align: center;
+    text-align: left;
 }
 
 .col h3 {
+    margin-top: 10px;
     color: #000;
     font-family: Poppins;
     font-size: 1.5rem;
@@ -150,3 +151,4 @@ form {
     font-weight: 400;
     line-height: normal;
 }
+
