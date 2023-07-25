@@ -19,8 +19,8 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-    <script src="js/index.js"></script>
-    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+    <!-- <script src="js/index.js"></script> -->
+    <!-- <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script> -->
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
     <!--fonts-->
@@ -30,9 +30,11 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <!-- css -->
     <link rel="stylesheet" href="css/signin.css" />
+
 
     <!--Script for Font awesome icons-->
     <!-- iconify -->
@@ -62,7 +64,7 @@
     <div class="signin-wrapper">
       <div class="sign-in">
         
-        <form action="index.html">
+        <form id="signupForm" action="index.html">
           <a href="index.html" class="signup-icon"
             ><iconify-icon icon="bi:x" width="50"
             height="50"></iconify-icon>
@@ -84,19 +86,30 @@
             />
           </div>
           <input type="email" placeholder="Enter email" required />
-          <input
+          <div class="password-container">
+            <input
             type="password"
             id="password"
             placeholder="Create password"
             required
           />
-          <input
+            <!-- <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer; color: #be8169;"></i> -->
+            <i id="visibilityBtn" style="margin-left: -45px; cursor: pointer; color: #be8169;"><span id="icon"class="material-symbols-outlined">
+              visibility
+              </span></i>
+          </div>
+          <div class="password-container">
+            <input
             type="password"
-            id="confirm_password"
+            id="confirmPassword"
             placeholder="Confirm password"
             required
           />
-
+          <i id="visibilityBtn2" style="margin-left: -45px; cursor: pointer; color: #be8169;"><span id="icon2" class="material-symbols-outlined">
+            visibility
+            </span></i>
+          </div>
+          
           <input class="submit" type="submit" value="REGISTER" />
           <p class="create-acct">
             Already a member?<a href="signin.html">Sign In.</a>
@@ -106,7 +119,8 @@
     </div>
 
     <!--end of main/body-->
-    <!-- <div id="footer"></div> -->
-    <script src="../Frontend/js/script.js"></script>
+  
+   
+    <script src="../Frontend/js/password.js"></script>
   </body>
 </html>
