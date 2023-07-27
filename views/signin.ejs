@@ -20,7 +20,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/index.js"></script>
-    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+    <!-- <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script> -->
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
     <!--fonts-->
@@ -30,6 +30,11 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+     
+
+     <!--Script for Font awesome icons-->
+     <!-- iconify -->
+     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <!-- css -->
     <link rel="stylesheet" href="css/signin.css" />
@@ -58,6 +63,11 @@
     <div class="signin-wrapper">
       <div class="sign-in">
         <form action="/">
+          <a href="/" class="signup-icon"
+            ><iconify-icon icon="bi:x" width="50"
+            height="50"></iconify-icon>
+            <span class="hover-text">Click to cancel</span>
+          </a>
           <h3>Welcome!</h3>
           <p>Please enter your email and password</p>
           <input type="email" placeholder="Enter your email" required />
