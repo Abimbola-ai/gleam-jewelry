@@ -19,7 +19,7 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-    <script src="js/index.js"></script>
+    <script src="js/home.js"></script>
     <!-- <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script> -->
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
@@ -37,7 +37,7 @@
      <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
     <!-- css -->
-    <link rel="stylesheet" href="css/signin.css" />
+    <link rel="stylesheet" href="./css/signin.css" />
 
     <!--Script for Font awesome icons-->
 
@@ -52,6 +52,9 @@
   <body>
     <!-- <div id="header"></div> -->
     <!--Beginning of main/body-->
+    <% if (message) { %>
+      <p><%= message %></p>
+    <% } %>
 
     <div>
       <img
