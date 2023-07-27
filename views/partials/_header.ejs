@@ -59,9 +59,34 @@
         </div>
 
         <!-- Icons -->
+
+        <!-- logged in state -->
         <div>
-          <!--  placeholder for displaying user name -->
-          <span id="welcome_user"></span>
+          <% if (user) { %>
+
+          <span id="welcome_user"> Welcome <%= user.first_name %>!</span>
+          <!-- <span id="welcome_user">
+            Welcome <%= user.first_name %> <%= user.last_name %></span
+          > -->
+          <select name="header-icon" id="currency">
+            <option
+              value="cad"
+              selected="selected"
+              data-img_src="https://flagcdn.com/36x36/ca.png"
+            >
+              <span>🇨🇦&emsp;</span>CAD
+            </option>
+            <option value="usd" data-img_src="https://flagcdn.com/36x36/us.png">
+              🇺🇸&emsp;USD
+            </option>
+          </select>
+          <!-- <a href="/logout" id="logout">Logout</a> -->
+          <form method="POST" action="/logout">
+            <input type="submit" value="Logout" />
+          </form>
+
+          <% } else { %>
+          <!-- logged out state -->
           <a href="" class="header-icon"
             ><iconify-icon
               icon="iconamoon:search-light"
@@ -80,9 +105,6 @@
             <div class="dropdown-content">
               <a href="/signin" id="signin">Sign In</a>
               <a href="/signup" id="signup">Create an account</a>
-              <!--log out should only be visible when the user is
-              logged in -->
-              <a href="#" id="logout">Log out</a>
             </div>
           </div>
 
@@ -106,12 +128,12 @@
               🇺🇸&emsp;USD
             </option>
           </select>
-          <!-- </div> -->
+          <% } %>
         </div>
       </nav>
     </header>
 
     <!-- JS script -->
-    <script src="./js/header.js"></script>
+    <!-- <script src="./js/header.js"></script> -->
   </body>
 </html>

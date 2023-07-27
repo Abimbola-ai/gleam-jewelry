@@ -1,11 +1,9 @@
 const express = require('express');
-// const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 // const sessions = require('express-session');
-// to encrypt password.
+// use bcrypt to encrypt password.
 const bcrypt = require('bcrypt');
-
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -35,32 +33,35 @@ app.use(cookieParser());
 // sets up ejs template view engine
 app.set('view engine', 'ejs');
 
+// GET ROUTES
 // response when a get request is sent to the homepage.
 app.get('/', function (req, res) {
-  // check if there is a logged in user
-  // retrieve the cookie
+  // check if there is a logged in user /  // Get the user data from the usersDb using the userId
   const userId = req.cookies['user_id'];
   const loggedInUser = usersDb[userId];
 
-  if (loggedInUser && usersDb[loggedInUser]) {
-    res.render('homepage', loggedInUser);
-    // res.sendFile(path.join(__dirname, '/frontend/index.html'), {
-    //   user: loggedInUser,
-    // });
-  }
-  res.render('homepage.ejs');
+  // Pass the user data as an object to the homepage template
+  const templateVars = {
+    user: loggedInUser, // Pass the user data to the homepage template
+    // user: loggedInUser || loggedInUser.email,
+  };
+
+  res.render('homepage', templateVars);
 });
 
-// authentication routes
 // REGISTER ROUTE
 app.get('/signup', (req, res) => {
   // get request for signup form to load
-  res.render('signup.ejs');
+  res.render('signup');
 });
 
 app.get('/signin', (req, res) => {
   // get request for signup form to load
-  res.render('signin.ejs');
+  res.render('signin');
+});
+
+app.get('/policy', (req, res) => {
+  res.render('policy');
 });
 
 // helper route to view users in the db
@@ -68,6 +69,7 @@ app.get('/users.json', (req, res) => {
   res.json(usersDb);
 });
 
+// To check who the current logged in user is.
 app.get('/api/user', function (req, res) {
   const userId = req.cookies['user_id'];
   const loggedInUser = usersDb[userId];
@@ -85,13 +87,17 @@ app.post('/signup', (req, res) => {
   const { first_name, last_name, email, password } = req.body;
   // console.log({ 'Body:': req.body });
 
+  if (!email || !password) {
+    res.status(400).send('Email and password fields cannot be empty.');
+    return;
+  }
   // validation - check if user already exists.
-  const user = findExistingUser(email, usersDb);
-  if (user) {
+  const existingUser = findExistingUser(email, usersDb);
+  if (existingUser) {
     res
-      .status(403)
+      .status(409)
       .send(
-        'User already exists! <a href="http://localhost:8080/signup">Try Again!</a>'
+        'User with this email already exists! <a href="http://localhost:8080/signup">Try Again!</a>'
       );
     return;
   }
@@ -102,12 +108,19 @@ app.post('/signup', (req, res) => {
   console.log(salt);
   console.log(hashPassword);
   const userId = addNewUser(first_name, last_name, email, hashPassword);
-  // set the cookie
+
+  if (!userId) {
+    console.error('Error creating user. userId is undefined.');
+    res.status(500).send('Error creating user. Please try again later.');
+    return;
+  }
+
+  console.log('User created successfully. userId:', userId);
+  // set the cookie to log the user in
   res.cookie('user_id', userId);
 
-  // redirect to homepage with name showing in the header
-  res.redirect('homepage');
-  // res.sendFile(path.join(__dirname, '/frontend/index.html'));
+  // redirect to homepage with name showing in the header after successful signup
+  res.redirect('/');
 });
 
 // LOGIN ROUTE
@@ -138,17 +151,22 @@ app.post('/signin', (req, res) => {
     console.log('did not log in');
     return;
   }
-  // console.log('did not log in');
+
   // res.cookie.user_id = user.id;
+
   res.cookie('user_id', user.id);
+
   res.redirect('/');
   console.log('logged in');
 });
 
 // LOGOUT ROUTE
 app.post('/logout', (req, res) => {
-  // to clear cookies which will logout the user.
-  res.cookie = null;
+  //to clear cookies which will logout the user.
+  // res.cookie = null;
+  // Clear the user_id cookie to log the user out
+  res.clearCookie('user_id');
+
   // req.session = null;
   // to redirect to /urls
   res.redirect('/signin');

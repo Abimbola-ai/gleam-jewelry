@@ -58,11 +58,8 @@
       });
     </script> -->
   </head>
-  <!-- <body>
-    <div id="header"></div> -->
-    <header>
-      <%- include('./partials/_header') %>
-    </header>
+  <body>
+    <header><%- include('./partials/_header', { user: user }) %></header>
     <!--Beginning of main/body-->
 
     <div>
