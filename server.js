@@ -86,13 +86,18 @@ app.post('/signup', (req, res) => {
   // extract the user information from the request(form)
   const { first_name, last_name, email, password } = req.body;
   // console.log({ 'Body:': req.body });
+
+  if (!email || !password) {
+    res.status(400).send('Email and password fields cannot be empty.');
+    return;
+  }
   // validation - check if user already exists.
-  const user = findExistingUser(email, usersDb);
-  if (user) {
+  const existingUser = findExistingUser(email, usersDb);
+  if (existingUser) {
     res
-      .status(403)
+      .status(409)
       .send(
-        'User already exists! <a href="http://localhost:8080/signup">Try Again!</a>'
+        'User with this email already exists! <a href="http://localhost:8080/signup">Try Again!</a>'
       );
     return;
   }
@@ -103,11 +108,19 @@ app.post('/signup', (req, res) => {
   console.log(salt);
   console.log(hashPassword);
   const userId = addNewUser(first_name, last_name, email, hashPassword);
-  // set the cookie
+
+  if (!userId) {
+    console.error('Error creating user. userId is undefined.');
+    res.status(500).send('Error creating user. Please try again later.');
+    return;
+  }
+
+  console.log('User created successfully. userId:', userId);
+  // set the cookie to log the user in
   res.cookie('user_id', userId);
 
-  // redirect to homepage with name showing in the header
-  res.redirect('homepage');
+  // redirect to homepage with name showing in the header after successful signup
+  res.redirect('/');
 });
 
 // LOGIN ROUTE
@@ -140,15 +153,20 @@ app.post('/signin', (req, res) => {
   }
 
   // res.cookie.user_id = user.id;
+
   res.cookie('user_id', user.id);
+
   res.redirect('/');
   console.log('logged in');
 });
 
 // LOGOUT ROUTE
 app.post('/logout', (req, res) => {
-  // to clear cookies which will logout the user.
-  res.cookie = null;
+  //to clear cookies which will logout the user.
+  // res.cookie = null;
+  // Clear the user_id cookie to log the user out
+  res.clearCookie('user_id');
+
   // req.session = null;
   // to redirect to /urls
   res.redirect('/signin');

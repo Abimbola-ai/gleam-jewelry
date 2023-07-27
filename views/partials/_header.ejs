@@ -64,9 +64,10 @@
         <div>
           <% if (user) { %>
 
-          <span id="welcome_user">
+          <span id="welcome_user"> Welcome <%= user.first_name %>!</span>
+          <!-- <span id="welcome_user">
             Welcome <%= user.first_name %> <%= user.last_name %></span
-          >
+          > -->
           <select name="header-icon" id="currency">
             <option
               value="cad"
@@ -79,10 +80,10 @@
               🇺🇸&emsp;USD
             </option>
           </select>
-          <a href="#" id="logout">Log out</a>
-          <!-- <form method="POST" action="/logout">
+          <!-- <a href="/logout" id="logout">Logout</a> -->
+          <form method="POST" action="/logout">
             <input type="submit" value="Logout" />
-          </form> -->
+          </form>
 
           <% } else { %>
           <!-- logged out state -->
