@@ -57,7 +57,7 @@ body {
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
-  cursor: none;
+  cursor: pointer;
 }
 
 
@@ -195,6 +195,27 @@ body {
 .shop-now:hover {
   background: #be8169;
 }
+
+/* .gallery {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  background: #be8169;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+
+}
+
+.gallery_item {
+  scroll-snap-align: center;
+  min-width: 75%;
+}
+
+.gallery_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
 
 
 
