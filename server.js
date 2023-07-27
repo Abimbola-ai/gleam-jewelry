@@ -1,11 +1,9 @@
 const express = require('express');
-// const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 // const sessions = require('express-session');
-// to encrypt password.
+// use bcrypt to encrypt password.
 const bcrypt = require('bcrypt');
-
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -35,32 +33,35 @@ app.use(cookieParser());
 // sets up ejs template view engine
 app.set('view engine', 'ejs');
 
+// GET ROUTES
 // response when a get request is sent to the homepage.
 app.get('/', function (req, res) {
-  // check if there is a logged in user
-  // retrieve the cookie
+  // check if there is a logged in user /  // Get the user data from the usersDb using the userId
   const userId = req.cookies['user_id'];
   const loggedInUser = usersDb[userId];
 
-  if (loggedInUser && usersDb[loggedInUser]) {
-    res.render('homepage', loggedInUser);
-    // res.sendFile(path.join(__dirname, '/frontend/index.html'), {
-    //   user: loggedInUser,
-    // });
-  }
-  res.render('homepage.ejs');
+  // Pass the user data as an object to the homepage template
+  const templateVars = {
+    user: loggedInUser, // Pass the user data to the homepage template
+    // user: loggedInUser || loggedInUser.email,
+  };
+
+  res.render('homepage', templateVars);
 });
 
-// authentication routes
 // REGISTER ROUTE
 app.get('/signup', (req, res) => {
   // get request for signup form to load
-  res.render('signup.ejs');
+  res.render('signup');
 });
 
 app.get('/signin', (req, res) => {
   // get request for signup form to load
-  res.render('signin.ejs');
+  res.render('signin');
+});
+
+app.get('/policy', (req, res) => {
+  res.render('policy');
 });
 
 // helper route to view users in the db
@@ -68,6 +69,7 @@ app.get('/users.json', (req, res) => {
   res.json(usersDb);
 });
 
+// To check who the current logged in user is.
 app.get('/api/user', function (req, res) {
   const userId = req.cookies['user_id'];
   const loggedInUser = usersDb[userId];
@@ -84,7 +86,6 @@ app.post('/signup', (req, res) => {
   // extract the user information from the request(form)
   const { first_name, last_name, email, password } = req.body;
   // console.log({ 'Body:': req.body });
-
   // validation - check if user already exists.
   const user = findExistingUser(email, usersDb);
   if (user) {
@@ -107,7 +108,6 @@ app.post('/signup', (req, res) => {
 
   // redirect to homepage with name showing in the header
   res.redirect('homepage');
-  // res.sendFile(path.join(__dirname, '/frontend/index.html'));
 });
 
 // LOGIN ROUTE
@@ -138,7 +138,7 @@ app.post('/signin', (req, res) => {
     console.log('did not log in');
     return;
   }
-  // console.log('did not log in');
+
   // res.cookie.user_id = user.id;
   res.cookie('user_id', user.id);
   res.redirect('/');
