@@ -195,7 +195,7 @@ input[type=checkbox]:checked
     transition: color 0.3s ease;
     display: inline-block;
     position: fixed;
-    top: 5%;
+    top: 6%;
     left: 90%;
     transform: translate(-50%, -50%);
   }
