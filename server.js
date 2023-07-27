@@ -80,6 +80,23 @@ app.get('/contact', (req, res) => {
   res.render('contact', { user: req.cookies['user_id'] });
 });
 
+app.get('/terms_and_conds', (req, res) => {
+  res.render('terms_and_conds', { user: req.cookies['user_id'] });
+});
+
+app.get('/necklaces', (req, res) => {
+  res.render('necklaces', { user: req.cookies['user_id'] });
+});
+app.get('/earrings', (req, res) => {
+  res.render('earrings', { user: req.cookies['user_id'] });
+});
+app.get('/bracelets', (req, res) => {
+  res.render('bracelets', { user: req.cookies['user_id'] });
+});
+app.get('/rings', (req, res) => {
+  res.render('rings', { user: req.cookies['user_id'] });
+});
+
 app.get('/policy', (req, res) => {
   res.render('policy', { user: req.cookies['user_id'] });
 });
