@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 // users object - database
 const usersDb = {
   userRandomID: {
