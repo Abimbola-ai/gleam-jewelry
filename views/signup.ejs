@@ -43,15 +43,16 @@
   </head>
 
     <!-- importing header and footer templates -->
-    <script>
+    <!-- <script>
       $(function () {
         $('#header').load('templates/header.html');
         $('#footer').load('templates/footer.html');
       });
-    </script>
+    </script> -->
   </head>
   <body>
     <!-- <div id="header"></div> -->
+   
     <!--Beginning of main/body-->
 
     <div>
@@ -64,33 +65,45 @@
     <div class="signin-wrapper">
       <div class="sign-in">
         
-        <form id="signupForm" action="index.html">
-          <a href="index.html" class="signup-icon"
+        <form id="signupForm" action="/signup" method="POST">
+          <a href="/" class="signup-icon"
             ><iconify-icon icon="bi:x" width="50"
             height="50"></iconify-icon>
             <span class="hover-text">Click to cancel</span>
           </a>
           <h3>Create an account</h3>
           <div class="name-section">
-            <input class="mx-3" type="text" placeholder="First name" required />
-            <input type="text" placeholder="Last name" required />
+            <input
+              class="mx-3"
+              type="text"
+              placeholder="First name"
+              name="first_name"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Last name"
+              name="last_name"
+              required
+            />
           </div>
           <div>
-            <select class="mx-3" name="countryCode" id="countryCode">
+            <!-- <select class="mx-3" name="countryCode" id="countryCode">
               <option value="+1">+1</option>
-            </select>
-            <input
+            </select> -->
+            <!-- <input
               type="phone"
               id="phoneNumber"
               placeholder="Phone number (optional)"
-            />
+            /> -->
           </div>
-          <input type="email" placeholder="Enter email" required />
+          <input type="email" placeholder="Enter email" name="email" required />
           <div class="password-container">
             <input
             type="password"
             id="password"
             placeholder="Create password"
+            name="password"
             required
           />
             <!-- <i class="far fa-eye" id="togglePassword" style="margin-left: -30px; cursor: pointer; color: #be8169;"></i> -->
@@ -103,6 +116,7 @@
             type="password"
             id="confirmPassword"
             placeholder="Confirm password"
+            name="confirm_password"
             required
           />
           <i id="visibilityBtn2" style="margin-left: -45px; cursor: pointer; color: #be8169;"><span id="icon2" class="material-symbols-outlined">
@@ -112,7 +126,7 @@
           
           <input class="submit" type="submit" value="REGISTER" />
           <p class="create-acct">
-            Already a member?<a href="signin.html">Sign In.</a>
+            Already a member?<a href="/signin">Sign In.</a>
           </p>
         </form>
       </div>
@@ -121,6 +135,6 @@
     <!--end of main/body-->
   
    
-    <script src="../Frontend/js/password.js"></script>
+    <!-- <script src="../Frontend/js/password.js"></script> -->
   </body>
 </html>

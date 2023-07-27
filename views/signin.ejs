@@ -20,7 +20,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/index.js"></script>
-    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+    <!-- <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script> -->
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
     <!--fonts-->
@@ -31,18 +31,22 @@
       rel="stylesheet"
     />
 
+    <!--Script for Font awesome icons-->
+    <!-- iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
     <!-- css -->
     <link rel="stylesheet" href="css/signin.css" />
 
     <!--Script for Font awesome icons-->
 
     <!-- importing header and footer templates -->
-    <script>
+    <!-- <script>
       $(function () {
         $('#header').load('templates/header.html');
         $('#footer').load('templates/footer.html');
       });
-    </script>
+    </script> -->
   </head>
   <body>
     <!-- <div id="header"></div> -->
@@ -56,28 +60,34 @@
       />
     </div>
     <div class="signin-wrapper">
-        <div class="sign-in">
-            <form action="index.html">
-                <h3>Welcome!</h3>
-                <p>Please enter your email and password</p>
-                <input type="email" placeholder="Enter your email" required>
-                <input type="password" placeholder="Password" required>
-                <div class="mx-2 reset-pass">
-                  <!-- <input type="checkbox" value="remember_me" id="remember_me">
-                  <label for="remember_me">Remember me</label> -->
-                  <label><input type="checkbox"> Remember me</label>
-                  <a href="empty_page.html">| forgot password?.</a>
-                  <!-- <a href="signup.html">Create account.</a> -->
-                </div>
-                
-                <input class="submit" type="submit" value="CONTINUE" >
-                <p class="create-acct">Not a member?<a href="signup.html">Create account.</a></p>
-                
-            </form>
+      <div class="sign-in">
+        <form action="/signin" method="post" id="signinForm">
+          <a href="/" class="signup-icon"
+            ><iconify-icon icon="bi:x" width="50" height="50"></iconify-icon>
+            <span class="hover-text">Click to cancel</span>
+          </a>
+          <h3>Welcome!</h3>
+          <p>Please enter your email and password</p>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+          <div class="mx-2 reset-pass">
+            <a href="/empty_page">forgot password?.</a>
+            <!-- <a href="signup.html">Create account.</a> -->
+          </div>
 
           <input class="submit" type="submit" value="CONTINUE" />
           <p class="create-acct">
-            Not a member?<a href="signup.html">Create account.</a>
+            Not a member?<a href="/signup">Create account.</a>
           </p>
         </form>
       </div>

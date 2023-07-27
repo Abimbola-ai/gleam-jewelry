@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
     <!-- Bootstrap CSS & JS -->
-    
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -21,7 +21,6 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
-   
 
     <!--fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +33,10 @@
       href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poller+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
 
     <!-- css -->
     <link rel="stylesheet" href="css/styles.css" />
@@ -43,27 +45,37 @@
     <!--Script for Font awesome icons-->
 
     <!-- importing header and footer templates -->
-    <script>
+    <!-- <script>
       $(function () {
         $('#header').load('templates/header2.html');
         $('#footer').load('templates/footer.html');
       });
-    </script>
+    </script> -->
   </head>
   <body>
-    <div id="header"></div>
+    <!-- <div id="header"></div> -->
+    <%- include('./partials/_header') %>
     <!--Beginning of main/body-->
     <main class="wrapper">
       <div class="product-category">
-        <h3 class="text-uppercase">necklaces</h3>
+        <h3 class="text-uppercase">earrings</h3>
       </div>
-      <div class=" search-container select-filter row">
-        <form class="nosubmit col-4" >
-          <input id="search-input" class="nosubmit" type="search" placeholder="Search...">
+      <div class="search-container select-filter row">
+        <form class="nosubmit col-4">
+          <input
+            id="search-input"
+            class="nosubmit"
+            type="search"
+            placeholder="Search..."
+          />
         </form>
         <p class="col-6 text-end">Sort By:</p>
         <div class="sort-section col-2">
-          <select id="sort-options" class="form-select border-0" aria-label="Filter options">
+          <select
+            id="sort-options"
+            class="form-select border-0"
+            aria-label="Filter options"
+          >
             <option value="best_sellers" selected>Best Sellers</option>
             <option value="price_asc">Price (Low to High)</option>
             <option value="price_desc">Price (High to Low)</option>
@@ -73,18 +85,21 @@
         </div>
       </div>
 
-       <!-- Separate container for search display -->
-      <div class="container d-none"id="search-results"></div>
-     
+      <!-- Separate container for search display -->
+      <div class="container d-none" id="search-results"></div>
 
       <div class="product-container">
         <div class="row hide my-3">
           <div class="col product-item text-center">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/bold.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/bold.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Bold Gold Plate</h3>
             <p class="product-description">CAD 200</p>
@@ -92,9 +107,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/rod_collar.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/rod_collar.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Cubic Necklace</h3>
             <p class="product-description">CAD 125</p>
@@ -102,9 +121,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/layered.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/layered.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Layered Thin Gold With Chunky Pendant</h3>
             <p class="product-description">CAD 300</p>
@@ -115,9 +138,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/3layer.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/3layer.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">3 Layer Moon Crest</h3>
             <p class="product-description">CAD 200</p>
@@ -125,9 +152,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/2layer.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/2layer.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">2 Layer Intersect</h3>
             <p class="product-description">CAD 205</p>
@@ -135,9 +166,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/rod_collar.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/rod_collar.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Rod Collar Gold</h3>
             <p class="product-description">CAD 200</p>
@@ -148,9 +183,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/tiffany.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/tiffany.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Tiffany Necklace</h3>
             <p class="product-description">CAD 200</p>
@@ -158,9 +197,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/block_pendant.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/block_pendant.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Block Pendant Chain</h3>
             <p class="product-description">CAD 125</p>
@@ -168,9 +211,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/frills_necklace_green.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/frills_necklace_green.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Frills Necklace Green</h3>
             <p class="product-description">CAD 200</p>
@@ -181,9 +228,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/leaf_pendant.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/leaf_pendant.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Leaf Pendant</h3>
             <p class="product-description">CAD 250</p>
@@ -191,9 +242,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/frills_necklace_gold.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/frills_necklace_gold.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Frills Necklace Gold</h3>
             <p class="product-description">CAD 300</p>
@@ -201,9 +256,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/layered_thin.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/layered_thin.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Layered Thin Gold</h3>
             <p class="product-description">CAD 200</p>
@@ -214,9 +273,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/pearl.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/pearl.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Pearl Pendant Necklace</h3>
             <p class="product-description">CAD 250</p>
@@ -224,9 +287,13 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/layered_marble.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/layered_marble.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Layered Marble</h3>
             <p class="product-description">CAD 300</p>
@@ -234,35 +301,26 @@
           <div class="col product-item">
             <div class="image-icon">
               <a href="#" class="image-expand">
-                <img class="img-fluid" src="images/products/necklace/Blue_stone.png" alt="necklace">
-                <i class="heart-icon fas fa-heart"></i> 
-              </a>     
+                <img
+                  class="img-fluid"
+                  src="images/products/necklace/Blue_stone.png"
+                  alt="necklace"
+                />
+                <i class="heart-icon fas fa-heart"></i>
+              </a>
             </div>
             <h3 class="product-title">Blue Stone Necklace</h3>
             <p class="product-description">CAD 125</p>
           </div>
         </div>
-
-
-
       </div>
-      
-
-
-
-
     </main>
-    
-   
 
-  
-    
     <!--end of main/body-->
-    <div id="footer"></div>
-    
-   
-  <script src="js/favorite.js"></script>
-  <script src="js/search.js"></script>
-  
+    <!-- <div id="footer"></div> -->
+    <%- include('./partials/_footer') %>
+
+    <script src="js/favorite.js"></script>
+    <script src="js/search.js"></script>
   </body>
 </html>
