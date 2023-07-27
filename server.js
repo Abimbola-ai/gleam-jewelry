@@ -29,19 +29,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // use cookie-parser
 app.use(cookieParser());
 
+// sets up ejs template view engine
+app.set('view engine', 'ejs');
+
 // response when a get request is sent to the homepage.
 app.get('/', function (req, res) {
-  // check if there is a logged in user
-  // retrieve the cookie
   const userId = req.cookies['user_id'];
   const loggedInUser = usersDb[userId];
+
+  if (!loggedInUser) {
+    res.send('homepage');
+  }
+
+  // check if there is a logged in user
+  // retrieve the cookie
 
   if (loggedInUser && usersDb[loggedInUser]) {
     res.sendFile(path.join(__dirname, '/frontend/index.html'), {
       user: loggedInUser,
     });
   }
-  res.sendFile(path.join(__dirname, '/frontend/index.html'), {});
 });
 
 // authentication routes
@@ -138,12 +145,13 @@ app.post('/login', (req, res) => {
 });
 
 // LOGOUT ROUTE
-// app.post('/logout', (req, res) => {
-//   // to clear cookies
-//   req.session = null;
-//   // to redirect to /urls
-//   res.redirect('/login');
-// });
+app.post('/logout', (req, res) => {
+  // to clear cookies which will logout the user.
+  res.cookie = null;
+  // req.session = null;
+  // to redirect to /urls
+  res.redirect('/login');
+});
 
 // Port running
 app.listen(port);

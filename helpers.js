@@ -56,10 +56,7 @@ const findExistingUser = function (email, database) {
 const authenticateLogin = (usersDb, email, password) => {
   for (let user in usersDb) {
     const userEmailFound = findExistingUser(email, usersDb);
-    if (
-      userEmailFound &&
-      bcrypt.compareSync(password, usersDb[user].password)
-    ) {
+    if (userEmailFound && bcrypt.compare(password, usersDb[user].password)) {
       return usersDb[user];
     }
   }
