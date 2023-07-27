@@ -47,8 +47,7 @@
     </script> -->
   </head>
   <body>
-    <!-- <div id="header"></div> -->
-    <%- include('./partials/_header') %>
+    <header><%- include('./partials/_header', { user: user }) %></header>
     <div class="about-us">
       <h3>About Us</h3>
       <p>
@@ -87,16 +86,6 @@
       </p>
     </div>
 
-    <!-- <main class="empty">
-      <div>
-        <h2>
-          This is an empty page just to show that the footer links are clickable
-          and redirect.
-        </h2>
-      </div>
-    </main> -->
-
-    <!-- <div id="footer"></div> -->
     <%- include('./partials/_footer') %>
   </body>
 </html>

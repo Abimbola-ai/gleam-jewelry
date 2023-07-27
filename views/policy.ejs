@@ -35,20 +35,9 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/empty.css" />
     <link rel="stylesheet" href="css/footer.css" />
-
-    <!--Script for Font awesome icons-->
-
-    <!-- importing header and footer templates -->
-    <!-- <script>
-      $(function () {
-        $('#header').load('templates/header.html');
-        $('#footer').load('templates/footer.html');
-      });
-    </script> -->
   </head>
   <body>
-    <!-- <div id="header"></div> -->
-    <%- include('./partials/_header') %>
+    <header><%- include('./partials/_header', { user: user }) %></header>
     <div class="terms">
       <h3>Privacy Policy</h3>
       <p>
@@ -88,16 +77,6 @@
       </p>
     </div>
 
-    <!-- <main class="empty">
-      <div>
-        <h2>
-          This is an empty page just to show that the footer links are clickable
-          and redirect.
-        </h2>
-      </div>
-    </main> -->
-
-    <!-- <div id="footer"></div> -->
     <%- include('./partials/_footer') %>
   </body>
 </html>

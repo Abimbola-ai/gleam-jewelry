@@ -40,7 +40,6 @@ body {
   line-height: normal;
 }
 
-
 .scroll-text {
   position: absolute;
   text-decoration: none;
@@ -59,7 +58,6 @@ body {
   text-transform: uppercase;
   cursor: pointer;
 }
-
 
 .leading-text {
   text-transform: uppercase;
@@ -216,6 +214,3 @@ body {
   height: 100%;
   object-fit: cover;
 } */
-
-
-

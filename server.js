@@ -64,6 +64,26 @@ app.get('/policy', (req, res) => {
   res.render('policy');
 });
 
+app.get('/empty_page', (req, res) => {
+  res.render('empty_page', { user: req.cookies['user_id'] });
+});
+
+app.get('/about-us', (req, res) => {
+  res.render('about-us', { user: req.cookies['user_id'] });
+});
+
+app.get('/faq', (req, res) => {
+  res.render('faq', { user: req.cookies['user_id'] });
+});
+
+app.get('/contact', (req, res) => {
+  res.render('contact', { user: req.cookies['user_id'] });
+});
+
+app.get('/policy', (req, res) => {
+  res.render('policy', { user: req.cookies['user_id'] });
+});
+
 // helper route to view users in the db
 app.get('/users.json', (req, res) => {
   res.json(usersDb);
