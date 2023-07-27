@@ -38,15 +38,16 @@
     <!--Script for Font awesome icons-->
 
     <!-- importing header and footer templates -->
-    <script>
+    <!-- <script>
       $(function () {
         $('#header').load('templates/header.html');
         $('#footer').load('templates/footer.html');
       });
-    </script>
+    </script> -->
   </head>
   <body>
-    <div id="header"></div>
+    <!-- <div id="header"></div> -->
+    <%- include('./partials/_header') %>
 
     <main class="empty">
       <div>
@@ -57,6 +58,7 @@
       </div>
     </main>
 
-    <div id="footer"></div>
+    <!-- <div id="footer"></div> -->
+    <%- include('./partials/_footer') %>
   </body>
 </html>

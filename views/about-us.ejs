@@ -39,17 +39,18 @@
     <!--Script for Font awesome icons-->
 
     <!-- importing header and footer templates -->
-    <script>
+    <!-- <script>
       $(function () {
         $('#header').load('templates/header.html');
         $('#footer').load('templates/footer.html');
       });
-    </script>
+    </script> -->
   </head>
   <body>
-    <div id="header"></div>
+    <!-- <div id="header"></div> -->
+    <%- include('./partials/_header') %>
     <div class="about-us">
-      <h3>Contact Us</h3>
+      <h3>About Us</h3>
       <p>
         Effective Date: January 1, 2020 Last Updated: March 30, 2023 Welcome to
         Glem Jewelry. “Glem", "we", "us", or "our"). We are committed to
@@ -95,6 +96,7 @@
       </div>
     </main> -->
 
-    <div id="footer"></div>
+    <!-- <div id="footer"></div> -->
+    <%- include('./partials/_footer') %>
   </body>
 </html>

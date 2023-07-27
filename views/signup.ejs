@@ -43,15 +43,16 @@
   </head>
 
     <!-- importing header and footer templates -->
-    <script>
+    <!-- <script>
       $(function () {
         $('#header').load('templates/header.html');
         $('#footer').load('templates/footer.html');
       });
-    </script>
+    </script> -->
   </head>
   <body>
     <!-- <div id="header"></div> -->
+   
     <!--Beginning of main/body-->
 
     <div>
@@ -64,8 +65,8 @@
     <div class="signin-wrapper">
       <div class="sign-in">
         
-        <form id="signupForm" action="index.html">
-          <a href="index.html" class="signup-icon"
+        <form id="signupForm" action="/">
+          <a href="/" class="signup-icon"
             ><iconify-icon icon="bi:x" width="50"
             height="50"></iconify-icon>
             <span class="hover-text">Click to cancel</span>
@@ -125,7 +126,7 @@
           
           <input class="submit" type="submit" value="REGISTER" />
           <p class="create-acct">
-            Already a member?<a href="signin.html">Sign In.</a>
+            Already a member?<a href="/signin">Sign In.</a>
           </p>
         </form>
       </div>

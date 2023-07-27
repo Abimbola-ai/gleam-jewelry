@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 // const sessions = require('express-session');
@@ -26,6 +26,9 @@ app.use(bodyParser.json());
 // Parse incoming requests with urlencoded payloads (form data)
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// decodes front end view to enable it work with the backend.
+app.use(express.urlencoded({ extended: true }));
+
 // use cookie-parser
 app.use(cookieParser());
 
@@ -34,33 +37,30 @@ app.set('view engine', 'ejs');
 
 // response when a get request is sent to the homepage.
 app.get('/', function (req, res) {
+  // check if there is a logged in user
+  // retrieve the cookie
   const userId = req.cookies['user_id'];
   const loggedInUser = usersDb[userId];
 
-  if (!loggedInUser) {
-    res.send('homepage.ejs');
-  }
-
-  // check if there is a logged in user
-  // retrieve the cookie
-
   if (loggedInUser && usersDb[loggedInUser]) {
-    res.sendFile(path.join(__dirname, '/frontend/index.html'), {
-      user: loggedInUser,
-    });
+    res.render('homepage', loggedInUser);
+    // res.sendFile(path.join(__dirname, '/frontend/index.html'), {
+    //   user: loggedInUser,
+    // });
   }
+  res.render('homepage.ejs');
 });
 
 // authentication routes
 // REGISTER ROUTE
 app.get('/signup', (req, res) => {
   // get request for signup form to load
-  res.sendFile(path.join(__dirname, '/frontend/signup.html'));
+  res.render('signup.ejs');
 });
 
-app.get('/login', (req, res) => {
+app.get('/signin', (req, res) => {
   // get request for signup form to load
-  res.sendFile(path.join(__dirname, '/frontend/signin.html'));
+  res.render('signin.ejs');
 });
 
 // helper route to view users in the db
@@ -106,11 +106,12 @@ app.post('/signup', (req, res) => {
   res.cookie('user_id', userId);
 
   // redirect to homepage with name showing in the header
-  res.sendFile(path.join(__dirname, '/frontend/index.html'));
+  res.redirect('homepage');
+  // res.sendFile(path.join(__dirname, '/frontend/index.html'));
 });
 
 // LOGIN ROUTE
-app.post('/login', (req, res) => {
+app.post('/signin', (req, res) => {
   const { email, password } = req.body;
 
   // if email or password field is empty send back response with 400 status code.
@@ -118,7 +119,7 @@ app.post('/login', (req, res) => {
     res
       .status(400)
       .send(
-        `Invalid input - email/password field cannot be empty!!! <a href="http://localhost:8080/login">Try Again!</a>`
+        `Invalid input - email/password field cannot be empty!!! <a href="http://localhost:8080/signin">Try Again!</a>`
       );
     return;
   }
@@ -132,7 +133,7 @@ app.post('/login', (req, res) => {
     res
       .status(403)
       .send(
-        'This email/password combination does not exist!!! <a href="http://localhost:8080/login">Try Again!</a>'
+        'This email/password combination does not exist!!! <a href="http://localhost:8080/signin">Try Again!</a>'
       );
     console.log('did not log in');
     return;
@@ -150,7 +151,7 @@ app.post('/logout', (req, res) => {
   res.cookie = null;
   // req.session = null;
   // to redirect to /urls
-  res.redirect('/login');
+  res.redirect('/signin');
 });
 
 // Port running
