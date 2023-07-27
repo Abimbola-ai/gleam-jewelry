@@ -38,7 +38,7 @@ app.get('/', function (req, res) {
   const loggedInUser = usersDb[userId];
 
   if (!loggedInUser) {
-    res.send('homepage');
+    res.send('homepage.ejs');
   }
 
   // check if there is a logged in user
