@@ -1,0 +1,107 @@
+[
+    {
+        "id": "1",
+        "image": "images/products/necklace/bold.png",
+        "name": "Bold Gold Plate",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 200"
+    },
+    {
+        "id": "2",
+        "image": "images/products/necklace/rod_collar.png",
+        "name": "cubic necklace",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 125"
+    },
+    {
+        "id": "3",
+        "image": "images/products/necklace/layered.png",
+        "name": "layered thin gold with chunky pendant",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 300"
+    },
+    {
+        "id": "4",
+        "image": "images/products/necklace/3layer.png",
+        "name": "3 layer moon crest",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 200"
+    },
+    {
+        "id": "5",
+        "image": "images/products/necklace/2layer.png",
+        "name": "2 layer intersect",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 205"
+    },
+    {
+        "id": "6",
+        "image": "images/products/necklace/rod_collar.png",
+        "name": "cubic necklace",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 125"
+    },
+    {
+        "id": "7",
+        "image": "images/products/necklace/tiffany.png",
+        "name": "tiffany necklace",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 200"
+    },
+    {
+        "id": "8",
+        "image": "images/products/necklace/block_pendant.png",
+        "name": "block pendant chain",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 125"
+    },
+    {
+        "id": "9",
+        "image": "images/products/necklace/frills_necklace_green.png",
+        "name": "frills necklace green",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 200"
+    },
+    {
+        "id": "10",
+        "image": "images/products/necklace/leaf_pendant.png",
+        "name": "leaf pendant",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 250"
+    },
+    {
+        "id": "11",
+        "image": "images/products/necklace/frills_necklace_gold.png",
+        "name": "frills necklace gold",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 300"
+    },
+    {
+        "id": "12",
+        "image": "images/products/necklace/layered_thin.png",
+        "name": "layered thin gold",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 200"
+    },
+    {
+        "id": "13",
+        "image": "images/products/necklace/pearl.png",
+        "name": "pearl pendant necklace",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 250"
+    },
+    {
+        "id": "14",
+        "image": "images/products/necklace/layered_marble.png",
+        "name": "layered marble",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 200"
+    },
+    {
+        "id": "15",
+        "image": "images/products/necklace/Blue_stone.png",
+        "name": "Blue stone necklace",
+        "description": "The  simplicity of the design allows the beauty of the gold to take centre stage, making it a versatile accessory that can be worn for any occasion. Whether worn alone or not, The gold effortlessly enhances your style, symmbolizing both grace and refinement.",
+        "price": "cad 125"
+    }
+]

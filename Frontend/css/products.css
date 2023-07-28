@@ -109,6 +109,8 @@ form {
 
 .image-icon img {
     display: block;
+    width: 350px;
+    height: 350px;
 }
 
 .image-icon {
@@ -132,23 +134,42 @@ form {
 .col h3, .col p{
     text-align: left;
 }
+.product-card {
+  text-align: center;
+}
 
-.col h3 {
+.product-card .card-title {
     margin-top: 10px;
     color: #000;
     font-family: Poppins;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    text-transform: capitalize;
 }
 
-.col p {
+.product-card .card-price {
     color: #000;
     font-family: Poppins;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    text-transform: uppercase;
 }
 
+div.card {
+  border: none !important;
+}
+
+
+.favorite-heart {
+  color: red;
+}
+
+.card-img-top {
+  width: 300px;
+  height: 300px; 
+  object-fit: cover; 
+}

@@ -47,7 +47,7 @@
     <!--Beginning of main/body-->
     <main class="wrapper">
       <div class="product-category">
-        <h3 class="text-uppercase">earrings</h3>
+        <h3 class="text-uppercase">products</h3>
       </div>
       <div class="search-container select-filter row">
         <form class="nosubmit col-4">
@@ -74,25 +74,29 @@
         </div>
       </div>
 
-      <!-- Separate container for search display -->
-      <!-- <div class="container d-none" id="search-results"></div> -->
+        <% if (product) { %>
+            <!-- Create HTML elements for product details using the EJS tags -->
+            <div class="product-detail">
+                <img src="<%= product.image %>" alt="Product Image">
+                <h2><%= product.name %></h2>
+                <p><%= product.description %></p>
+                <span><%= product.price %></span>
+            </div>
+        <% } else { %>
+            <!-- Display an error message if the product is not found -->
+            <h1>Product not found</h1>
+        <% } %>
 
-      <div class="container_" >
-        <div class="row my-3" id="products-list">
-         
-        </div>
-          
 
 
-      </div>
-     
+
     </main>
 
     <!--end of main/body-->
     <!-- <div id="footer"></div> -->
     <%- include('./partials/_footer') %>
 
-    
-    <script src="js/product.js"></script>
+    <script src="js/favorite.js"></script>
+    <script src="js/product_detail.js"></script>
   </body>
 </html>

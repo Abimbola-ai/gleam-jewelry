@@ -1,6 +1,31 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+
+// Added begin
+const path = require('path');
+const fs = require('fs');
+
+// Function to fetch product data from JSON file
+async function fetchProduct(productId) {
+  try {
+      const data = await fs.promises.readFile(path.join(__dirname, 'json/products.json'));
+      const products = JSON.parse(data);
+      const product = products.find((product) => product.id === productId);
+      return product || null;
+  } catch (error) {
+      console.error("Error fetching product:", error);
+      return null;
+  }
+}
+
+
+
+
+
+// Added end
+
+
 // const sessions = require('express-session');
 // use bcrypt to encrypt password.
 const bcrypt = require('bcrypt');
@@ -32,6 +57,10 @@ app.use(cookieParser());
 
 // sets up ejs template view engine
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Import the fetchProduct function from productHelpers.js
+// const { fetchProduct } = require('./productHelpers');
 
 // GET ROUTES
 // response when a get request is sent to the homepage.
@@ -98,6 +127,21 @@ app.get('/bracelets', (req, res) => {
 
 app.get('/rings', (req, res) => {
   res.render('rings', { user: req.cookies['user_id'] });
+});
+
+
+// Route to handle the product detail page
+app.get('/product_detail', async (req, res) => {
+  const productId = req.query.id; // Get the product ID from the query parameter
+  const product = await fetchProduct(productId); // Fetch the product based on the ID
+  const userId = req.cookies['user_id'];
+  if (product) {
+      // If the product is found, render the product_detail.ejs file and pass the product data as an object
+      res.render(path.join(__dirname, '/views/product_detail.ejs'), { product, userId });
+  } else {
+      // If the product is not found or an error occurred, render an error page or redirect to the home page
+      res.status(404).send('Product not found');
+  }
 });
 
 app.get('/policy', (req, res) => {
