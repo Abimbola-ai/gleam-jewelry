@@ -9,22 +9,19 @@ const fs = require('fs');
 // Function to fetch product data from JSON file
 async function fetchProduct(productId) {
   try {
-      const data = await fs.promises.readFile(path.join(__dirname, 'json/products.json'));
-      const products = JSON.parse(data);
-      const product = products.find((product) => product.id === productId);
-      return product || null;
+    const data = await fs.promises.readFile(
+      path.join(__dirname, 'json/products.json')
+    );
+    const products = JSON.parse(data);
+    const product = products.find((product) => product.id === productId);
+    return product || null;
   } catch (error) {
-      console.error("Error fetching product:", error);
-      return null;
+    console.error('Error fetching product:', error);
+    return null;
   }
 }
 
-
-
-
-
 // Added end
-
 
 // const sessions = require('express-session');
 // use bcrypt to encrypt password.
@@ -129,18 +126,20 @@ app.get('/rings', (req, res) => {
   res.render('rings', { user: req.cookies['user_id'] });
 });
 
-
 // Route to handle the product detail page
 app.get('/product_detail', async (req, res) => {
   const productId = req.query.id; // Get the product ID from the query parameter
   const product = await fetchProduct(productId); // Fetch the product based on the ID
   const userId = req.cookies['user_id'];
   if (product) {
-      // If the product is found, render the product_detail.ejs file and pass the product data as an object
-      res.render(path.join(__dirname, '/views/product_detail.ejs'), { product, userId });
+    // If the product is found, render the product_detail.ejs file and pass the product data as an object
+    res.render(path.join(__dirname, '/views/product_detail.ejs'), {
+      product,
+      userId,
+    });
   } else {
-      // If the product is not found or an error occurred, render an error page or redirect to the home page
-      res.status(404).send('Product not found');
+    // If the product is not found or an error occurred, render an error page or redirect to the home page
+    res.status(404).send('Product not found');
   }
 });
 
