@@ -29,7 +29,10 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poller+One&display=swap"
       rel="stylesheet"
@@ -44,105 +47,146 @@
   </head>
   <body>
     <header><%- include('./partials/_header2') %></header>
-    <body>
-      <div class="container pt-3">
-        <div class="d-flex mx-auto ">
-          <div class="col-md-3 mx-5">
-            <div class="row thumbnail-images mt-2">
-              <!-- To be uncommented if we want to use same product image -->
-              <!-- <% for (let i = 0; i < 3; i++) { %> -->
-              <!-- <div class="col-md-12 mb-3">
+
+    <div class="container pt-3">
+      <div class="d-flex mx-auto">
+        <div class="col-md-3 mx-5">
+          <div class="row thumbnail-images mt-2">
+            <!-- To be uncommented if we want to use same product image -->
+            <!-- <% for (let i = 0; i < 3; i++) { %> -->
+            <!-- <div class="col-md-12 mb-3">
                 <img src="<%= product.image %>" alt="Thumbnail <%= i + 1 %>" class="img-fluid thumbnail">
               </div> -->
-              <!-- <% } %>  -->
-              <div class="col-md-12 mb-3">
-                <img src="<%=product.thumbnail1%>" alt="Thumbnail 1" class="img-fluid image-thumbnail" />
-              </div>
-              <div class="col-md-12 mb-3">
-                <img src="<%=product.thumbnail2%>" alt="Thumbnail 2" class="img-fluid image-thumbnail"/>
-              </div>
-              <div class="col-md-12 mb-3">
-                <img src="<%=product.thumbnail3%>" alt="Thumbnail 3" class="img-fluid image-thumbnail"  />
-              </div>
-              
+            <!-- <% } %>  -->
+            <div class="col-md-12 mb-3">
+              <img
+                src="<%=product.thumbnail1%>"
+                alt="Thumbnail 1"
+                class="img-fluid image-thumbnail"
+              />
+            </div>
+            <div class="col-md-12 mb-3">
+              <img
+                src="<%=product.thumbnail2%>"
+                alt="Thumbnail 2"
+                class="img-fluid image-thumbnail"
+              />
+            </div>
+            <div class="col-md-12 mb-3">
+              <img
+                src="<%=product.thumbnail3%>"
+                alt="Thumbnail 3"
+                class="img-fluid image-thumbnail"
+              />
             </div>
           </div>
+        </div>
 
-          <div class="col-md-8 left-container d-flex flex-column align-items-center">
-            <div class="mt-2">
-              <img src="<%= product.image %>" alt="Product Image" class="img-fluid">
-            </div>
-            <!-- <div class="row"> -->
-              <div class="col-md-8 mb-5">
-                <h1 class="product-title text-capitalize"><%= product.name %></h1>
-                <div class="product-rating row">
-                  <!-- Use your own logic to display the product rating stars -->
-                  
-                  <div class="col-md-12 ">
-                    <span class="star-value"><%= product.rating %></span>
-                    <% for (let i = 0; i < 5; i++) { %>
-                      <span class="star">&#9733;</span>
-                    <% } %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="ratings-count" style="color: #000;"><%= product.numRatings %> ratings</span>
-                  </div>
-                </div>
-                <p class="customer-answers"><%= product.numQuestions %> answered questions</p>
-                <hr>
-                <p class="product-price text-uppercase"><%= product.price %></p>
-                <p class="exchange">FREE Exchange</p>
-                <p class="delivery">Select Delivery Location</p>
-                <p class="stock-option" id="stockStatus">In Stock</p>
-                <div class="row mb-3">
-                  <div class="col-md-3 quantity">
-                    <label for="quantity">Quantity:</label>
-                  </div>
-                  <div class="col-md-9 mb-3">
-                    <select class=" select-option text-start justify-content-start" id="quantity" name="quantity" class="form-control mb-3">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-                </div>
-           
-                <div class="d-flex gap-3">
-                  <button class=" add-to-cart btn mb-2 text-uppercase" style="background: #D9D9D9; color: #000;">Add to Cart</button>
-                  <button class="btn  mb-2 text-uppercase" style="background: #985B42;border: 3px solid #D9D9D9; color: #FFF" ;>Buy it Now</button>
-                </div>
-                
-                  <!-- Add product details text here -->
-                  <div class="product-details-text">
-                  <p><%= product.description %></p>
-                </div>
+        <div
+          class="col-md-8 left-container d-flex flex-column align-items-center"
+          id="productDetails"
+        >
+          <div class="mt-2">
+            <img
+              src="<%= product.image %>"
+              alt="Product Image"
+              class="img-fluid"
+            />
+          </div>
+
+          <div class="col-md-8 mb-5">
+            <h1 class="product-title text-capitalize"><%= product.name %></h1>
+            <div class="product-rating row">
+              <!-- Use your own logic to display the product rating stars -->
+
+              <div class="col-md-12">
+                <span class="star-value"><%= product.rating %></span>
+                <% for (let i = 0; i < 5; i++) { %>
+                <span class="star">&#9733;</span>
+                <% } %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="ratings-count" style="color: #000"
+                  ><%= product.numRatings %> ratings</span
+                >
               </div>
+            </div>
+            <p class="customer-answers">
+              <%= product.numQuestions %> answered questions
+            </p>
+            <hr />
+            <p class="product-price text-uppercase"><%= product.price %></p>
+            <p class="exchange">FREE Exchange</p>
+            <p class="delivery">Select Delivery Location</p>
+            <p class="stock-option" id="stockStatus">In Stock</p>
+            <div class="row mb-3">
+              <div class="col-md-3 quantity">
+                <label for="quantity">Quantity:</label>
+              </div>
+              <div class="col-md-9 mb-3">
+                <select
+                  class="select-option text-start justify-content-start"
+                  id="quantity"
+                  name="quantity"
+                  class="form-control mb-3"
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="d-flex gap-3">
+              <button
+                class="add-to-cart btn mb-2 text-uppercase"
+                style="background: #d9d9d9; color: #000"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="btn mb-2 text-uppercase"
+                style="
+                  background: #985b42;
+                  border: 3px solid #d9d9d9;
+                  color: #fff;
+                "
+                ;
+              >
+                Buy it Now
+              </button>
+            </div>
+
+            <!-- Add product details text here -->
+            <div class="product-details-text">
+              <p><%= product.description %></p>
             </div>
           </div>
         </div>
       </div>
-    
-    </body>
+    </div>
+
     <!--Beginning of main/body-->
     <!-- <main class="wrapper">
-      
-      <% if (product) { %>
-      <div class="product-detail">
-        <img src="<%= product.image %>" alt="Product Image" />
-        <h2><%= product.name %></h2>
-        <p><%= product.description %></p>
-        <span><%= product.price %></span>
-      </div>
-      <% } else { %>
-      
-      <h1>Product not found</h1>
-      <% } %>
-    </main> -->
+        
+        <% if (product) { %>
+        <div class="product-detail">
+          <img src="<%= product.image %>" alt="Product Image" />
+          <h2><%= product.name %></h2>
+          <p><%= product.description %></p>
+          <span><%= product.price %></span>
+        </div>
+        <% } else { %>
+        
+        <h1>Product not found</h1>
+        <% } %>
+      </main> -->
 
     <!--end of main/body-->
     <!-- <div id="footer"></div> -->
     <%- include('./partials/_footer') %>
 
+    <!-- scripts -->
     <script src="js/favorite.js"></script>
     <script src="js/product_detail.js"></script>
   </body>

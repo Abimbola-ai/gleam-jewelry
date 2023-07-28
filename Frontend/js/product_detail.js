@@ -18,7 +18,10 @@ async function fetchProduct(productId) {
 function displayProductDetails(product) {
   if (!product) {
     // If product not found or error occurred, display an error message
-    document.body.innerHTML = '<h1>Product not found</h1>';
+    // document.body.innerHTML = "<h1>Product not found</h1>";
+    document.getElementById('productDetails').innerHTML =
+      '<h1>Product not found</h1>';
+
     return;
   }
 
@@ -46,7 +49,10 @@ function displayProductDetails(product) {
   productContainer.appendChild(productPrice);
 
   // Append the product container to the body
-  document.body.appendChild(productContainer);
+  // document.body.appendChild(productContainer);
+  const productDetailsContainer = document.getElementById('productDetails');
+  productDetailsContainer.innerHTML = '';
+  productDetailsContainer.appendChild(productContainer);
 }
 
 // Get the product ID from the URL query parameter
