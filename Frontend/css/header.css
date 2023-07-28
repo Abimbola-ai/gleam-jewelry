@@ -128,7 +128,7 @@ select .scrolled {
   flex-direction: row;
 }
 
-.logged-in-header--element-a > a {
+.logged-in-header--element-a .dropdown {
   margin-right: 32px;
   /* color: #000; */
 }

@@ -55,13 +55,22 @@
         <% if (user) { %>
         <div class="logged-in-header">
           <div class="logged-in-header--element-a">
-            <a href="" class="header-icon"
-              ><iconify-icon
-                icon="mdi:hamburger-menu"
-                width="36"
-                height="36"
-              ></iconify-icon
-            ></a>
+            <div class="dropdown">
+              <a href="" class="header-icon"
+                ><iconify-icon
+                  icon="mdi:hamburger-menu"
+                  width="36"
+                  height="36"
+                ></iconify-icon
+              ></a>
+              <div class="dropdown-content">
+                <a href="#">Favorites</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Order</a>
+                <a href="#">Track Order</a>
+                <a href="#">Make a Return</a>
+              </div>
+            </div>
             <a href="/" class="logo"
               ><h2><span>G</span>LEAM JEWELRY</h2></a
             >
