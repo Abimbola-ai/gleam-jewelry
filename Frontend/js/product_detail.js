@@ -27,6 +27,7 @@ function displayProductDetails(product) {
 
   // Create HTML elements for product details
   const productContainer = document.createElement('div');
+  // productContainer.classList.add('product-detail');
   productContainer.classList.add('product-detail');
 
   const productImage = document.createElement('img');
@@ -50,9 +51,11 @@ function displayProductDetails(product) {
 
   // Append the product container to the body
   // document.body.appendChild(productContainer);
-  const productDetailsContainer = document.getElementById('productDetails');
-  productDetailsContainer.innerHTML = '';
-  productDetailsContainer.appendChild(productContainer);
+
+  // document.body.appendChild(productContainer);
+  // const productDetailsContainer = document.getElementById('productDetails');
+  // productDetailsContainer.innerHTML = '';
+  // productDetailsContainer.appendChild(productContainer);
 }
 
 // Get the product ID from the URL query parameter
