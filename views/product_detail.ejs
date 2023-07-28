@@ -45,10 +45,10 @@
   <body>
     <header><%- include('./partials/_header2') %></header>
     <body>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="row thumbnail-images">
+      <div class="container pt-3">
+        <div class="d-flex mx-auto ">
+          <div class="col-md-3 mx-5">
+            <div class="row thumbnail-images mt-2">
               <!-- To be uncommented if we want to use same product image -->
               <!-- <% for (let i = 0; i < 3; i++) { %> -->
               <!-- <div class="col-md-12 mb-3">
@@ -67,12 +67,13 @@
               
             </div>
           </div>
-          <div class="col-md-9 left-container  justify-content-end">
+
+          <div class="col-md-8 left-container d-flex flex-column align-items-center">
+            <div class="mt-2">
+              <img src="<%= product.image %>" alt="Product Image" class="img-fluid">
+            </div>
             <!-- <div class="row"> -->
-              <div>
-                <img src="<%= product.image %>" alt="Product Image" class="img-fluid">
-              </div>
-              <div>
+              <div class="col-md-8 mb-5">
                 <h1 class="product-title text-capitalize"><%= product.name %></h1>
                 <div class="product-rating row">
                   <!-- Use your own logic to display the product rating stars -->
