@@ -51,40 +51,65 @@
   <body>
     <header>
       <nav>
-        <!-- Logo text -->
+        <!-- logged in state -->
+        <% if (user) { %>
+        <div class="logged-in-header">
+          <div class="logged-in-header--element-a">
+            <div class="dropdown">
+              <a href="" class="header-icon"
+                ><iconify-icon
+                  icon="mdi:hamburger-menu"
+                  width="36"
+                  height="36"
+                ></iconify-icon
+              ></a>
+              <div class="dropdown-content">
+                <a href="#">Favorites</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Order</a>
+                <a href="#">Track Order</a>
+                <a href="#">Make a Return</a>
+              </div>
+            </div>
+            <a href="/" class="logo"
+              ><h2><span>G</span>LEAM JEWELRY</h2></a
+            >
+          </div>
+          <div class="logged-in-header--element-b">
+            <p id="welcome_user">Welcome <%= user.first_name %>!</p>
+
+            <select name="header-icon" id="currency">
+              <option
+                value="cad"
+                selected="selected"
+                data-img_src="https://flagcdn.com/36x36/ca.png"
+              >
+                🇨🇦&emsp;CAD
+              </option>
+              <option
+                value="usd"
+                data-img_src="https://flagcdn.com/36x36/us.png"
+              >
+                🇺🇸&emsp;USD
+              </option>
+            </select>
+            <!-- <a href="/logout" id="logout">Logout</a> -->
+            <form method="POST" action="/logout">
+              <input type="submit" value="Logout" id="logout" />
+            </form>
+          </div>
+        </div>
+
+        <% } else { %>
+        <!-- logged out state -->
+
         <div>
           <a href="/" class="logo"
             ><h2><span>G</span>LEAM JEWELRY</h2></a
           >
         </div>
 
-        <!-- Icons -->
-
-        <!-- logged in state -->
         <div>
-          <% if (user) { %>
-
-          <span id="welcome_user"> Welcome <%= user.first_name %>!</span>
-
-          <select name="header-icon" id="currency">
-            <option
-              value="cad"
-              selected="selected"
-              data-img_src="https://flagcdn.com/36x36/ca.png"
-            >
-              <span>🇨🇦&emsp;</span>CAD
-            </option>
-            <option value="usd" data-img_src="https://flagcdn.com/36x36/us.png">
-              🇺🇸&emsp;USD
-            </option>
-          </select>
-          <!-- <a href="/logout" id="logout">Logout</a> -->
-          <form method="POST" action="/logout">
-            <input type="submit" value="Logout" />
-          </form>
-
-          <% } else { %>
-          <!-- logged out state -->
           <a href="" class="header-icon"
             ><iconify-icon
               icon="iconamoon:search-light"
@@ -92,6 +117,7 @@
               height="36"
             ></iconify-icon
           ></a>
+
           <div class="dropdown">
             <a href="#" class="header-icon"
               ><iconify-icon
@@ -126,8 +152,8 @@
               🇺🇸&emsp;USD
             </option>
           </select>
-          <% } %>
         </div>
+        <% } %>
       </nav>
     </header>
 
