@@ -1,18 +1,71 @@
+// Declare the productsData variable in the global scope
+let productsData = [];
 
 // Function to fetch product data from JSON file
 async function fetchProducts() {
-    try {
-        const response = await fetch("./json/products.json");
-        if (!response.ok) {
-            throw new Error("Network response was not ok.");
-        }
-        const products = await response.json();
-        return products;
-    } catch (error) {
-        console.error("Error fetching products:", error);
-        return []; // Return an empty array if an error occurs
+  try {
+    const response = await fetch("./json/products.json");
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
     }
+    const products = await response.json();
+
+    // Convert price string to a numeric value (e.g., "CAD 200" -> 200)
+    products.forEach((product) => {
+      const priceValue = parseFloat(product.price.split(" ")[1]);
+      product.priceValue = priceValue;
+    });
+    return products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return []; // Return an empty array if an error occurs
+  }
 }
+
+// Function to sort products by price in ascending order
+function sortProductsByPriceAscending(products) {
+  return products.sort((a, b) => a.priceValue - b.priceValue);
+}
+
+// Function to sort products by price in descending order
+function sortProductsByPriceDescending(products) {
+  return products.sort((a, b) => b.priceValue - a.priceValue);
+}
+
+// Function to sort products by price
+function sortProductsByPrice(products, sortOrder = "asc") {
+  return products.sort((a, b) => {
+    const priceValueA = parseFloat(a.price.split(" ")[1]);
+    const priceValueB = parseFloat(b.price.split(" ")[1]);
+    return sortOrder === "asc" ? priceValueA - priceValueB : priceValueB - priceValueA;
+  });
+}
+
+// Function to handle the sort option selection
+function handleSortOptionChange() {
+  const sortOptions = document.getElementById("sort-options");
+  const selectedOption = sortOptions.value;
+  let sortedProducts;
+
+  switch (selectedOption) {
+    case "price_asc":
+      sortedProducts = sortProductsByPriceAscending(productsData);
+      break;
+    case "price_desc":
+      sortedProducts = sortProductsByPriceDescending(productsData);
+      break;
+    default:
+      sortedProducts = productsData;
+      break;
+  }
+
+  updateProductPage(sortedProducts);
+}
+
+// Add event listener to the sort options select element
+const sortOptions = document.getElementById("sort-options");
+sortOptions.addEventListener("change", handleSortOptionChange);
+
 
 // Function to create and append product cards to the page (with click event for heart icon)
 function createProductCard(product) {
@@ -61,6 +114,7 @@ function displayProductsByPage(pageNumber, productsPerPage, productList) {
     }
 }
 
+
 // Function to filter products based on search input
 function filterProducts(searchTerm) {
     const filteredProducts = productsData.filter(product => {
@@ -97,16 +151,19 @@ function updateProductPage(products) {
 }
 
 
-// Fetch products from the JSON file and update the page
+// Fetch products from the JSON file, sort by price, and update the page
 async function loadProducts() {
     try {
-        productsData = await fetchProducts();
-        updateProductPage(productsData);
+      productsData = await fetchProducts();
+      const sortedProducts = sortProductsByPrice(productsData, "asc"); // 'asc' for ascending, 'desc' for descending
+      updateProductPage(sortedProducts);
+  
+      // Add event listener for search input changes (moved inside loadProducts)
+      document.getElementById("search-input").addEventListener("input", handleSearch);
     } catch (error) {
-        console.error("Error loading products:", error);
+      console.error("Error loading products:", error);
     }
-}
-
-// Call the function to load products from the JSON file
-loadProducts();
-
+  }
+  
+  // Call the function to load products from the JSON file
+  loadProducts();

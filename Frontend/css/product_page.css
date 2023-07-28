@@ -1,0 +1,141 @@
+body {
+    font-family: Poppins;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  
+  .main-image img {
+    /* max-width: 100%; */
+    width: 300px;
+    height: 300px;
+  }
+  
+  .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-title {
+    margin-top: 2.38rem;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.28125rem;
+  }
+
+  .product-rating .ratings-count {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.15625rem;
+  }
+  .product-rating .star-value {
+    color: #000;
+    font-size: 1.4375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.17969rem;
+  }
+  
+  .product-rating {
+    margin: 10px 0;
+    color: gold;
+  }
+  
+  .star {
+    font-size: 24px;
+  }
+  .product-title .customer-answers {
+    font-size: 0.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.125rem;
+  }
+
+  .product-title .product-price {
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.25rem;
+    margin: 5px 0;
+  }
+  
+ .exchange {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.21875rem;
+ }
+
+ .delivery {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.21875rem;
+ }
+
+ .stock-option {
+    color: #D15902;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.21875rem;
+ }
+
+ .quantity {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.21875rem;
+ }
+
+ .select-option {
+    font-size: 0.85rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.21875rem;
+ }
+  
+  button {
+    width: 18.125rem;
+    height: 3.4375rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.1875rem;
+  }
+
+
+  .product-details-text {
+    margin-top: 20px;
+  }
+  
+  .product-details-text p {
+    font-family: 'Lato';
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.15625rem;
+  }
+
+
+  
