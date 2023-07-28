@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchUserData() {
     try {
       const response = await fetch('/api/user'); // Call the API endpoint
-      console.log(response);
+      // console.log(response);
       const userData = await response.json(); // Parse the JSON response
       return userData;
     } catch (error) {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  console.log(userData);
+  // console.log(userData);
   // Use the fetchUserData() function to get the user data
   fetchUserData().then((userData) => {
     if (userData.first_name) {
@@ -56,13 +56,13 @@ window.addEventListener('scroll', function () {
       icon.style.color = 'black';
     });
     currency.style.color = 'black';
-    greeting.style.color = 'black';
+    // greeting.style.color = 'black';
   } else {
     header.classList.remove('scrolled');
     headerIcon.forEach(function (icon) {
       icon.style.color = 'white';
     });
     currency.style.color = 'white';
-    greeting.style.color = 'white';
+    // greeting.style.color = 'white';
   }
 });

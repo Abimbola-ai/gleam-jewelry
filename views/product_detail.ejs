@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="css/products.css" />
   </head>
   <body>
-    <header><%- include('./partials/_header2', { user: user }) %></header>
+    <header><%- include('./partials/_header2') %></header>
     <!--Beginning of main/body-->
     <main class="wrapper">
       <div class="product-category">
@@ -74,22 +74,18 @@
         </div>
       </div>
 
-        <% if (product) { %>
-            <!-- Create HTML elements for product details using the EJS tags -->
-            <div class="product-detail">
-                <img src="<%= product.image %>" alt="Product Image">
-                <h2><%= product.name %></h2>
-                <p><%= product.description %></p>
-                <span><%= product.price %></span>
-            </div>
-        <% } else { %>
-            <!-- Display an error message if the product is not found -->
-            <h1>Product not found</h1>
-        <% } %>
-
-
-
-
+      <% if (product) { %>
+      <!-- Create HTML elements for product details using the EJS tags -->
+      <div class="product-detail">
+        <img src="<%= product.image %>" alt="Product Image" />
+        <h2><%= product.name %></h2>
+        <p><%= product.description %></p>
+        <span><%= product.price %></span>
+      </div>
+      <% } else { %>
+      <!-- Display an error message if the product is not found -->
+      <h1>Product not found</h1>
+      <% } %>
     </main>
 
     <!--end of main/body-->
