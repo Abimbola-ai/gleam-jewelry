@@ -60,7 +60,7 @@ app.get('/', function (req, res) {
 
   // Pass the user data as an object to the homepage template
   const templateVars = {
-    user, // Pass the user data to the homepage template
+    user: loggedInUser, // Pass the user data to the homepage template
   };
 
   res.render('homepage', templateVars);
@@ -177,8 +177,8 @@ app.get('/product_detail', async (req, res) => {
 // post request to create user
 app.post('/signup', (req, res) => {
   // extract the user information from the request(form)
-  const { first_name, last_name, email, password } = req.body;
-  // console.log({ 'Body:': req.body });
+  const { first_name, last_name, email, password, confirm_password } = req.body;
+  console.log({ 'Received form data:': req.body });
 
   if (!email || !password) {
     res.status(400).send('Email and password fields cannot be empty.');
@@ -192,6 +192,13 @@ app.post('/signup', (req, res) => {
       .send(
         'User with this email already exists! <a href="http://localhost:8080/signup">Try Again!</a>'
       );
+    return;
+  }
+
+  if (password !== confirm_password) {
+    res.send(
+      'Password does not match. <a href="http://localhost:8080/signup">Please try again.</a>'
+    );
     return;
   }
 
