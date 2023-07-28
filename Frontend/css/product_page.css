@@ -137,5 +137,8 @@ body {
     letter-spacing: 0.15625rem;
   }
 
+  .thumbnail-images {
+    border-radius: 0.875rem;
+  }
 
   

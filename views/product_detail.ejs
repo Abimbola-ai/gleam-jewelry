@@ -48,44 +48,49 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <div class="row">
+            <div class="row thumbnail-images">
+              <!-- To be uncommented if we want to use same product image -->
+              <!-- <% for (let i = 0; i < 3; i++) { %> -->
+              <!-- <div class="col-md-12 mb-3">
+                <img src="<%= product.image %>" alt="Thumbnail <%= i + 1 %>" class="img-fluid thumbnail">
+              </div> -->
+              <!-- <% } %>  -->
               <div class="col-md-12 mb-3">
-                <img src="images/products/necklace/bold.png" alt="Thumbnail 1" class="img-fluid thumbnail">
+                <img src="<%=product.thumbnail1%>" alt="Thumbnail 1" class="img-fluid image-thumbnail" />
               </div>
               <div class="col-md-12 mb-3">
-                <img src="images/products/necklace/bold.png" alt="Thumbnail 2" class="img-fluid thumbnail">
+                <img src="<%=product.thumbnail2%>" alt="Thumbnail 2" class="img-fluid image-thumbnail"/>
               </div>
               <div class="col-md-12 mb-3">
-                <img src="images/products/necklace/bold.png" alt="Thumbnail 3" class="img-fluid thumbnail">
+                <img src="<%=product.thumbnail3%>" alt="Thumbnail 3" class="img-fluid image-thumbnail"  />
               </div>
+              
             </div>
           </div>
           <div class="col-md-9">
             <!-- <div class="row"> -->
               <div>
-                <img src="images/products/necklace/bold.png" alt="Product Image" class="img-fluid">
+                <img src="<%= product.image %>" alt="Product Image" class="img-fluid">
               </div>
               <div>
-                <h1 class="product-title">Product Name</h1>
+                <h1 class="product-title text-capitalize"><%= product.name %></h1>
                 <div class="product-rating row">
                   <!-- Use your own logic to display the product rating stars -->
                   
                   <div class="col-md-12 ">
-                    <span class="star-value">4.6</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span class="ratings-count" style="color: #000;">867 ratings</span>
+                    <span class="star-value"><%= product.rating %></span>
+                    <% for (let i = 0; i < 5; i++) { %>
+                      <span class="star">&#9733;</span>
+                    <% } %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="ratings-count" style="color: #000;"><%= product.numRatings %> ratings</span>
                   </div>
                 </div>
-                <p class="customer-answers">3 answered questions</p>
+                <p class="customer-answers"><%= product.numQuestions %> answered questions</p>
                 <hr>
-                <p class="product-price">$650</p>
+                <p class="product-price text-uppercase"><%= product.price %></p>
                 <p class="exchange">FREE Exchange</p>
                 <p class="delivery">Select Delivery Location</p>
-                <p class="stock-option">In Stock</p>
+                <p class="stock-option" id="stockStatus">In Stock</p>
                 <div class="row mb-3">
                   <div class="col-md-3 quantity">
                     <label for="quantity">Quantity:</label>
@@ -108,7 +113,7 @@
                 
                   <!-- Add product details text here -->
                   <div class="product-details-text">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
+                  <p><%= product.description %></p>
                 </div>
               </div>
             </div>
