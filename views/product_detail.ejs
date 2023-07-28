@@ -29,6 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Poller+One&display=swap"
       rel="stylesheet"
@@ -39,43 +40,87 @@
     />
 
     <!-- css -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/products.css" />
+    <link rel="stylesheet" href="css/product_page.css" />
   </head>
   <body>
     <header><%- include('./partials/_header2') %></header>
-    <!--Beginning of main/body-->
-    <main class="wrapper">
-      <div class="product-category">
-        <h3 class="text-uppercase">products</h3>
-      </div>
-      <div class="search-container select-filter row">
-        <form class="nosubmit col-4">
-          <input
-            id="search-input"
-            class="nosubmit"
-            type="search"
-            placeholder="Search..."
-          />
-        </form>
-        <p class="col-6 text-end">Sort By:</p>
-        <div class="sort-section col-2">
-          <select
-            id="sort-options"
-            class="form-select border-0"
-            aria-label="Filter options"
-          >
-            <option value="best_sellers" selected>Best Sellers</option>
-            <option value="price_asc">Price (Low to High)</option>
-            <option value="price_desc">Price (High to Low)</option>
-            <option value="metal">Metal</option>
-            <option value="stone">Stone</option>
-          </select>
+    <body>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <img src="images/products/necklace/bold.png" alt="Thumbnail 1" class="img-fluid thumbnail">
+              </div>
+              <div class="col-md-12 mb-3">
+                <img src="images/products/necklace/bold.png" alt="Thumbnail 2" class="img-fluid thumbnail">
+              </div>
+              <div class="col-md-12 mb-3">
+                <img src="images/products/necklace/bold.png" alt="Thumbnail 3" class="img-fluid thumbnail">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9">
+            <!-- <div class="row"> -->
+              <div>
+                <img src="images/products/necklace/bold.png" alt="Product Image" class="img-fluid">
+              </div>
+              <div>
+                <h1 class="product-title">Product Name</h1>
+                <div class="product-rating row">
+                  <!-- Use your own logic to display the product rating stars -->
+                  
+                  <div class="col-md-12 ">
+                    <span class="star-value">4.6</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="ratings-count" style="color: #000;">867 ratings</span>
+                  </div>
+                </div>
+                <p class="customer-answers">3 answered questions</p>
+                <hr>
+                <p class="product-price">$650</p>
+                <p class="exchange">FREE Exchange</p>
+                <p class="delivery">Select Delivery Location</p>
+                <p class="stock-option">In Stock</p>
+                <div class="row mb-3">
+                  <div class="col-md-3 quantity">
+                    <label for="quantity">Quantity:</label>
+                  </div>
+                  <div class="col-md-9 mb-3">
+                    <select class=" select-option text-start justify-content-start" id="quantity" name="quantity" class="form-control mb-3">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+           
+                <div class="d-flex gap-3">
+                  <button class=" add-to-cart btn mb-2 text-uppercase" style="background: #D9D9D9; color: #000;">Add to Cart</button>
+                  <button class="btn  mb-2 text-uppercase" style="background: #985B42;border: 3px solid #D9D9D9; color: #FFF" ;>Buy it Now</button>
+                </div>
+                
+                  <!-- Add product details text here -->
+                  <div class="product-details-text">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
+    
+    </body>
+    <!--Beginning of main/body-->
+    <!-- <main class="wrapper">
+      
       <% if (product) { %>
-      <!-- Create HTML elements for product details using the EJS tags -->
       <div class="product-detail">
         <img src="<%= product.image %>" alt="Product Image" />
         <h2><%= product.name %></h2>
@@ -83,10 +128,10 @@
         <span><%= product.price %></span>
       </div>
       <% } else { %>
-      <!-- Display an error message if the product is not found -->
+      
       <h1>Product not found</h1>
       <% } %>
-    </main>
+    </main> -->
 
     <!--end of main/body-->
     <!-- <div id="footer"></div> -->
