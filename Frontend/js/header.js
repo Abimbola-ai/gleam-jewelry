@@ -30,8 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // User is logged in, display user name and hide Sign In and Create an account
       welcomeUser.textContent = `Hello, ${userData.first_name}`;
       headerIcons.style.display = 'none';
-      // signinLink.style.display = 'none';
-      // signupLink.style.display = 'none';
       logoutLink.style.display = 'block'; // Show Log out link - this will be in the dropdown in the hamburger menu.
     } else {
       // User is not logged in, hide Log out link and display Sign In and Create an account

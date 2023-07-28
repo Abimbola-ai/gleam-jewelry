@@ -51,18 +51,21 @@
   <body>
     <header>
       <nav>
-        <!-- Logo text -->
-        <div>
-          <a href="/" class="logo"
-            ><h2><span>G</span>LEAM JEWELRY</h2></a
-          >
-        </div>
-
-        <!-- Icons -->
-
         <!-- logged in state -->
+        <% if (user) { %>
         <div>
-          <% if (user) { %>
+          <div class="logged-in-header">
+            <a href="" class="header-icon"
+              ><iconify-icon
+                icon="mdi:hamburger-menu"
+                width="36"
+                height="36"
+              ></iconify-icon
+            ></a>
+            <a href="/" class="logo"
+              ><h2><span>G</span>LEAM JEWELRY</h2></a
+            >
+          </div>
 
           <span id="welcome_user"> Welcome <%= user.first_name %>!</span>
 
@@ -82,9 +85,18 @@
           <form method="POST" action="/logout">
             <input type="submit" value="Logout" />
           </form>
+        </div>
 
-          <% } else { %>
-          <!-- logged out state -->
+        <% } else { %>
+        <!-- logged out state -->
+
+        <div>
+          <a href="/" class="logo"
+            ><h2><span>G</span>LEAM JEWELRY</h2></a
+          >
+        </div>
+
+        <div>
           <a href="" class="header-icon"
             ><iconify-icon
               icon="iconamoon:search-light"
@@ -92,6 +104,7 @@
               height="36"
             ></iconify-icon
           ></a>
+
           <div class="dropdown">
             <a href="#" class="header-icon"
               ><iconify-icon
@@ -126,8 +139,8 @@
               🇺🇸&emsp;USD
             </option>
           </select>
-          <% } %>
         </div>
+        <% } %>
       </nav>
     </header>
 

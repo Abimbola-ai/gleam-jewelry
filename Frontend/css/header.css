@@ -110,3 +110,12 @@ select .scrolled {
   text-decoration: underline;
   color: #985b42;
 }
+
+.logged-in-header {
+  display: flex;
+}
+
+.logged-in-header > a {
+  margin-right: 32px;
+  /* color: #000; */
+}
