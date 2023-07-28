@@ -144,3 +144,12 @@ select .scrolled {
   margin-right: 12px;
   color: white;
 }
+
+#logout {
+  margin-left: 20px;
+  background: #985b42;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+}
