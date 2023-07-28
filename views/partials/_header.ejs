@@ -53,8 +53,8 @@
       <nav>
         <!-- logged in state -->
         <% if (user) { %>
-        <div>
-          <div class="logged-in-header">
+        <div class="logged-in-header">
+          <div class="logged-in-header--element-a">
             <a href="" class="header-icon"
               ><iconify-icon
                 icon="mdi:hamburger-menu"
@@ -66,25 +66,29 @@
               ><h2><span>G</span>LEAM JEWELRY</h2></a
             >
           </div>
+          <div class="logged-in-header--element-b">
+            <p id="welcome_user">Welcome <%= user.first_name %>!</p>
 
-          <span id="welcome_user"> Welcome <%= user.first_name %>!</span>
-
-          <select name="header-icon" id="currency">
-            <option
-              value="cad"
-              selected="selected"
-              data-img_src="https://flagcdn.com/36x36/ca.png"
-            >
-              <span>🇨🇦&emsp;</span>CAD
-            </option>
-            <option value="usd" data-img_src="https://flagcdn.com/36x36/us.png">
-              🇺🇸&emsp;USD
-            </option>
-          </select>
-          <!-- <a href="/logout" id="logout">Logout</a> -->
-          <form method="POST" action="/logout">
-            <input type="submit" value="Logout" />
-          </form>
+            <select name="header-icon" id="currency">
+              <option
+                value="cad"
+                selected="selected"
+                data-img_src="https://flagcdn.com/36x36/ca.png"
+              >
+                <span>🇨🇦&emsp;</span>CAD
+              </option>
+              <option
+                value="usd"
+                data-img_src="https://flagcdn.com/36x36/us.png"
+              >
+                🇺🇸&emsp;USD
+              </option>
+            </select>
+            <!-- <a href="/logout" id="logout">Logout</a> -->
+            <!-- <form method="POST" action="/logout">
+              <input type="submit" value="Logout" />
+            </form> -->
+          </div>
         </div>
 
         <% } else { %>

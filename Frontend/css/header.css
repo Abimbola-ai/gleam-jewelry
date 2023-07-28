@@ -22,6 +22,10 @@ header:hover {
   #currency {
     color: black;
   }
+
+  #welcome_user {
+    color: black;
+  }
 }
 
 .logo {
@@ -113,9 +117,30 @@ select .scrolled {
 
 .logged-in-header {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.logged-in-header > a {
+.logged-in-header--element-a {
+  display: flex;
+  flex-direction: row;
+}
+
+.logged-in-header--element-a > a {
   margin-right: 32px;
   /* color: #000; */
+}
+
+.logged-in-header--element-b {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#welcome_user {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-right: 12px;
+  color: white;
 }

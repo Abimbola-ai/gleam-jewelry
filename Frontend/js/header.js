@@ -48,6 +48,7 @@ window.addEventListener('scroll', function () {
   let headerIcon = document.querySelectorAll('.header-icon');
   let currency = document.querySelector('#currency');
   let scrollPosition = window.scrollY;
+  let greeting = document.getElementById('#welcome_user');
 
   if (scrollPosition > 0) {
     header.classList.add('scrolled');
@@ -55,11 +56,13 @@ window.addEventListener('scroll', function () {
       icon.style.color = 'black';
     });
     currency.style.color = 'black';
+    greeting.style.color = 'black';
   } else {
     header.classList.remove('scrolled');
     headerIcon.forEach(function (icon) {
       icon.style.color = 'white';
     });
     currency.style.color = 'white';
+    greeting.style.color = 'white';
   }
 });
