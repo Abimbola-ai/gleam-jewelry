@@ -16,3 +16,5 @@ link to drive: https://drive.google.com/drive/folders/127ooYEZFPZDlUYMzS4SLHoRzY
 * [ ] Implement user logged-in state for product and product-details view. Will be required for storing favorites.
 * [ ] On product-page detail, make star rating according to rating value
 * [ ] On product-page detail. Add instock functionality based on quantity of the item in the backend
+* [ ] On product page detail, add components for select delivery method.
+* [ ] On product page detail, increase gap between thumbnails and product detail.
