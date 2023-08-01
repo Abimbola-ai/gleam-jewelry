@@ -4,17 +4,17 @@ const bcrypt = require('bcrypt');
 const usersDb = {
   userRandomID: {
     id: 'userRandomID',
-    first_name: 'jane',
+    first_name: 'Frida',
     last_name: 'smith',
     email: 'user@example.com',
-    password: 'this-is-my-password',
+    password: 'my-password',
   },
   user2RandomID: {
     id: 'user2RandomID',
     first_name: 'john',
     last_name: 'doe',
     email: 'user2@example.com',
-    password: 'this-is-my-password2',
+    password: 'my-password2',
   },
 };
 
