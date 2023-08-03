@@ -1,69 +1,71 @@
-<!-- cart.ejs -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gleam Jewelry</title>
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
-    <!-- Bootstrap CSS & JS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/index.js"></script>
-    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gleam Jewelry</title>
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+  <!-- Bootstrap CSS & JS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="js/index.js"></script>
+  <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 
-    <!--fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!--fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- css -->
-    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
-    <link rel="stylesheet" href="css/cart.css" />
-    <link rel="stylesheet" href="css/empty.css" />
-    <!-- <link rel="stylesheet" href="css/footer.css" /> -->
+  <!-- css -->
+  <!-- <link rel="stylesheet" href="css/styles.css" /> -->
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/empty.css" />
+  <!-- <link rel="stylesheet" href="css/footer.css" /> -->
 
-  </head>
-  <body>
-    <%- include('./partials/_header2', { user: user }) %>
-    
+</head>
+<body>
+  <header><%- include('./partials/_header2') %></header>
+  <!-- cart.ejs -->
+
+  
   <div class="container">
-    <% if (Object.keys(cartItems).length === 0) { %>
-      <h2 class="empty">Your cart is empty. Add some products to see them here!</h2>
-    <% } else { %>
-      <h1 style="font-family: Poppins; font-weight: 600; letter-spacing: 0.25rem">Cart</h1>
-      <div class="cart-items"> <!-- Add the cart-items container here -->
-        <% let subtotal = 0; %>
-        <% for (const productId in cartItems) { %>
-          <% const product = products.find((p) => p.id === productId); %>
-          <% if (product) { %>
-            <% const quantity = cartItems[productId]; %>
-            <% const price = parseFloat(product.price.split(' ')[1].trim()); %>
+    <h1 style="font-family: Poppins; font-weight: 600; letter-spacing: 0.25rem">Cart</h1>
 
+    <% if (Object.keys(cartItems).length === 0) { %>
+      <div id="cart-empty-message">
+        <h2 class="empty">Your cart is empty. Add some products to see them here!</h2>
+      </div>
+    <% } %>
+
+    <div class="cart-items">
+      <% let subtotal = 0; %>
+      <% for (const productId in cartItems) { %>
+        <% const product = products.find((p) => p.id === productId); %>
+        <% if (product) { %>
+          <% const quantity = cartItems[productId]; %>
+          <% const price = parseFloat(product.price.split(' ')[1].trim()); %>
           <% const itemTotal = price * quantity; %>
           <% subtotal += itemTotal; %>
-            <div class="cart-item d-flex my-5" data-product-id="<%= productId %>" data-price="<%= product.price %>">
-
-              <img class="rounded" src="<%= product.image %>" alt="<%= product.name %>" width="150" height="150"/>
-              <div class="product-info mx-5" style="font-family: Poppins;">
-                <p class="text-capitalize" style="font-size: 1.2rem; letter-spacing: 0.23438rem; font-weight: 400;"><%= product.name %></p>
-                <p class="product_price text-uppercase" style="font-size: 0.9375rem; letter-spacing: 0.05156rem; font-weight: 500;"><%= product.price %></p>
-               
+          <div class="cart-item d-flex my-5" data-product-id="<%= productId %>" data-price="<%= product.price %>">
+            <img class="rounded" src="<%= product.image %>" alt="<%= product.name %>" width="150" height="150"/>
+            <div class="product-info mx-5" style="font-family: Poppins;">
+              <p class="text-capitalize" style="font-size: 1.2rem; letter-spacing: 0.23438rem; font-weight: 400;"><%= product.name %></p>
+              <p class="product_price text-uppercase" style="font-size: 0.9375rem; letter-spacing: 0.05156rem; font-weight: 500;"><%= product.price %></p>
               <form>
                 <input type="hidden" name="productId" value="<%= productId %>">
                 <label for="quantity">Quantity:</label>
@@ -74,104 +76,94 @@
                 </select>
               </form>
               <p style="display: none;">Subtotal: CAD <span class="item-total"><%= itemTotal.toFixed(2) %></span></p>
-              <button type="button" class="my-3 btn btn-danger" onclick="removeFromCart('<%= productId %>')">Remove</button>
-
-              <!-- Add to Wishlist button -->
-              <button type="button" class="btn btn-primary" onclick="addToWishlist(event)">Add to Wishlist</button>
-                </div>
-                
-              </div>
-              
+              <button type="button" class="my-3 btn " style="
+              background: #985b42;
+              border: 3px solid #d9d9d9;
+              color: #fff;
+            "onclick="removeFromCart('<%= productId %>')">Remove</button>
+              <button type="button" class="btn btn-primary"style="background: #d9d9d9; border: 3px solid #985b42; color: #985b42; border: none" onclick="addToWishlist(event)">Add to Wishlist</button>
             </div>
-            <hr>
-          <% } else { %>
-            <div class="cart-item">
-              <p>Product not found</p>
-            </div>
-          <% } %>
+          </div>
+          <hr>
+        <% } else { %>
+          <div class="cart-item">
+            <p>Product not found</p>
+          </div>
         <% } %>
-      </div> <!-- End of cart-items container -->
+      <% } %>
+    </div>
 
-      <!-- Display cart totals -->
+    <% if (Object.keys(cartItems).length > 0) { %>
       <div class="cart-totals-container">
         <div class="cart-totals my-5" style="font-family: Poppins;">
           <div class="cart-totals-item">
-            <p >Subtotal:<span id="subtotal" class="justify-content-start">$ <%= subtotal.toFixed(2) %></span> </p>
+            <p>Subtotal:<span id="subtotal" class="justify-content-start">$ <%= subtotal.toFixed(2) %></span></p>
           </div>
           <div class="cart-totals-item">
-            <p >Tax: <span id="tax">$ <%= (subtotal * 0.13).toFixed(2) %></span></p>
+            <p>Tax: <span id="tax">$ <%= (subtotal * 0.13).toFixed(2) %></span></p>
           </div>
           <div class="cart-totals-item">
             <p style="text-transform: uppercase;">Total: <span id="total" style="font-size: 1.1rem; font-weight: 700;">$ <%= (subtotal * 1.13).toFixed(2) %></span></p>
           </div>
-          
         </div>
       </div>
+
       <div class="checkout-btn-container">
         <button class="btn mb-5 text-uppercase">CHECKOUT</button>
       </div>
-      
     <% } %>
-    
   </div>
 
-
   <%- include('./partials/_footer') %>
- 
-  <script>
 
-    // Function to remove item from the cart
-  function removeFromCart(productId) {
-    const cartItem = document.querySelector(`[data-product-id="${productId}"]`);
-    if (cartItem) {
-      cartItem.remove();
-      updateCartTotals();
+  <script>
+    function removeFromCart(productId) {
+      const cartItem = document.querySelector(`[data-product-id="${productId}"]`);
+      if (cartItem) {
+        cartItem.remove();
+        updateCartTotals();
+        updateCartEmptyMessage();
+      }
     }
-  }
-    const quantitySelects = document.querySelectorAll('.quantity-select');
-  
-    // Function to calculate and update the cart totals
+
     function updateCartTotals() {
       let newSubtotal = 0;
-      quantitySelects.forEach((select) => {
-      const productId = select.dataset.productId;
-      const productPriceElement = select.closest('.cart-item').querySelector('.product_price');
-      console.log("Product Price Element for Product ID", productId, ":", productPriceElement.textContent);
-      const priceString = productPriceElement.textContent.replace('cad ', '').trim();
-      const productPrice = parseFloat(priceString);
-      console.log("Product Price for Product ID", productId, ":", productPrice);
-      // const productPrice = parseFloat(productPriceElement.textContent.replace('CAD', '').trim());
-      const quantity = parseInt(select.value, 10);
+      const cartItems = document.querySelectorAll('.cart-item');
+      cartItems.forEach((cartItem) => {
+        const quantity = parseInt(cartItem.querySelector('.quantity-select').value, 10);
+        const price = parseFloat(cartItem.getAttribute('data-price').replace('cad ', ''));
+        const itemTotal = price * quantity;
+        newSubtotal += itemTotal;
+        cartItem.querySelector('.item-total').textContent = itemTotal.toFixed(2);
+      });
 
-      console.log("Product Price for Product ID", productId, ":", productPrice);
-      console.log("Quantity for Product ID", productId, ":", quantity);
-
-      const itemTotal = productPrice * quantity;
-      newSubtotal += itemTotal;
-      select.closest('.cart-item').querySelector('.item-total').textContent = itemTotal.toFixed(2);
-    });
-  
-      console.log("New Subtotal:", newSubtotal);
-  
-      const taxRate = 0.13;
-      const subtotal = newSubtotal;
-      const tax = subtotal * taxRate;
-      const total = subtotal + tax;
-  
-      document.getElementById('subtotal').textContent = `CAD ${subtotal.toFixed(2)}`;
-      document.getElementById('tax').textContent = `CAD ${tax.toFixed(2)}`;
-      document.getElementById('total').textContent = `CAD ${total.toFixed(2)}`;
+      const subtotal = document.getElementById('subtotal');
+      const tax = document.getElementById('tax');
+      const total = document.getElementById('total');
+      subtotal.textContent = `CAD ${newSubtotal.toFixed(2)}`;
+      tax.textContent = `CAD ${(newSubtotal * 0.13).toFixed(2)}`;
+      total.textContent = `CAD ${(newSubtotal * 1.13).toFixed(2)}`;
     }
-  
-    // Add event listener to each quantity select
+
+    function updateCartEmptyMessage() {
+      const cartItemsContainer = document.querySelector('.cart-items');
+      const cartEmptyMessage = document.getElementById('cart-empty-message');
+      if (cartItemsContainer && cartEmptyMessage) {
+        if (cartItemsContainer.children.length === 0) {
+          cartEmptyMessage.style.display = 'block';
+        } else {
+          cartEmptyMessage.style.display = 'none';
+        }
+      }
+    }
+
+    const quantitySelects = document.querySelectorAll('.quantity-select');
     quantitySelects.forEach((select) => {
       select.addEventListener('change', updateCartTotals);
     });
+
+    // Call the updateCartEmptyMessage function on page load to handle initial display
+    updateCartEmptyMessage();
   </script>
-  
-
-
-
-    
 </body>
 </html>
