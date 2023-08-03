@@ -48,26 +48,36 @@
     <% } else { %>
       <h1 style="font-family: Poppins; font-weight: 600; letter-spacing: 0.25rem">Cart</h1>
       <div class="cart-items"> <!-- Add the cart-items container here -->
+        <% let subtotal = 0; %>
         <% for (const productId in cartItems) { %>
           <% const product = products.find((p) => p.id === productId); %>
-          <% if (product && typeof product.price === 'string') { %>
+          <% if (product) { %>
+            <% const quantity = cartItems[productId]; %>
+            <% const price = parseFloat(product.price.split(' ')[1].trim()); %>
+
+          <% const itemTotal = price * quantity; %>
+          <% subtotal += itemTotal; %>
             <div class="cart-item d-flex my-5" data-product-id="<%= productId %>" data-price="<%= product.price %>">
 
               <img class="rounded" src="<%= product.image %>" alt="<%= product.name %>" width="150" height="150"/>
               <div class="product-info mx-5" style="font-family: Poppins;">
                 <p class="text-capitalize" style="font-size: 1.2rem; letter-spacing: 0.23438rem; font-weight: 400;"><%= product.name %></p>
-                <p class="text-uppercase" style="font-size: 0.9375rem; letter-spacing: 0.05156rem; font-weight: 500;"><%= product.price %></p>
+                <p class="product_price text-uppercase" style="font-size: 0.9375rem; letter-spacing: 0.05156rem; font-weight: 500;"><%= product.price %></p>
                
-                  <label for="quantity">Quantity:</label>
-                  
-                    <input
-                  type="number"
-                  name="quantity"
-                  value="<%= cartItems[productId] %>"
-                  data-product-id="<%= productId %>"
-                  class="quantity-input"
-                  onchange="updateQuantity(event)"
-              />
+              <form>
+                <input type="hidden" name="productId" value="<%= productId %>">
+                <label for="quantity">Quantity:</label>
+                <select name="quantity" data-product-id="<%= productId %>" class="quantity-select">
+                  <% for (let i = 1; i <= 10; i++) { %>
+                    <option value="<%= i %>" <%= quantity === i ? 'selected' : '' %>><%= i %></option>
+                  <% } %>
+                </select>
+              </form>
+              <p style="display: none;">Subtotal: CAD <span class="item-total"><%= itemTotal.toFixed(2) %></span></p>
+              <button type="button" class="my-3 btn btn-danger" onclick="removeFromCart('<%= productId %>')">Remove</button>
+
+              <!-- Add to Wishlist button -->
+              <button type="button" class="btn btn-primary" onclick="addToWishlist(event)">Add to Wishlist</button>
                 </div>
                 
               </div>
@@ -86,13 +96,13 @@
       <div class="cart-totals-container">
         <div class="cart-totals my-5" style="font-family: Poppins;">
           <div class="cart-totals-item">
-            <p id="subtotal">Subtotal:<span class="justify-content-start">$ <%= subtotal %></span> </p>
+            <p >Subtotal:<span id="subtotal" class="justify-content-start">$ <%= subtotal.toFixed(2) %></span> </p>
           </div>
           <div class="cart-totals-item">
-            <p id="tax">Tax: <span>$ <%= tax %></span></p>
+            <p >Tax: <span id="tax">$ <%= (subtotal * 0.13).toFixed(2) %></span></p>
           </div>
           <div class="cart-totals-item">
-            <p id="total" style="text-transform: uppercase;">Total: <span style="font-size: 1.1rem; font-weight: 700;">$ <%= total %></span></p>
+            <p style="text-transform: uppercase;">Total: <span id="total" style="font-size: 1.1rem; font-weight: 700;">$ <%= (subtotal * 1.13).toFixed(2) %></span></p>
           </div>
           
         </div>
@@ -107,9 +117,59 @@
 
 
   <%- include('./partials/_footer') %>
-  <script src="/js/cart.js"></script>
-  <script src="/js/product_detail.js"></script>
-    vvbv
+ 
+  <script>
+
+    // Function to remove item from the cart
+  function removeFromCart(productId) {
+    const cartItem = document.querySelector(`[data-product-id="${productId}"]`);
+    if (cartItem) {
+      cartItem.remove();
+      updateCartTotals();
+    }
+  }
+    const quantitySelects = document.querySelectorAll('.quantity-select');
+  
+    // Function to calculate and update the cart totals
+    function updateCartTotals() {
+      let newSubtotal = 0;
+      quantitySelects.forEach((select) => {
+      const productId = select.dataset.productId;
+      const productPriceElement = select.closest('.cart-item').querySelector('.product_price');
+      console.log("Product Price Element for Product ID", productId, ":", productPriceElement.textContent);
+      const priceString = productPriceElement.textContent.replace('cad ', '').trim();
+      const productPrice = parseFloat(priceString);
+      console.log("Product Price for Product ID", productId, ":", productPrice);
+      // const productPrice = parseFloat(productPriceElement.textContent.replace('CAD', '').trim());
+      const quantity = parseInt(select.value, 10);
+
+      console.log("Product Price for Product ID", productId, ":", productPrice);
+      console.log("Quantity for Product ID", productId, ":", quantity);
+
+      const itemTotal = productPrice * quantity;
+      newSubtotal += itemTotal;
+      select.closest('.cart-item').querySelector('.item-total').textContent = itemTotal.toFixed(2);
+    });
+  
+      console.log("New Subtotal:", newSubtotal);
+  
+      const taxRate = 0.13;
+      const subtotal = newSubtotal;
+      const tax = subtotal * taxRate;
+      const total = subtotal + tax;
+  
+      document.getElementById('subtotal').textContent = `CAD ${subtotal.toFixed(2)}`;
+      document.getElementById('tax').textContent = `CAD ${tax.toFixed(2)}`;
+      document.getElementById('total').textContent = `CAD ${total.toFixed(2)}`;
+    }
+  
+    // Add event listener to each quantity select
+    quantitySelects.forEach((select) => {
+      select.addEventListener('change', updateCartTotals);
+    });
+  </script>
+  
+
 
 
     

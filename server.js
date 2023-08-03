@@ -10,7 +10,7 @@ const fs = require('fs');
 // use bcrypt to encrypt password.
 const bcrypt = require('bcrypt');
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5050;
 const cartData = {};
 
 const {
