@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Gleam Jewelry</title>
-
-      <!-- jQuery
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script> -->
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gleam Jewelry</title>
+    
       <!-- Bootstrap CSS & JS -->
       <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -44,7 +39,7 @@
       <!--Script for Font awesome icons-->
       <!-- iconify -->
       <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
-    </head>
+  </head>
 
     <body class="d-flex align-items-center justify-content-center min-vh-100">
       <div class="container d-flex justify-content-center">
@@ -137,7 +132,9 @@
               </div>
 
               <div class="d-flex justify-content-center">
-                <button>CONTINUE TO BILLING INFORMATION</button>
+                <a href="/billing_info">
+                  <button>CONTINUE TO BILLING INFORMATION</button>
+                </a>
               </div>
             </form>
           </div>
@@ -153,53 +150,64 @@
                 <!-- <span class="hover-text">Click to cancel</span> -->
               </a>
             </div>
+
+            <div class="container px-5">
             <h4>Order Summary</h4>
             <hr />
 
             <!-- Display the subtotal -->
-            <p>Subtotal: <span id="subtotal"></span></p>
+            <div class="d-flex justify-content-between">
+              <p>Order Number:</p>
+              <p id="order-number"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <p>Subtotal:</p>
+              <p id="subtotal"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <p>Shipping Fee:</p>
+              <p>$20.00</p>
+            </div>
+            <hr />
             <!-- Display the tax -->
-            <p>Tax: <span id="tax"></span></p>
 
-            <p>
-              <span>
-                <iconify-icon
-                  icon="uis:padlock"
-                  style="color: #dfbab1"
-                ></iconify-icon>
-              </span>
-              Payment Security
-            </p>
+            <p>Tax Included:</p>
 
-            <small>
-              <strong>GLEAM JEWELRY </strong> is committed to protecting your
-              payment information and shares your credit card information with
-              our payment service providers who agreed to safe guard your
-              information</small
-            >
+            <div class="d-flex justify-content-between">
+              <p>HST:</p>
+              <p id="tax"></p>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <p>Grand Total: </p>
+              <p id="grand-total"></p>
+            </div>
+
+          
+            <div>
+              <p>
+                <span>
+                  <iconify-icon
+                    icon="uis:padlock"
+                    style="color: #dfbab1"
+                  ></iconify-icon>
+                </span>
+                Payment Security
+              </p>
+              <small>
+                <strong>GLEAM JEWELRY </strong> is committed to protecting your
+                payment information and shares your credit card information with
+                our payment service providers who agreed to safe guard your
+                information</small
+              >
+            </div>
           </div>
         </div>
       </div>
 
       <script src="js/shipping.js"></script>
-      <!-- Use JavaScript to extract the subtotal value from the URL -->
-      <script>
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const subtotal = urlParams.get('subtotal');
-        const tax = urlParams.get('tax');
-
-        // Display the subtotal and tax
-        const subtotalElement = document.getElementById('subtotal');
-        const taxElement = document.getElementById('tax');
-
-        if (subtotalElement && taxElement) {
-          subtotalElement.textContent = `$${subtotal}`;
-          taxElement.textContent = `$${tax}`;
-          console.log(subtotal);
-          console.log(tax);
-        }
-      </script>
-    </body>
-  </html>
+    
+  </body>
 </html>
