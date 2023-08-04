@@ -23,7 +23,6 @@ const {
 
 // express.static, serves the static files - i.e. css & html files
 app.use(express.static('frontend'));
-// app.use(express.static(__dirname + '/frontend'));
 
 // Parse incoming requests with JSON payloads
 app.use(bodyParser.json());
@@ -45,6 +44,7 @@ app.use(
     saveUninitialized: true,
   })
 );
+
 // Initialize an empty object to store cart data for each user using sessions
 // We will now use the session to store the cart data
 app.use((req, res, next) => {
