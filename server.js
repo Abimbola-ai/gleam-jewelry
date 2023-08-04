@@ -10,7 +10,7 @@ const fs = require('fs');
 // use bcrypt to encrypt password.
 const bcrypt = require('bcrypt');
 const app = express();
-const port = process.env.PORT || 5050;
+const port = process.env.PORT || 8080;
 const cartData = {};
 
 const {
@@ -23,6 +23,7 @@ const {
 
 // express.static, serves the static files - i.e. css & html files
 app.use(express.static('frontend'));
+// app.use(express.static(__dirname + '/frontend'));
 
 // Parse incoming requests with JSON payloads
 app.use(bodyParser.json());
@@ -36,14 +37,14 @@ app.use(express.urlencoded({ extended: true }));
 // use cookie-parser
 app.use(cookieParser());
 
-
-
 // Use express-session middleware to handle user sessions
-app.use(session({
-  secret: 'your_secret_key', // Replace with a random secret key
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    secret: 'your_secret_key', // Replace with a random secret key
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 // Initialize an empty object to store cart data for each user using sessions
 // We will now use the session to store the cart data
 app.use((req, res, next) => {
@@ -140,6 +141,10 @@ app.get('/policy', (req, res) => {
   res.render('policy', { user: req.cookies['user_id'] });
 });
 
+app.get('/shipping', (req, res) => {
+  res.render('shipping', { user: req.cookies['user_id'] });
+});
+
 // helper route to view users in the db
 app.get('/users.json', (req, res) => {
   res.json(usersDb);
@@ -214,8 +219,6 @@ app.get('/product_detail', async (req, res) => {
   }
 });
 
-
-
 // Route to handle adding items to the cart
 // Route to handle adding items to the cart
 app.post('/add_to_cart', (req, res) => {
@@ -234,7 +237,6 @@ app.post('/add_to_cart', (req, res) => {
     res.status(400).json({ error: 'Invalid product ID or quantity.' });
     return;
   }
-  
 
   // Update the cart with the new product and quantity
   userCart[productId] = (userCart[productId] || 0) + parsedQuantity;
@@ -245,7 +247,10 @@ app.post('/add_to_cart', (req, res) => {
   req.session.cartData = userCart;
 
   // Respond with a success message and the updated cart data
-  res.json({ message: 'Product added to cart successfully.', cartData: userCart });
+  res.json({
+    message: 'Product added to cart successfully.',
+    cartData: userCart,
+  });
 });
 
 // Route to display the cart page
@@ -295,8 +300,6 @@ app.get('/cart', async (req, res) => {
     res.status(500).send('Error fetching products. Please try again later.');
   }
 });
-
-
 
 app.post('/update_quantity', (req, res) => {
   const userId = req.cookies['user_id'];
@@ -352,7 +355,6 @@ app.get('/get_products', (req, res) => {
       res.status(500).send('Error fetching products. Please try again later.');
     });
 });
-
 
 // post request to create user
 app.post('/signup', (req, res) => {
