@@ -73,7 +73,7 @@
 
             <p class="my-4">Enter Shipping Address</p>
 
-            <form action="billing_info">
+            <form action="/billing_info?subtotal=<%= encodeURIComponent(subtotal) %>&tax=<%= encodeURIComponent(tax) %>">
             <!-- <form action="" method="post"> -->
               <div class="d-flex justify-content-between">
                 <input
