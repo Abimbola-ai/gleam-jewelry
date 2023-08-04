@@ -156,6 +156,11 @@
             <h4>Order Summary</h4>
             <hr />
 
+            <!-- Display the subtotal -->
+            <p>Subtotal: <span id="subtotal"></span></p>
+            <!-- Display the tax -->
+            <p>Tax: <span id="tax"></span></p>
+
             <p>
               <span>
                 <iconify-icon
@@ -177,6 +182,25 @@
       </div>
 
       <script src="js/shipping.js"></script>
+      <!-- Use JavaScript to extract the subtotal value from the URL -->
+      <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const subtotal = urlParams.get('subtotal');
+        const tax = urlParams.get('tax');
+      
+        // Display the subtotal and tax
+        const subtotalElement = document.getElementById('subtotal');
+        const taxElement = document.getElementById('tax');
+        
+        if (subtotalElement && taxElement) {
+          subtotalElement.textContent = `$${subtotal}`;
+          taxElement.textContent = `$${tax}`;
+          console.log(subtotal);
+          console.log(tax);
+
+        }
+      </script>
     </body>
   </html>
 </html>

@@ -142,7 +142,12 @@ app.get('/policy', (req, res) => {
 });
 
 app.get('/shipping', (req, res) => {
-  res.render('shipping', { user: req.cookies['user_id'] });
+  // Get the 'subtotal' query parameter from the request
+  const subtotal = req.query.subtotal;
+  const tax = req.query.tax;
+  const userId = req.cookies['user_id'];
+  console.log(tax);
+  res.render('shipping', { subtotal, tax, userId });
 });
 
 app.get('/billing_info', (req, res) => {
