@@ -145,6 +145,10 @@ app.get('/shipping', (req, res) => {
   res.render('shipping', { user: req.cookies['user_id'] });
 });
 
+app.get('/billing_info', (req, res) => {
+  res.render('billing_info', { user: req.cookies['user_id'] });
+});
+
 // helper route to view users in the db
 app.get('/users.json', (req, res) => {
   res.json(usersDb);
