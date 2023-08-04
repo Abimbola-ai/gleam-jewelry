@@ -18,25 +18,20 @@ const urlParams = new URLSearchParams(queryString);
 const subtotal = urlParams.get('subtotal');
 const tax = urlParams.get('tax');
 
-// Display the subtotal and tax
-const subtotalElement = document.getElementById('subtotal');
-const taxElement = document.getElementById('tax');
-
-if (subtotalElement && taxElement) {
-  subtotalElement.textContent = `$${subtotal}`;
-  taxElement.textContent = `$${tax}`;
-  console.log(subtotal);
-  console.log(tax);
-}
-
 // Calculate the grand total
 const shippingFee = 20.0;
 const grandTotal = parseFloat(subtotal) + shippingFee + parseFloat(tax);
 
-// Display the grand total
+// Display the subtotal and tax
+const subtotalElement = document.getElementById('subtotal');
+const taxElement = document.getElementById('tax');
 const grandTotalElement = document.getElementById('grand-total');
 
-if (grandTotalElement) {
+if (subtotalElement && taxElement && grandTotalElement) {
+  subtotalElement.textContent = `$${subtotal}`;
+  taxElement.textContent = `$${tax}`;
   grandTotalElement.textContent = `$${grandTotal.toFixed(2)}`;
+  console.log(subtotal);
+  console.log(tax);
   console.log(grandTotal);
 }
