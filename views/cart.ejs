@@ -109,8 +109,7 @@
       </div>
 
       <div class="checkout-btn-container">
-        <a href="/shipping">
-
+        <a href="/shipping?subtotal=<%= subtotal.toFixed(2) %>&tax=<%= (subtotal * 0.13).toFixed(2) %>">
           <button class="btn mb-5 text-uppercase">CHECKOUT</button>
         </a>
       </div>
