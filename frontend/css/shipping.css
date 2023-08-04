@@ -47,3 +47,12 @@ button {
 .cancel {
   color: #985b42;
 }
+
+#promo-code {
+  border: 1px solid #985b42;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  background-color: #f6f4f4;
+  margin-top: 16px;
+}
