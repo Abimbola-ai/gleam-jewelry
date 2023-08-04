@@ -1,5 +1,5 @@
 // generate order number as a random string.
-const generatOrderNumber = function (length) {
+const generateOrderNumber = function (length) {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let result = '';
   const charactersLength = characters.length;
@@ -10,7 +10,7 @@ const generatOrderNumber = function (length) {
 };
 
 // Update the order number element with the generated order number
-document.getElementById('order-number').textContent = generatOrderNumber(11);
+document.getElementById('order-number').textContent = generateOrderNumber(11);
 
 // Use JavaScript to extract the subtotal value from the URL
 const queryString = window.location.search;
