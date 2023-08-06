@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // decodes front end view to enable it work with the backend.
 app.use(express.urlencoded({ extended: true }));
 
-// use cookie-parser
+// use cookie-parser -- will need to change this to cookie-session at some point.
 app.use(cookieParser());
 
 // Use express-session middleware to handle user sessions
@@ -141,6 +141,7 @@ app.get('/policy', (req, res) => {
   res.render('policy', { user: req.cookies['user_id'] });
 });
 
+// need to create a POST route for this.
 app.get('/shipping', (req, res) => {
   // Get the 'subtotal' query parameter from the request
   const subtotal = req.query.subtotal;
@@ -150,6 +151,7 @@ app.get('/shipping', (req, res) => {
   res.render('shipping', { subtotal, tax, userId });
 });
 
+// need to create a POST route for this.
 app.get('/billing_info', (req, res) => {
   // Get the 'subtotal' query parameter from the request
   const subtotal = req.query.subtotal;
