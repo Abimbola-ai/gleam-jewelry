@@ -177,6 +177,7 @@ app.get('/api/user', function (req, res) {
   }
 });
 
+// move this fetch Products logic to helpers.
 // Function to fetch product data from JSON file
 async function fetchProduct(productId) {
   try {
@@ -192,6 +193,7 @@ async function fetchProduct(productId) {
   }
 }
 
+// move this fetch Products logic to helpers.
 // Create a new function to fetch and store all products in the products array
 async function fetchProducts() {
   try {
@@ -232,40 +234,6 @@ app.get('/product_detail', async (req, res) => {
     // If the product is not found or an error occurred, render an error page or redirect to the home page
     res.status(404).send('Product not found');
   }
-});
-
-// Route to handle adding items to the cart
-// Route to handle adding items to the cart
-app.post('/add_to_cart', (req, res) => {
-  const userId = req.cookies['user_id'];
-
-  // Retrieve the user's cart from the session or initialize an empty cart if it doesn't exist
-  const userCart = req.session.cartData || {};
-
-  // Get the product ID and quantity from the request body
-  const { productId, quantity } = req.body;
-  const parsedQuantity = parseInt(quantity, 10);
-
-  if (!productId || isNaN(parsedQuantity) || parsedQuantity <= 0) {
-    // Handle invalid input data (e.g., missing product ID or non-positive quantity)
-    console.log('Invalid product ID or quantity:', { productId, quantity });
-    res.status(400).json({ error: 'Invalid product ID or quantity.' });
-    return;
-  }
-
-  // Update the cart with the new product and quantity
-  userCart[productId] = (userCart[productId] || 0) + parsedQuantity;
-
-  // Respond with a success message or any relevant data
-  console.log('Product added to cart successfully:', { productId, quantity });
-  // Save the updated cart data to the session
-  req.session.cartData = userCart;
-
-  // Respond with a success message and the updated cart data
-  res.json({
-    message: 'Product added to cart successfully.',
-    cartData: userCart,
-  });
 });
 
 // Route to display the cart page
@@ -316,28 +284,6 @@ app.get('/cart', async (req, res) => {
   }
 });
 
-app.post('/update_quantity', (req, res) => {
-  const userId = req.cookies['user_id'];
-  const productId = req.body.productId;
-  const newQuantity = parseInt(req.body.newQuantity, 10);
-
-  // Retrieve the user's cart from the session or initialize an empty cart if it doesn't exist
-  const userCart = req.session.cartData || {};
-  console.log(newQuantity);
-  console.log(productId);
-  // Check if the productId and newQuantity are valid
-  if (!productId || isNaN(newQuantity) || newQuantity <= 0) {
-    res.status(400).json({ error: 'Invalid product ID or quantity.' });
-    return;
-  }
-
-  // Update the cart with the new quantity
-  userCart[productId] = newQuantity;
-
-  // Respond with a success message or any relevant data
-  res.json({ message: 'Quantity updated successfully.', cartItems: userCart });
-});
-
 // Route to get products in the user's cart
 app.get('/get_products', (req, res) => {
   const userId = req.cookies['user_id'];
@@ -369,6 +315,28 @@ app.get('/get_products', (req, res) => {
       console.error('Error fetching products:', error);
       res.status(500).send('Error fetching products. Please try again later.');
     });
+});
+
+app.post('/update_quantity', (req, res) => {
+  const userId = req.cookies['user_id'];
+  const productId = req.body.productId;
+  const newQuantity = parseInt(req.body.newQuantity, 10);
+
+  // Retrieve the user's cart from the session or initialize an empty cart if it doesn't exist
+  const userCart = req.session.cartData || {};
+  console.log(newQuantity);
+  console.log(productId);
+  // Check if the productId and newQuantity are valid
+  if (!productId || isNaN(newQuantity) || newQuantity <= 0) {
+    res.status(400).json({ error: 'Invalid product ID or quantity.' });
+    return;
+  }
+
+  // Update the cart with the new quantity
+  userCart[productId] = newQuantity;
+
+  // Respond with a success message or any relevant data
+  res.json({ message: 'Quantity updated successfully.', cartItems: userCart });
 });
 
 // post request to create user
@@ -467,6 +435,40 @@ app.post('/logout', (req, res) => {
   // req.session = null;
   // to redirect to /urls
   res.redirect('/signin');
+});
+
+// Route to handle adding items to the cart
+// Route to handle adding items to the cart
+app.post('/add_to_cart', (req, res) => {
+  const userId = req.cookies['user_id'];
+
+  // Retrieve the user's cart from the session or initialize an empty cart if it doesn't exist
+  const userCart = req.session.cartData || {};
+
+  // Get the product ID and quantity from the request body
+  const { productId, quantity } = req.body;
+  const parsedQuantity = parseInt(quantity, 10);
+
+  if (!productId || isNaN(parsedQuantity) || parsedQuantity <= 0) {
+    // Handle invalid input data (e.g., missing product ID or non-positive quantity)
+    console.log('Invalid product ID or quantity:', { productId, quantity });
+    res.status(400).json({ error: 'Invalid product ID or quantity.' });
+    return;
+  }
+
+  // Update the cart with the new product and quantity
+  userCart[productId] = (userCart[productId] || 0) + parsedQuantity;
+
+  // Respond with a success message or any relevant data
+  console.log('Product added to cart successfully:', { productId, quantity });
+  // Save the updated cart data to the session
+  req.session.cartData = userCart;
+
+  // Respond with a success message and the updated cart data
+  res.json({
+    message: 'Product added to cart successfully.',
+    cartData: userCart,
+  });
 });
 
 // Port running
