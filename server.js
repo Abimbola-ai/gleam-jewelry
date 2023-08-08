@@ -147,6 +147,7 @@ app.get('/shipping', (req, res) => {
   const subtotal = req.query.subtotal;
   const tax = req.query.tax;
   const userId = req.cookies['user_id'];
+  console.log(subtotal);
   console.log(tax);
   res.render('shipping', { subtotal, tax, userId });
 });
@@ -265,7 +266,7 @@ app.get('/cart', async (req, res) => {
     }
 
     // Calculate tax and total
-    const taxRate = 0.1; // Assuming tax rate is 10% (0.1)
+    const taxRate = 0.13; // Assuming tax rate is 10% (0.1)
     const tax = subtotal * taxRate;
     const total = subtotal + tax;
 

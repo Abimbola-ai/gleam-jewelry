@@ -1,22 +1,37 @@
 // generate order number as a random string.
-const generateOrderNumber = function (length) {
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let result = '';
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-};
+// const generateOrderNumber = function (length) {
+//   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+//   let result = '';
+//   const charactersLength = characters.length;
+//   for (let i = 0; i < length; i++) {
+//     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+//   }
+//   return result;
+// };
+
+
+// // Generate and store the order number in Local Storage
+// const orderNumber = generateOrderNumber(11);
+// localStorage.setItem('orderNumber', orderNumber);
 
 // Update the order number element with the generated order number
-document.getElementById('order-number').textContent = generateOrderNumber(11);
+// document.getElementById('order-number').textContent = orderNumber;
+// document.getElementById('order-number').textContent = localStorage.getItem('orderNumber');
+
+// Update the order number element with the generated order number
+// document.getElementById('order-number').textContent = generateOrderNumber(11);
 
 // Use JavaScript to extract the subtotal value from the URL
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-const subtotal = urlParams.get('subtotal');
-const tax = urlParams.get('tax');
+// const subtotal = urlParams.get('subtotal');
+// const tax = urlParams.get('tax');
+// Retrieve stored values from local storage
+const subtotal = localStorage.getItem('subtotal');
+const tax = localStorage.getItem('tax');
+console.log(subtotal);
+console.log(tax);
+
 
 // Calculate the grand total
 const shippingFee = 20.0;

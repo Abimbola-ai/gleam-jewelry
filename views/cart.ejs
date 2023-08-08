@@ -41,10 +41,11 @@
 <body>
   <header><%- include('./partials/_header2') %></header>
   <!-- cart.ejs -->
-
-  
   <div class="container">
     <h1 style="font-family: Poppins; font-weight: 600; letter-spacing: 0.25rem">Cart</h1>
+
+  
+  
 
     <% if (Object.keys(cartItems).length === 0) { %>
       <div id="cart-empty-message">
@@ -83,8 +84,9 @@
             "onclick="removeFromCart('<%= productId %>')">Remove</button>
               <button type="button" class="btn btn-primary"style="background: #d9d9d9; border: 3px solid #985b42; color: #985b42; border: none" onclick="addToWishlist(event)">Add to Wishlist</button>
             </div>
+            <!-- <hr> -->
           </div>
-          <hr>
+          
         <% } else { %>
           <div class="cart-item">
             <p>Product not found</p>
@@ -100,16 +102,16 @@
             <p>Subtotal:<span id="subtotal" class="justify-content-start">$ <%= subtotal.toFixed(2) %></span></p>
           </div>
           <div class="cart-totals-item">
-            <p>Tax: <span id="tax">$ <%= (subtotal * 0.13).toFixed(2) %></span></p>
+            <p>Tax: <span id="tax">$ <%= tax.toFixed(2) %></span></p>
           </div>
           <div class="cart-totals-item">
-            <p style="text-transform: uppercase;">Total: <span id="total" style="font-size: 1.1rem; font-weight: 700;">$ <%= (subtotal * 1.13).toFixed(2) %></span></p>
+            <p style="text-transform: uppercase;">Total: <span id="total" style="font-size: 1.1rem; font-weight: 700;">$ <%= total.toFixed(2) %></span></p>
           </div>
         </div>
       </div>
 
       <div class="checkout-btn-container">
-        <a href="/shipping?subtotal=<%= subtotal.toFixed(2) %>&tax=<%= (subtotal * 0.13).toFixed(2) %>">
+        <a href="/shipping?subtotal=<%= subtotal.toFixed(2) %>&tax=<%= tax.toFixed(2) %>">
           <button class="btn mb-5 text-uppercase">CHECKOUT</button>
         </a>
       </div>
