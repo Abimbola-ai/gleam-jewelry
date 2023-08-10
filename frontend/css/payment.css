@@ -17,6 +17,7 @@ body {
 
 #order-summary {
   background: white;
+  color: #985b42;
 }
 
 .payment-details {
@@ -38,4 +39,17 @@ button {
 
 .cancel {
   color: #985b42;
+}
+
+.place-order-terms {
+  font-size: 11px;
+}
+
+#continue-to-place-order-btn {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+small {
+  font-size: 11px;
 }
