@@ -1,0 +1,58 @@
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('/images/homepage/homebanner.png');
+}
+
+#shipping-info {
+  background-color: #985b42;
+  color: white;
+}
+
+#order-summary {
+  background: white;
+}
+
+.shipping-details {
+  border-radius: 5px;
+  margin: 10px;
+  padding: 8px;
+  border: none;
+  width: 50%;
+}
+
+small {
+  font-size: 10px;
+}
+
+button {
+  background-color: white;
+  color: #985b42;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 16px;
+}
+
+#order-summary {
+  color: #985b42;
+}
+
+.cancel {
+  color: #985b42;
+}
+
+#promo-code {
+  border: 1px solid #985b42;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  background-color: #f6f4f4;
+  margin-top: 16px;
+}

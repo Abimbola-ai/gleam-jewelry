@@ -65,7 +65,7 @@
               ></a>
               <div class="dropdown-content">
                 <a href="#">Favorites</a>
-                <a href="#">View Cart</a>
+                <a href="/cart">View Cart</a>
                 <a href="#">My Order</a>
                 <a href="#">Track Order</a>
                 <a href="#">Make a Return</a>
@@ -76,7 +76,7 @@
             >
           </div>
           <div class="logged-in-header--element-b">
-            <p id="welcome_user">Hello <%= user.first_name %></p>
+            <p class="text-capitalize" id="welcome_user">Hello <%= user.first_name %></p>
 
             <select name="header-icon" id="currency">
               <option
@@ -132,7 +132,7 @@
             </div>
           </div>
 
-          <a href="" class="header-icon"
+          <a href="/cart" class="header-icon"
             ><iconify-icon
               icon="mdi:cart-outline"
               width="36"

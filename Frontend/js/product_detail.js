@@ -1,66 +1,80 @@
+// product_detail.js
+
+// Define the products variable to store the product data
+let products = [];
+let cartData = {};
+
 // Function to fetch product data from JSON file
-async function fetchProduct(productId) {
+async function fetchProducts() {
   try {
     const response = await fetch('./json/products.json');
     if (!response.ok) {
       throw new Error('Network response was not ok.');
     }
-    const products = await response.json();
-    const product = products.find((product) => product.id === productId);
-    return product || null;
+    products = await response.json();
   } catch (error) {
-    console.error('Error fetching product:', error);
-    return null;
+    console.error('Error fetching products:', error);
   }
 }
 
-// Function to display product details on the page
-function displayProductDetails(product) {
-  if (!product) {
-    // If product not found or error occurred, display an error message
-    // document.body.innerHTML = "<h1>Product not found</h1>";
-    document.getElementById('productDetails').innerHTML =
-      '<h1>Product not found</h1>';
-
-    return;
-  }
-
-  // Create HTML elements for product details
-  const productContainer = document.createElement('div');
-  // productContainer.classList.add('product-detail');
-  productContainer.classList.add('product-detail');
-
-  const productImage = document.createElement('img');
-  productImage.src = product.image;
-  productImage.alt = 'Product Image';
-
-  const productName = document.createElement('h2');
-  productName.textContent = product.name;
-
-  const productDescription = document.createElement('p');
-  productDescription.textContent = product.description;
-
-  const productPrice = document.createElement('span');
-  productPrice.textContent = product.price;
-
-  // Append elements to the product container
-  productContainer.appendChild(productImage);
-  productContainer.appendChild(productName);
-  productContainer.appendChild(productDescription);
-  productContainer.appendChild(productPrice);
-
-  // Append the product container to the body
-  // document.body.appendChild(productContainer);
-
-  // document.body.appendChild(productContainer);
-  // const productDetailsContainer = document.getElementById('productDetails');
-  // productDetailsContainer.innerHTML = '';
-  // productDetailsContainer.appendChild(productContainer);
+// Function to fetch product by ID
+function getProductById(productId) {
+  return products.find((product) => product.id === productId) || null;
 }
 
-// Get the product ID from the URL query parameter
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get('id');
+document.addEventListener('DOMContentLoaded', () => {
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
-// Fetch the product and display its details
-fetchProduct(productId).then((product) => displayProductDetails(product));
+  addToCartButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const selectElement = document.querySelector('.quantity-select');
+      const productId = button.dataset.productId;
+      const quantity = selectElement.value;
+
+      console.log('Product ID:', productId);
+      console.log('Quantity:', quantity);
+      fetch('/add_to_cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId, quantity }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle the response (e.g., display a success message)
+          if (data.message) {
+            console.log(data.message); // You can display a message or update the UI here
+            // Log the updated cart data to the console
+            console.log('Cart Data:', data.cartData);
+
+            const quantityInput = document.querySelector('.quantity-input');
+            quantityInput.addEventListener('change', (event) => {
+               // Replace with the actual product ID
+              const newQuantity = parseInt(event.target.value, 10); // Read the new quantity from the input field
+            
+              // Dispatch the custom event with productId and newQuantity as the detail
+              const cartEvent = new CustomEvent('cartUpdated', {
+                detail: { productId, newQuantity },
+              });
+            
+              document.dispatchEvent(cartEvent);
+            });
+            
+          } else {
+            console.log('Unexpected response from the server:', data);
+          }
+        })
+        .catch((error) => {
+          // Handle any errors that occur during the request
+          console.error('Error adding to cart:', error);
+        });
+    });
+  });
+});
+
+
+// Fetch the products when the page loads
+fetchProducts().catch((error) => {
+  console.error('Error fetching products:', error);
+});

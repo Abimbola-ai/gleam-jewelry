@@ -1,3 +1,5 @@
+<!-- product_detail.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,12 +54,6 @@
       <div class="d-flex mx-auto">
         <div class="col-md-3 mx-5">
           <div class="row thumbnail-images mt-2">
-            <!-- To be uncommented if we want to use same product image -->
-            <!-- <% for (let i = 0; i < 3; i++) { %> -->
-            <!-- <div class="col-md-12 mb-3">
-                <img src="<%= product.image %>" alt="Thumbnail <%= i + 1 %>" class="img-fluid thumbnail">
-              </div> -->
-            <!-- <% } %>  -->
             <div class="col-md-12 mb-3">
               <img
                 src="<%=product.thumbnail1%>"
@@ -97,7 +93,6 @@
           <div class="col-md-8 mb-5">
             <h1 class="product-title text-capitalize"><%= product.name %></h1>
             <div class="product-rating row">
-              <!-- Use your own logic to display the product rating stars -->
 
               <div class="col-md-12">
                 <span class="star-value"><%= product.rating %></span>
@@ -123,7 +118,7 @@
               </div>
               <div class="col-md-9 mb-3">
                 <select
-                  class="select-option text-start justify-content-start"
+                  class="select-option text-start justify-content-start quantity-select quantity-input"
                   id="quantity"
                   name="quantity"
                   class="form-control mb-3"
@@ -138,12 +133,18 @@
             </div>
 
             <div class="d-flex gap-3">
+              <% if (product) { %>
+
               <button
                 class="add-to-cart btn mb-2 text-uppercase"
                 style="background: #d9d9d9; color: #000"
+                data-product-id="<%= product.id %>"
               >
                 Add to Cart
               </button>
+              <% } else { %>
+              <p>product not found</p>
+              <% } %>
               <button
                 class="btn mb-2 text-uppercase"
                 style="
@@ -151,7 +152,7 @@
                   border: 3px solid #d9d9d9;
                   color: #fff;
                 "
-                ;
+                
               >
                 Buy it Now
               </button>
@@ -165,22 +166,6 @@
         </div>
       </div>
     </div>
-
-    <!--Beginning of main/body-->
-    <!-- <main class="wrapper">
-        
-        <% if (product) { %>
-        <div class="product-detail">
-          <img src="<%= product.image %>" alt="Product Image" />
-          <h2><%= product.name %></h2>
-          <p><%= product.description %></p>
-          <span><%= product.price %></span>
-        </div>
-        <% } else { %>
-        
-        <h1>Product not found</h1>
-        <% } %>
-      </main> -->
 
     <!--end of main/body-->
     <!-- <div id="footer"></div> -->
