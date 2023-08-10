@@ -62,18 +62,22 @@
     <header><%- include('./partials/_header', { user: user }) %></header>
     <!--Beginning of main/body-->
 
-    <div>
+    <div class="container-fluid">
       <img
         class="img-fluid home-banner col-md-12"
         src="./images/homepage/homebanner.png"
         alt="image of lady with multiple jewelry"
       />
 
-      <div class="image-caption centered">
-        <h1 class="text-nowrap">HOME OF REAL GOLD</h1>
-      </div>
-      <div class="centered-shop">
-        <button class="shop-now"><a href="/empty_page">SHOP NOW</a></button>
+      <div>
+        <div class="image-caption centered">
+          <h1 class="text-nowrap">HOME OF REAL GOLD</h1>
+        </div>
+        <div class="centered-shop my-5">
+          <button class="shop-now">
+            <a href="/empty_page">SHOP NOW</a>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -131,7 +135,7 @@
 
     <!-- end of carousel -->
 
-    <div class="row text-center align-items-center">
+    <div class="container-fluid row text-center align-items-center mx-auto">
       <div class="leading-text col-md-6">
         <h3>engagement rings</h3>
         <a href="#">shop now</a>
@@ -143,7 +147,7 @@
       />
     </div>
 
-    <div class="row text-center align-items-center">
+    <div class="container-fluid row text-center align-items-center mx-auto">
       <img
         class="leading-img img-fluid col-md-6"
         src="images/homepage/Engrave image.png"
@@ -154,7 +158,8 @@
         <a href="#">shop now</a>
       </div>
     </div>
-    <div class="row text-center align-items-center">
+
+    <div class="container-fluid row text-center align-items-center mx-auto">
       <div class="leading-text col-md-6">
         <h3>customize your jewelry</h3>
         <a href="#">shop now</a>

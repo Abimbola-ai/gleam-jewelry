@@ -105,6 +105,7 @@ body {
   font-weight: 400;
   line-height: normal;
   text-align: center;
+  text-shadow: 4px 4px 6px rgb(152, 91, 66);
 }
 
 .centered {
