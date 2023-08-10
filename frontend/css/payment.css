@@ -1,0 +1,41 @@
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('/images/homepage/homebanner.png');
+}
+
+#payment-info {
+  background-color: #985b42;
+  color: white;
+}
+
+#order-summary {
+  background: white;
+}
+
+.payment-details {
+  border-radius: 5px;
+  margin: 10px;
+  padding: 8px;
+  border: none;
+  width: 100%;
+}
+
+button {
+  background-color: #985b42;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 16px;
+}
+
+.cancel {
+  color: #985b42;
+}

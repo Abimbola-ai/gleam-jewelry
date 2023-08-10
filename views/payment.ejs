@@ -35,7 +35,7 @@
       />
 
       <!-- css -->
-      <link rel="stylesheet" type="text/css" href="/css/shipping.css" />
+      <link rel="stylesheet" type="text/css" href="/css/payment.css" />
 
       <!--Script for Font awesome icons-->
       <!-- iconify -->
@@ -45,18 +45,49 @@
   <body class="d-flex align-items-center justify-content-center min-vh-100">
       <div class="container d-flex justify-content-center">
         <div class="d-flex row col-10">
-          <div id="shipping-info" class="col p-5">
+          <div id="payment-info" class="col p-5">
            
-            <h1>This is the payment page</h1>
+            <p>
+              Card Information
+              <span>
+                <iconify-icon
+                  icon="uis:padlock"
+                  style="color: #dfbab1"
+                ></iconify-icon>
+              </span>
+            </p>
+
+            <div class="d-flex justify-content-between mt-5">
+              <div class="d-flex flex-column justify-content-center align-items-center">
+              </iconify-icon><iconify-icon icon="fontisto:visa" style="color: #254682;" width="60"></iconify-icon>
+              <small>Visa</small>
+              </div>
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <iconify-icon icon="logos:paypal" style="color: #254682;" width="35"></iconify-icon>
+                <small>Paypal</small>
+              </div>
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <iconify-icon icon="logos:mastercard" style="color: #254682;" width="50"></iconify-icon>
+                <small>Mastercard</small>
+              </div>
+              <div class="d-flex flex-column justify-content-center align-items-center mt-2">
+                <iconify-icon icon="logos:amex" width="50"></iconify-icon>
+                <small>American <br> Express</small>
+              </div>
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <iconify-icon icon="ion:logo-venmo" style="color: #254682;" width="50"></iconify-icon>
+                <small>Venmo</small>
+              </div>
+            </div>
+          
             <p class="my-4">Payment Details</p>
 
             <form action="">
-            <!-- <form action="" method="post"> -->
               <div>
                 <input
                   type="text"
                   placeholder="Cardholder name"
-                  class="shipping-details"
+                  class="payment-details "
                 />
               </div>
 
@@ -64,27 +95,28 @@
                 <input
                 type="text"
                 placeholder="Card number"
-                class="shipping-details"
+                class="payment-details"
               />
               </div>
+
               <div class="d-flex justify-content-between">
                 <input
                   type="text"
                   placeholder="Expiration"
-                  class="shipping-details"
+                  class="payment-details"
                 />
                 <input
                   type="text"
                   placeholder="CVV"
-                  class="shipping-details"
+                  class="payment-details"
                 />
               </div>
              
              
              
-              <div>
+              <div class="my-4">
                 <input type="checkbox" name="use as billing" />
-                <label for="use as billing">Remember this card for later</label>
+                <label for="use as billing">Remember this card for later</label> 
               </div>
 
               
@@ -137,7 +169,12 @@
               <p id="grand-total"></p>
             </div>
 
-            <input type="text" placeholder="Apply Promo Code" id="promo-code">
+            <div>
+              <p>By clicking “place order” you agree to our terms of service & conditions</p>
+              <a href="/order_success">
+                <button id="continue-to-place-order-btn">PLACE ORDER</button>
+              </a>
+            </div>
 
           
             <div class="my-5">
