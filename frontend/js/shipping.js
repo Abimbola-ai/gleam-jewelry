@@ -9,7 +9,6 @@
 //   return result;
 // };
 
-
 // // Generate and store the order number in Local Storage
 // const orderNumber = generateOrderNumber(11);
 // localStorage.setItem('orderNumber', orderNumber);
@@ -32,7 +31,6 @@ const tax = localStorage.getItem('tax');
 console.log(subtotal);
 console.log(tax);
 
-
 // Calculate the grand total
 const shippingFee = 20.0;
 const grandTotal = parseFloat(subtotal) + shippingFee + parseFloat(tax);
@@ -50,3 +48,36 @@ if (subtotalElement && taxElement && grandTotalElement) {
   console.log(tax);
   console.log(grandTotal);
 }
+
+const useAsBillingCheckbox = document.getElementById('use-as-billing');
+const continueToPaymentBtn = document.getElementById('continue-to-payment-btn');
+const continueToBillingBtn = document.getElementById('continue-to-billing-btn');
+const shippingForm = document.getElementById('shipping-form');
+
+// Function to update button display based on checkbox state
+function updateButtonDisplay() {
+  if (useAsBillingCheckbox.checked) {
+    continueToPaymentBtn.style.display = 'block';
+    continueToBillingBtn.style.display = 'none';
+    shippingForm.action = '/payment';
+  } else {
+    continueToPaymentBtn.style.display = 'none';
+    continueToBillingBtn.style.display = 'block';
+    shippingForm.action = '/billing_info';
+  }
+}
+
+// Initial call to updateButtonDisplay to set initial button display state
+updateButtonDisplay();
+
+// Listen for changes to the checkbox
+useAsBillingCheckbox.addEventListener('change', updateButtonDisplay);
+
+// Function to submit the form
+function submitForm() {
+  shippingForm.submit();
+}
+
+// Attach click event handlers to the buttons
+continueToPaymentBtn.addEventListener('click', submitForm);
+continueToBillingBtn.addEventListener('click', submitForm);

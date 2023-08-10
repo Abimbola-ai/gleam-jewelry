@@ -41,40 +41,16 @@
       <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   </head>
 
-    <body class="d-flex align-items-center justify-content-center min-vh-100">
+  <body class="d-flex align-items-center justify-content-center min-vh-100">
       <div class="container d-flex justify-content-center">
         <div class="d-flex row col-10">
           <div id="shipping-info" class="col p-5">
-            <div class="d-flex justify-content-between">
-              <div>
-                <label>
-                  <input
-                    type="radio"
-                    name="shipping-option"
-                    value="pick-up"
-                    checked
-                    class=""
-                  />
-                  Pick up
-                </label>
-              </div>
-              <div>
-                <label>
-                  <input
-                    type="radio"
-                    name="shipping-option"
-                    value="ship-to-address"
-                    class="select-radio"
-                  />
-                  Ship it to address
-                </label>
-              </div>
-            </div>
+
 
             <p class="my-4">Enter Billing Address</p>
 
-            <form action="/billing_info?subtotal=<%= encodeURIComponent(subtotal) %>&tax=<%= encodeURIComponent(tax) %>">
-            <!-- <form action="" method="post"> -->
+            <!-- <form action="/billing_info?subtotal=<%= encodeURIComponent(subtotal) %>&tax=<%= encodeURIComponent(tax) %>"> -->
+            <form action="payment" >
               <div class="d-flex justify-content-between">
                 <input
                   type="text"
@@ -124,16 +100,10 @@
                 />
               </div>
               
-
-              <div>
-                <input type="checkbox" name="save info" />
-                <label for="save info"
-                  >Use shipping address as billing information</label
-                >
-              </div>
-              
               <div class="d-flex justify-content-center">
-                <button>CONTINUE TO PAYMENT</button>
+                <a href="/payment">
+                  <button>CONTINUE TO PAYMENT</button>
+                </a>
               </div>
             </form>
           </div>
