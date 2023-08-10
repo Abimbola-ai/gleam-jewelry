@@ -53,3 +53,7 @@ button {
 small {
   font-size: 11px;
 }
+
+input::placeholder {
+  color: #c1b4b4;
+}

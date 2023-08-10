@@ -75,3 +75,7 @@ button {
   /* position: absolute; */
   align-self: flex-end;
 }
+
+input::placeholder {
+  color: #c1b4b4;
+}
