@@ -1,4 +1,6 @@
+// Server.js
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
@@ -9,6 +11,7 @@ const fs = require('fs');
 const bcrypt = require('bcrypt');
 const app = express();
 const port = process.env.PORT || 8080;
+const cartData = {};
 
 const {
   generateRandomString,
@@ -30,8 +33,24 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // decodes front end view to enable it work with the backend.
 app.use(express.urlencoded({ extended: true }));
 
-// use cookie-parser
+// use cookie-parser -- will need to change this to cookie-session at some point.
 app.use(cookieParser());
+
+// Use express-session middleware to handle user sessions
+app.use(
+  session({
+    secret: 'your_secret_key', // Replace with a random secret key
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+// Initialize an empty object to store cart data for each user using sessions
+// We will now use the session to store the cart data
+app.use((req, res, next) => {
+  req.session.cartData = req.session.cartData || {};
+  next();
+});
 
 // sets up ejs template view engine
 app.set('view engine', 'ejs');
@@ -42,6 +61,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Define user as an empty object to avoid undefined errors
 let user = {};
+let products = [];
 
 // GET ROUTES
 // response when a get request is sent to the homepage.
@@ -121,6 +141,34 @@ app.get('/policy', (req, res) => {
   res.render('policy', { user: req.cookies['user_id'] });
 });
 
+// need to create a POST route for this.
+app.get('/shipping', (req, res) => {
+  // Get the 'subtotal' query parameter from the request
+  const subtotal = req.query.subtotal;
+  const tax = req.query.tax;
+  const userId = req.cookies['user_id'];
+  console.log(subtotal);
+  console.log(tax);
+  res.render('shipping', { subtotal, tax, userId });
+});
+
+// need to create a POST route for this.
+app.get('/billing_info', (req, res) => {
+  // Get the 'subtotal' query parameter from the request
+  const subtotal = req.query.subtotal;
+  const tax = req.query.tax;
+  const userId = req.cookies['user_id'];
+  res.render('billing_info', { subtotal, tax, userId });
+});
+
+app.get('/payment', (req, res) => {
+  // Get the 'subtotal' query parameter from the request
+  const subtotal = req.query.subtotal;
+  const tax = req.query.tax;
+  const userId = req.cookies['user_id'];
+  res.render('payment', { subtotal, tax, userId });
+});
+
 // helper route to view users in the db
 app.get('/users.json', (req, res) => {
   res.json(usersDb);
@@ -138,8 +186,7 @@ app.get('/api/user', function (req, res) {
   }
 });
 
-// Added begin
-
+// move this fetch Products logic to helpers.
 // Function to fetch product data from JSON file
 async function fetchProduct(productId) {
   try {
@@ -154,6 +201,30 @@ async function fetchProduct(productId) {
     return null;
   }
 }
+
+// move this fetch Products logic to helpers.
+// Create a new function to fetch and store all products in the products array
+async function fetchProducts() {
+  try {
+    const data = await fs.promises.readFile(
+      path.join(__dirname, 'frontend/json/products.json')
+    );
+    return JSON.parse(data);
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return [];
+  }
+}
+
+// Fetch the product data and store it in the products array
+fetchProducts()
+  .then((productData) => {
+    // Assuming products is already declared as const products = [];
+    products.push(...productData); // Add the new product data using spread syntax
+  })
+  .catch((error) => {
+    console.error('Error fetching products:', error);
+  });
 
 // Added end
 // Route to handle the product detail page
@@ -172,6 +243,109 @@ app.get('/product_detail', async (req, res) => {
     // If the product is not found or an error occurred, render an error page or redirect to the home page
     res.status(404).send('Product not found');
   }
+});
+
+// Route to display the cart page
+app.get('/cart', async (req, res) => {
+  const userId = req.cookies['user_id'];
+  const userCart = req.session.cartData || {};
+
+  try {
+    // Fetch all products from the JSON file using fetchProduct function
+    const data = await fs.promises.readFile(
+      path.join(__dirname, 'frontend/json/products.json')
+    );
+    const products = JSON.parse(data);
+
+    // Calculate cart totals
+    let subtotal = 0;
+    for (const productId in userCart) {
+      const product = products.find((p) => p.id === productId);
+      if (product && typeof product.price === 'string') {
+        const priceMatch = product.price.match(/\d+(\.\d+)?/);
+        if (priceMatch) {
+          const price = parseFloat(priceMatch[0]);
+          console.log(price);
+          const quantity = userCart[productId];
+          const itemTotal = quantity * price;
+          subtotal += itemTotal;
+        }
+      }
+    }
+
+    // Calculate tax and total
+    const taxRate = 0.13; // Assuming tax rate is 10% (0.1)
+    const tax = subtotal * taxRate;
+    const total = subtotal + tax;
+
+    // Pass the products data and cart totals to the cart template
+    res.render('cart', {
+      user: userId,
+      cartItems: userCart,
+      products: products,
+      subtotal: subtotal,
+      tax: tax,
+      total: total,
+    });
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).send('Error fetching products. Please try again later.');
+  }
+});
+
+// Route to get products in the user's cart
+app.get('/get_products', (req, res) => {
+  const userId = req.cookies['user_id'];
+  const userCart = req.session.cartData || {};
+
+  // Fetch all products from the JSON file using fetchProducts function (or use the products array directly)
+  fetchProducts()
+    .then((products) => {
+      // Create an array to store the products in the user's cart
+      const cartProducts = [];
+
+      // Loop through the products to find the ones in the user's cart
+      for (const product of products) {
+        const productId = product.id;
+        const quantity = userCart[productId];
+
+        // If the product is in the user's cart (quantity is not undefined), add it to the cartProducts array
+        if (quantity !== undefined) {
+          // Clone the product object and add the quantity property to it
+          const cartProduct = { ...product, quantity: quantity };
+          cartProducts.push(cartProduct);
+        }
+      }
+
+      // Send the cartProducts array as the response
+      res.json(cartProducts);
+    })
+    .catch((error) => {
+      console.error('Error fetching products:', error);
+      res.status(500).send('Error fetching products. Please try again later.');
+    });
+});
+
+app.post('/update_quantity', (req, res) => {
+  const userId = req.cookies['user_id'];
+  const productId = req.body.productId;
+  const newQuantity = parseInt(req.body.newQuantity, 10);
+
+  // Retrieve the user's cart from the session or initialize an empty cart if it doesn't exist
+  const userCart = req.session.cartData || {};
+  console.log(newQuantity);
+  console.log(productId);
+  // Check if the productId and newQuantity are valid
+  if (!productId || isNaN(newQuantity) || newQuantity <= 0) {
+    res.status(400).json({ error: 'Invalid product ID or quantity.' });
+    return;
+  }
+
+  // Update the cart with the new quantity
+  userCart[productId] = newQuantity;
+
+  // Respond with a success message or any relevant data
+  res.json({ message: 'Quantity updated successfully.', cartItems: userCart });
 });
 
 // post request to create user
@@ -270,6 +444,40 @@ app.post('/logout', (req, res) => {
   // req.session = null;
   // to redirect to /urls
   res.redirect('/signin');
+});
+
+// Route to handle adding items to the cart
+// Route to handle adding items to the cart
+app.post('/add_to_cart', (req, res) => {
+  const userId = req.cookies['user_id'];
+
+  // Retrieve the user's cart from the session or initialize an empty cart if it doesn't exist
+  const userCart = req.session.cartData || {};
+
+  // Get the product ID and quantity from the request body
+  const { productId, quantity } = req.body;
+  const parsedQuantity = parseInt(quantity, 10);
+
+  if (!productId || isNaN(parsedQuantity) || parsedQuantity <= 0) {
+    // Handle invalid input data (e.g., missing product ID or non-positive quantity)
+    console.log('Invalid product ID or quantity:', { productId, quantity });
+    res.status(400).json({ error: 'Invalid product ID or quantity.' });
+    return;
+  }
+
+  // Update the cart with the new product and quantity
+  userCart[productId] = (userCart[productId] || 0) + parsedQuantity;
+
+  // Respond with a success message or any relevant data
+  console.log('Product added to cart successfully:', { productId, quantity });
+  // Save the updated cart data to the session
+  req.session.cartData = userCart;
+
+  // Respond with a success message and the updated cart data
+  res.json({
+    message: 'Product added to cart successfully.',
+    cartData: userCart,
+  });
 });
 
 // Port running

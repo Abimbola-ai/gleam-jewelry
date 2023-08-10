@@ -1,3 +1,4 @@
+let user = {};
 document.addEventListener('DOMContentLoaded', () => {
   const welcomeUser = document.getElementById('welcome_user');
   const signinLink = document.getElementById('signin');
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerIcons = document.getElementsByClassName('header-icon');
 
   // Retrieve the user data sent by the server
-  const userData = JSON.stringify(user);
+  // const userData = JSON.stringify(user);
   console.log(userData);
   // const userData = req.body;
 
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch('/api/user'); // Call the API endpoint
       // console.log(response);
       const userData = await response.json(); // Parse the JSON response
+      user = userData;
       return userData;
     } catch (error) {
       console.error('Error fetching user data:', error);

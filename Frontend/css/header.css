@@ -153,3 +153,11 @@ select .scrolled {
   color: #fff;
   font-weight: 500;
 }
+
+#welcome-user {
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 2.125rem;
+  font-weight: 700;
+  letter-spacing: 0.26563rem;
+}
