@@ -79,3 +79,53 @@ button {
 input::placeholder {
   color: #c1b4b4;
 }
+
+/* status Bar */
+
+.progress {
+  height: 1px;
+  color: white;
+  border: 1px solid #fff;
+}
+
+.address {
+  position: absolute;
+  top: -30px;
+  left: -15px;
+}
+
+.billing {
+  position: absolute;
+  top: -30px;
+  left: 120px;
+}
+
+.payment {
+  position: absolute;
+  top: -30px;
+  right: 120px;
+}
+
+.order-complete {
+  position: absolute;
+  top: -30px;
+  right: -45px;
+}
+
+/* Button colors */
+button.btn-current {
+  background-color: #dfbab1;
+  border-color: #dfbab1;
+}
+
+.btn {
+  background-color: #985b42;
+  border-color: #dfbab1;
+}
+
+.btn-sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.875rem;
+  padding: 0;
+}

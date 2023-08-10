@@ -46,7 +46,49 @@
     <div class="container d-flex justify-content-center">
       <div class="d-flex row col-10">
         <div id="shipping-info" class="col p-5">
-          <p class="my-4">Enter Shipping Address</p>
+          <div class="position-relative m-4">
+            <hr class="progress" />
+
+            <div class="d-flex justify-content-between">
+              <div
+                class="d-flex flex-column justify-content-center align-items-center address"
+              >
+                <button
+                  type="button"
+                  class="btn btn-sm btn-current rounded-pill"
+                ></button>
+
+                <p>Address</p>
+              </div>
+
+              <div
+                class="d-flex flex-column justify-content-center align-items-center billing"
+              >
+                <button type="button" class="btn btn-sm rounded-pill"></button>
+
+                <p>Billing</p>
+              </div>
+
+              <div
+                class="d-flex flex-column justify-content-center align-items-center payment"
+              >
+                <button type="button" class="btn btn-sm rounded-pill"></button>
+
+                <p>Payment</p>
+              </div>
+
+              <div
+                class="d-flex flex-column justify-content-center align-items-center order-complete"
+              >
+                <button type="button" class="btn btn-sm rounded-pill"></button>
+
+                <p>Order complete</p>
+              </div>
+            </div>
+          </div>
+          <div class="my-4 pt-4">
+            <p>Enter Shipping Address</p>
+          </div>
 
           <form action="" id="shipping-form">
             <!-- <form action="" method="post"> -->
@@ -187,7 +229,6 @@
                 width="30"
                 class="add-promo-code-icon"
               ></iconify-icon>
-              <!-- class="position-absolute top-0 end-0" -->
             </div>
           </div>
 
