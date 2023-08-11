@@ -1,0 +1,38 @@
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('/images/homepage/homebanner.png');
+}
+
+#confirmation-div {
+  background: white;
+  color: #985b42;
+}
+
+button {
+  background-color: #985b42;
+  color: white;
+  padding: 12px 7rem;
+  border-radius: 8px;
+  border: none;
+  margin-top: 16px;
+}
+
+.cancel {
+  color: #985b42;
+}
+
+#continue-shopping-btn {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+small {
+  font-size: 11px;
+}

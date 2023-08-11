@@ -169,6 +169,12 @@ app.get('/payment', (req, res) => {
   res.render('payment', { subtotal, tax, userId });
 });
 
+app.get('/order_confirmation', (req, res) => {
+  // Get the 'subtotal' query parameter from the request
+
+  const userId = req.cookies['user_id'];
+  res.render('order_confirmation', { userId });
+});
 // helper route to view users in the db
 app.get('/users.json', (req, res) => {
   res.json(usersDb);
