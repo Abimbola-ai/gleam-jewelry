@@ -1,24 +1,4 @@
-// generate order number as a random string.
-// const generateOrderNumber = function (length) {
-//   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-//   let result = '';
-//   const charactersLength = characters.length;
-//   for (let i = 0; i < length; i++) {
-//     result += characters.charAt(Math.floor(Math.random() * charactersLength));
-//   }
-//   return result;
-// };
-
-// // Generate and store the order number in Local Storage
-// const orderNumber = generateOrderNumber(11);
-// localStorage.setItem('orderNumber', orderNumber);
-
-// Update the order number element with the generated order number
-// document.getElementById('order-number').textContent = orderNumber;
-// document.getElementById('order-number').textContent = localStorage.getItem('orderNumber');
-
-// Update the order number element with the generated order number
-// document.getElementById('order-number').textContent = generateOrderNumber(11);
+// shipping.js
 
 // Use JavaScript to extract the subtotal value from the URL
 const queryString = window.location.search;
@@ -56,10 +36,13 @@ const shippingForm = document.getElementById('shipping-form');
 
 // Function to update button display based on checkbox state
 function updateButtonDisplay() {
+ 
+
   if (useAsBillingCheckbox.checked) {
     continueToPaymentBtn.style.display = 'block';
     continueToBillingBtn.style.display = 'none';
     shippingForm.action = '/payment';
+    
   } else {
     continueToPaymentBtn.style.display = 'none';
     continueToBillingBtn.style.display = 'block';
@@ -77,6 +60,44 @@ useAsBillingCheckbox.addEventListener('change', updateButtonDisplay);
 function submitForm() {
   shippingForm.submit();
 }
+
+
+const firstNameInput = document.getElementById('first-name');
+const lastNameInput = document.getElementById('last-name');
+const phoneNumberInput = document.getElementById('phone-number');
+const addressInput = document.getElementById('address-1');
+const cityInput = document.getElementById('city');
+const provinceInput = document.getElementById('province');
+const stateInput = document.getElementById('state');
+const postalCodeInput = document.getElementById('postal-code');
+
+// Add an event listener to the buttons
+continueToPaymentBtn.addEventListener('click', function() {
+  // Store the first name in localStorage when continuing to payment
+  localStorage.setItem('firstName', firstNameInput.value);
+  localStorage.setItem('lastName', lastNameInput.value);
+  localStorage.setItem('phoneNumber', phoneNumberInput.value);
+  localStorage.setItem('address', addressInput.value);
+  localStorage.setItem('city', cityInput.value);
+  localStorage.setItem('province', provinceInput.value);
+  localStorage.setItem('state', stateInput.value);
+  localStorage.setItem('postalCode', postalCodeInput.value);
+
+  submitForm();
+});
+
+continueToBillingBtn.addEventListener('click', function() {
+  // Store the first name in localStorage when continuing to billing
+  localStorage.setItem('firstName', firstNameInput.value);
+  localStorage.setItem('lastName', lastNameInput.value);
+  localStorage.setItem('phoneNumber', phoneNumberInput.value);
+  localStorage.setItem('address', addressInput.value);
+  localStorage.setItem('city', cityInput.value);
+  localStorage.setItem('province', provinceInput.value);
+  localStorage.setItem('state', stateInput.value);
+  localStorage.setItem('postalCode', postalCodeInput.value);
+  submitForm();
+});
 
 // Attach click event handlers to the buttons
 continueToPaymentBtn.addEventListener('click', submitForm);

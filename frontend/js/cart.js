@@ -1,3 +1,4 @@
+// cart.js
 function removeFromCart(productId) {
   const cartItem = document.querySelector(`[data-product-id="${productId}"]`);
   if (cartItem) {
@@ -23,6 +24,7 @@ function updateCartTotals() {
     cartItem.querySelector('.item-total').textContent = itemTotal.toFixed(2);
   });
 
+  // Update values 
   const subtotal = document.getElementById('subtotal');
   const tax = document.getElementById('tax');
   const total = document.getElementById('total');
