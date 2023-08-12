@@ -61,8 +61,7 @@
             class="my-4"
           ></iconify-icon>
           <p class="my-4">Thank you for your purchase!</p>
-          <p class="my-4">Your order ID No:</p>
-          <p id="order-number"></p>
+          <p class="my-4">Your order ID No: <span id="order-number"></span></p>
           <small class="my-4"
             >An email with your order confirmation has been sent to you.</small
           >
@@ -77,6 +76,7 @@
         </div>
       </div>
     </div>
+    <script src="js/shared.js"></script>
     <script>
       document.getElementById('order-number').textContent = orderNumber;
     </script>
