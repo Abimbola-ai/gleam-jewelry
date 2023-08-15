@@ -5,7 +5,10 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const fs = require('fs');
+const mongoose = require('mongoose'); //For mongodb
 
+//dotenv configuryion
+require('dotenv').config();
 // const sessions = require('express-session');
 // use bcrypt to encrypt password.
 const bcrypt = require('bcrypt');
@@ -20,6 +23,8 @@ const {
   usersDb,
   authenticateLogin,
 } = require('./helpers');
+
+app.use(express.json());
 
 // express.static, serves the static files - i.e. css & html files
 app.use(express.static('frontend'));
@@ -62,6 +67,15 @@ app.set('views', path.join(__dirname, 'views'));
 // Define user as an empty object to avoid undefined errors
 let user = {};
 let products = [];
+
+//Connect DB
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri);
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log('MongoDB database connection established sucessfully');
+})
 
 // GET ROUTES
 // response when a get request is sent to the homepage.
