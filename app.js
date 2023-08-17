@@ -22,7 +22,13 @@ const {
 } = require('./helpers');
 
 // express.static, serves the static files - i.e. css & html files
-app.use(express.static('frontend'));
+// app.use(express.static('frontend'));
+// Static Files
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/js', express.static(__dirname + 'public/js'))
+app.use('/images', express.static(__dirname + 'public/images'))
+app.use('/json', express.static(__dirname + 'public/json'))
 
 // Parse incoming requests with JSON payloads
 app.use(bodyParser.json());
@@ -54,7 +60,7 @@ app.use((req, res, next) => {
 
 // sets up ejs template view engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', './views');
 
 // Import the fetchProduct function from productHelpers.js
 // const { fetchProduct } = require('./productHelpers');
@@ -197,7 +203,7 @@ app.get('/api/user', function (req, res) {
 async function fetchProduct(productId) {
   try {
     const data = await fs.promises.readFile(
-      path.join(__dirname, 'frontend/json/products.json')
+      path.join(__dirname, 'public/json/products.json')
     );
     const products = JSON.parse(data);
     const product = products.find((product) => product.id === productId);
@@ -213,7 +219,7 @@ async function fetchProduct(productId) {
 async function fetchProducts() {
   try {
     const data = await fs.promises.readFile(
-      path.join(__dirname, 'frontend/json/products.json')
+      path.join(__dirname, 'public/json/products.json')
     );
     return JSON.parse(data);
   } catch (error) {
@@ -259,7 +265,7 @@ app.get('/cart', async (req, res) => {
   try {
     // Fetch all products from the JSON file using fetchProduct function
     const data = await fs.promises.readFile(
-      path.join(__dirname, 'frontend/json/products.json')
+      path.join(__dirname, 'public/json/products.json')
     );
     const products = JSON.parse(data);
 
