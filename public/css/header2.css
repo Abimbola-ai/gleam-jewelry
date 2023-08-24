@@ -1,34 +1,27 @@
 /* Styles for header for product categories */
 header {
-    width: 100%;
-    height: auto;
-    background-color: #fff;
-    transition: background-color 0.3s ease;
-    position: sticky;
-    top: 0;
-    /* position: fixed; */
-    /* top: 0;
-    left: 0; */
-    padding: 0;
-    margin: 0;
-    z-index: 1;
-    
-    
-  }
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+  position: sticky;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+}
 
 .header2-logo {
-    text-decoration: none;
-    margin-top: 3rem;
-    
-
+  text-decoration: none;
+  margin-top: 2rem;
 }
 
 .header2-logo h2 {
-  font-family: 'Aclonica', sans-serif;
+  font-family: "Aclonica", sans-serif;
   letter-spacing: 3px;
   color: black;
-  font-family: 'Aclonica';
-  font-size: 60px;
+  font-family: "Aclonica";
+  font-size: 50px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -37,8 +30,8 @@ header {
 
 .header2-logo h2 span {
   color: #d15902;
-  font-family: 'Aclonica';
-  font-size: 60px;
+  font-family: "Aclonica";
+  font-size: 50px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -46,29 +39,27 @@ header {
 }
 
 .navigation {
-    border-bottom: 3px solid #000;
+  border-bottom: 2px solid #000;
 }
 
-.navigation a{
-    text-transform: uppercase;
-    color: #000;
-    font-family: Poppins;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.navigation a {
+  text-transform: uppercase;
+  color: #000;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .navigation a:active {
-    color: #d15902;
+  color: #d15902;
 }
 
-
 .navigation a:hover {
-    color: #d15902;
+  color: #d15902;
 }
 
 .extra {
-
-    border-bottom: 1px solid white;
+  border-bottom: 1px solid white;
 }
