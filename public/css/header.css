@@ -44,7 +44,7 @@ header nav {
 }
 
 h2 {
-  font-family: 'Aclonica', sans-serif;
+  font-family: "Aclonica", sans-serif;
   letter-spacing: 3px;
   color: black;
 }
@@ -155,7 +155,7 @@ select .scrolled {
 }
 
 #welcome-user {
-  color: #FFF;
+  color: #fff;
   font-family: Poppins;
   font-size: 2.125rem;
   font-weight: 700;

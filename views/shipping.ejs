@@ -100,7 +100,7 @@
                 class="shipping-details"
               />
               <input
-              id="last-name"
+                id="last-name"
                 type="text"
                 placeholder="Last name"
                 class="shipping-details"
@@ -108,43 +108,54 @@
             </div>
             <div class="d-flex justify-content-between">
               <input
-              id="address-1"
+                id="address-1"
                 type="text"
-                placeholder="Address 1"
+                placeholder="Address"
                 class="shipping-details"
               />
               <input
-              id="address-2"
+                id="address-2"
                 type="text"
-                placeholder="Address 2 (optional)"
+                placeholder="Apt Number (optional)"
                 class="shipping-details"
               />
             </div>
             <div class="d-flex justify-content-between">
-              <input id="city" type="text" placeholder="City" class="shipping-details" />
               <input
-              id="province"
+                id="city"
+                type="text"
+                placeholder="City"
+                class="shipping-details"
+              />
+              <input
+                id="province"
                 type="text"
                 placeholder="Province"
                 class="shipping-details"
               />
             </div>
+
             <div class="d-flex justify-content-between">
               <input
-              id="phone-number"
+                id="postal-code"
                 type="text"
-                placeholder="Phone Number"
+                placeholder="Postal Code"
                 class="shipping-details"
               />
               <input
-              id="email-address"
+                id="email"
                 type="text"
                 placeholder="Email Address"
                 class="shipping-details"
               />
             </div>
-            <div class="d-flex justify-content-end">
-              <small class="px-3">Enter email address to receive order</small>
+            <div class="d-flex justify-content-between">
+              <input
+                id="phone-number"
+                type="text"
+                placeholder="Phone Number"
+                class="shipping-details"
+              />
             </div>
 
             <div class="my-2 custom-checkbox">
@@ -263,7 +274,7 @@
     <script src="js/shipping.js"></script>
     <script src="js/shared.js"></script>
     <script>
-      document.getElementById('order-number').textContent = orderNumber;
+      document.getElementById("order-number").textContent = orderNumber;
     </script>
   </body>
 </html>

@@ -93,7 +93,6 @@
           <div class="col-md-8 mb-5">
             <h1 class="product-title text-capitalize"><%= product.name %></h1>
             <div class="product-rating row">
-
               <div class="col-md-12">
                 <span class="star-value"><%= product.rating %></span>
                 <% for (let i = 0; i < 5; i++) { %>
@@ -139,6 +138,8 @@
                 class="add-to-cart btn mb-2 text-uppercase"
                 style="background: #d9d9d9; color: #000"
                 data-product-id="<%= product.id %>"
+                onmouseover="this.style.background='#a0a0a0'; this.style.color='#fff';"
+                onmouseout="this.style.background='#d9d9d9'; this.style.color='#000';"
               >
                 Add to Cart
               </button>
@@ -152,7 +153,6 @@
                   border: 3px solid #d9d9d9;
                   color: #fff;
                 "
-                
               >
                 Buy it Now
               </button>
