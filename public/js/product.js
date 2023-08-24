@@ -2,25 +2,52 @@
 let productsData = [];
 
 // Function to fetch product data from JSON file
-async function fetchProducts() {
-  try {
-    const response = await fetch("./json/products.json");
-    if (!response.ok) {
-      throw new Error("Network response was not ok.");
-    }
-    const products = await response.json();
+// async function fetchProducts() {
+//   try {
+//     const response = await fetch("./json/products.json");
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok.");
+//     }
+//     const products = await response.json();
 
-    // Convert price string to a numeric value (e.g., "CAD 200" -> 200)
-    products.forEach((product) => {
-      const priceValue = parseFloat(product.price.split(" ")[1]);
-      product.priceValue = priceValue;
-    });
-    return products;
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    return []; // Return an empty array if an error occurs
-  }
-}
+//     // Convert price string to a numeric value (e.g., "CAD 200" -> 200)
+//     products.forEach((product) => {
+//       const priceValue = parseFloat(product.price.split(" ")[1]);
+//       product.priceValue = priceValue;
+//     });
+//     return products;
+//   } catch (error) {
+//     console.error("Error fetching products:", error);
+//     return []; // Return an empty array if an error occurs
+//   }
+// }
+// async function fetchProductsByCategory(category) {
+//   try {
+//     const response = await fetch(`/getProducts/${category}`);
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok.');
+//     }
+//     const products = await response.json();
+//     return products;
+//   } catch (error) {
+//     console.error('Error fetching products:', error);
+//     return [];
+//   }
+// }
+
+// // Example usage for fetching products of different categories
+// const categories = ['necklaces', 'bracelets', 'earrings']; // List of categories
+// categories.forEach((category) => {
+//   fetchProductsByCategory(category)
+//     .then((products) => {
+//       // Process the fetched products for the specific category
+//       console.log(`Products for category ${category}:`, products);
+//       // Perform further actions with the products data
+//     })
+//     .catch((error) => {
+//       console.error('Error:', error);
+//     });
+// });
 
 // Function to sort products by price in ascending order
 function sortProductsByPriceAscending(products) {

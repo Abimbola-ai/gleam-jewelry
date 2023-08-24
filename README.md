@@ -2,6 +2,9 @@
 
 This repository is for the web development of gleam jewelry.
 
+
+* To  import product data into the db, update products.json and run "node importData.js"
+
 carousel links:
 
 https://freefrontend.com/jquery-carousels/#google_vignette

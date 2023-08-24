@@ -1,11 +1,25 @@
-// Server.js
+// app.js
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const fs = require('fs');
+const mongoose = require('mongoose'); //For mongodb
 
+//dotenv configuryion
+require('dotenv').config();
+
+//Connect DB
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri);
+
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log('MongoDB database connection established sucessfully');
+})
+
+// insertProducts();
 // const sessions = require('express-session');
 // use bcrypt to encrypt password.
 const bcrypt = require('bcrypt');
@@ -21,14 +35,14 @@ const {
   authenticateLogin,
 } = require('./helpers');
 
-// express.static, serves the static files - i.e. css & html files
-// app.use(express.static('frontend'));
+const Product = require("./models/Product.js");
 // Static Files
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/js', express.static(__dirname + 'public/js'))
 app.use('/images', express.static(__dirname + 'public/images'))
 app.use('/json', express.static(__dirname + 'public/json'))
+
 
 // Parse incoming requests with JSON payloads
 app.use(bodyParser.json());
@@ -62,12 +76,12 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-// Import the fetchProduct function from productHelpers.js
-// const { fetchProduct } = require('./productHelpers');
 
 // Define user as an empty object to avoid undefined errors
 let user = {};
 let products = [];
+
+
 
 // GET ROUTES
 // response when a get request is sent to the homepage.
@@ -127,21 +141,47 @@ app.get('/terms_and_conds', (req, res) => {
   res.render('terms_and_conds', { user: req.cookies['user_id'] });
 });
 
-app.get('/necklaces', (req, res) => {
-  res.render('necklaces', { user: req.cookies['user_id'] });
+
+app.get('/necklaces', async (req, res) => {
+  try {
+    const necklacesProducts = await Product.find({ category: 'Necklaces'});
+    res.render('necklaces', {user: req.cookies['user_id'], products: necklacesProducts});
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).send('Error fetching products. Please try again');
+  }
 });
 
-app.get('/earrings', (req, res) => {
-  res.render('earrings', { user: req.cookies['user_id'] });
+app.get('/earrings', async (req, res) => {
+  try {
+    const earringsProducts = await Product.find({ category: 'Earrings'});
+    res.render('earrings', {user: req.cookies['user_id'], products: earringsProducts});
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).send('Error fetching products. Please try again');
+  }
 });
 
-app.get('/bracelets', (req, res) => {
-  res.render('bracelets', { user: req.cookies['user_id'] });
+app.get('/bracelets', async (req, res) => {
+  try {
+    const braceletsProducts = await Product.find({ category: 'Bracelets'});
+    res.render('bracelets', {user: req.cookies['user_id'], products: braceletsProducts});
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).send('Error fetching products. Please try again');
+  }
 });
 
-app.get('/rings', (req, res) => {
-  res.render('rings', { user: req.cookies['user_id'] });
+app.get('/rings', async (req, res) => {
+  try {
+    const ringsProducts = await Product.find({ category: 'Rings'});
+    res.render('rings', {user: req.cookies['user_id'], products: ringsProducts});
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    res.status(500).send('Error fetching products. Please try again');
+  }
 });
+
 
 app.get('/policy', (req, res) => {
   res.render('policy', { user: req.cookies['user_id'] });
