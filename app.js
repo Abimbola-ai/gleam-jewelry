@@ -373,12 +373,13 @@ app.post('/signup', (req, res) => {
   // validation - check if user already exists.
   const existingUser = findExistingUser(email, usersDb);
   if (existingUser) {
-    res
-      .status(409)
-      .send(
-        'User with this email already exists! <a href="http://localhost:8080/signup">Try Again!</a>'
-      );
-    return;
+    // res
+    //   .status(409)
+    //   .send(
+    //     'User with this email already exists! <a href="http://localhost:8080/signup">Try Again!</a>'
+    //   );
+   return res.render('email_404', { user: null });
+    // return;
   }
 
   if (password !== confirm_password) {
