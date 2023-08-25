@@ -22,6 +22,24 @@ function getProductById(productId) {
   return products.find((product) => product.id === productId) || null;
 }
 
+// function updateCartItemsCount() {
+//   const cartItemCountElement = document.querySelector('.item-count');
+//   const cartItems = document.querySelectorAll('.cart-item');
+//   const itemCount = cartItems.length;
+
+//   if (cartItemCountElement) {
+//     cartItemCountElement.textContent = itemCount;
+//     localStorage.setItem('cartItemCount', itemCount);
+
+//     if (itemCount > 0) {
+//       cartItemCountElement.style.display = 'inline';
+//     } else {
+//       cartItemCountElement.style.display = 'none';
+//     }
+//   }
+// }
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
@@ -47,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(data.message); // You can display a message or update the UI here
             // Log the updated cart data to the console
             console.log('Cart Data:', data.cartData);
+            
 
             const quantityInput = document.querySelector('.quantity-input');
             quantityInput.addEventListener('change', (event) => {

@@ -59,7 +59,7 @@
         <% const product = products.find((p) => p.id === productId); %>
         <% if (product) { %>
           <% const quantity = cartItems[productId]; %>
-          <% const price = parseFloat(product.price.split(' ')[1].trim()); %>
+          <% const price = parseFloat(product.price.split('')[1].trim()); %>
           <% const itemTotal = price * quantity; %>
           <% subtotal += itemTotal; %>
           <div class="cart-item d-flex my-5" data-product-id="<%= productId %>" data-price="<%= product.price %>">
@@ -76,7 +76,7 @@
                   <% } %>
                 </select>
               </form>
-              <p style="display: none;">Subtotal: CAD <span class="item-total"><%= itemTotal.toFixed(2) %></span></p>
+              <p style="display: none;">Subtotal: $ <span class="item-total"><%= itemTotal.toFixed(2) %></span></p>
               <button type="button" class="my-3 btn " style="
               background: #985b42;
               border: 3px solid #d9d9d9;
@@ -96,7 +96,7 @@
     </div>
 
     <% if (Object.keys(cartItems).length > 0) { %>
-      <div class="cart-totals-container">
+      <div class="cart-totals-container ">
         <div class="cart-totals my-5" style="font-family: Poppins;">
           <div class="cart-totals-item">
             <p>Subtotal:<span id="subtotal" class="justify-content-start">$ <%= subtotal.toFixed(2) %></span></p>

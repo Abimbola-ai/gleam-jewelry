@@ -34,19 +34,20 @@
       href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap"
       rel="stylesheet"
     />
+    
 
     <!-- css -->
     <link rel="stylesheet" href="./css/header2.css" />
     <link rel="stylesheet" href="./css/styles.css" />
 
     <!--Script for Font awesome icons-->
-    <!-- <script
+    <script
       src="https://kit.fontawesome.com/149ae3bfe5.js"
       crossorigin="anonymous"
-    ></script> -->
+    ></script>
 
     <!-- iconify -->
-    <!-- <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script> -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   </head>
   <body>
     <header>
@@ -63,9 +64,47 @@
           <a class="col text-decoration-none" href="/earrings">earrings</a>
           <a class="col text-decoration-none" href="/empty_page">customize</a>
           <a class="col text-decoration-none" href="empty_page">engagement rings</a>
+          <!-- <div> -->
+            
+  
+            <div class="dropdown col">
+              <a href="#" class="header-icon"
+                ><iconify-icon
+                  icon="clarity:avatar-line"
+                  width="36"
+                  height="36"
+                ></iconify-icon
+              ></a>
+              <div class="dropdown-content">
+                <a href="/signin" id="signin">Sign In</a>
+                <a href="/signup" id="signup">Create an account</a>
+              </div>
+            </div>
+            <a href="" class="header-icon col"
+              ><iconify-icon
+                icon="ph:heart-light"
+                width="36"
+                height="36"
+              ></iconify-icon
+            ></a>
+  
+            <div class="cart-icon-container col">
+              <a href="/cart" class="header-icon"
+              ><iconify-icon
+                icon="mdi:cart-outline"
+                width="36"
+                height="36"
+              ></iconify-icon
+            ></a>
+              <span class="item-count">0</span>
+            </div>
+            
+
+          </div>
         </div>
         <div class="extra my-5"></div>
       </div>
     </header>
+    <script src="./js/cart-qty.js"></script>
   </body>
 </html>

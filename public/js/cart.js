@@ -5,8 +5,27 @@ function removeFromCart(productId) {
     cartItem.remove();
     updateCartTotals();
     updateCartEmptyMessage();
+    updateCartItemsCount();
   }
 }
+
+function updateCartItemsCount() {
+  const cartItemCountElement = document.querySelector('.item-count');
+  const cartItems = document.querySelectorAll('.cart-item');
+  const itemCount = cartItems.length;
+
+  if (cartItemCountElement) {
+    cartItemCountElement.textContent = itemCount;
+    localStorage.setItem('cartItemCount', itemCount);
+
+    if (itemCount > 0) {
+      cartItemCountElement.style.display = 'inline';
+    } else {
+      cartItemCountElement.style.display = 'none';
+    }
+  }
+}
+
 
 function updateCartTotals() {
   let newSubtotal = 0;
@@ -17,8 +36,10 @@ function updateCartTotals() {
       10
     );
     const price = parseFloat(
-      cartItem.getAttribute('data-price').replace('cad ', '')
+      cartItem.getAttribute('data-price').replace('$', '')
     );
+    console.log(price);
+    
     const itemTotal = price * quantity;
     newSubtotal += itemTotal;
     cartItem.querySelector('.item-total').textContent = itemTotal.toFixed(2);
@@ -28,9 +49,9 @@ function updateCartTotals() {
   const subtotal = document.getElementById('subtotal');
   const tax = document.getElementById('tax');
   const total = document.getElementById('total');
-  subtotal.textContent = `CAD ${newSubtotal.toFixed(2)}`;
-  tax.textContent = `CAD ${(newSubtotal * 0.13).toFixed(2)}`;
-  total.textContent = `CAD ${(newSubtotal * 1.13).toFixed(2)}`;
+  subtotal.textContent = `$ ${newSubtotal.toFixed(2)}`;
+  tax.textContent = `$ ${(newSubtotal * 0.13).toFixed(2)}`;
+  total.textContent = `$ ${(newSubtotal * 1.13).toFixed(2)}`;
   // After updating cart totals
   localStorage.setItem('subtotal', newSubtotal.toFixed(2));
   localStorage.setItem('tax', (newSubtotal * 0.13).toFixed(2));
@@ -57,8 +78,11 @@ function updateCartEmptyMessage() {
 
 const quantitySelects = document.querySelectorAll('.quantity-select');
 quantitySelects.forEach((select) => {
-  select.addEventListener('change', updateCartTotals);
+  select.addEventListener('change', () => {
+    updateCartTotals();
+    updateCartItemsCount(); // Add this line
+  });
 });
-
 // Call the updateCartEmptyMessage function on page load to handle initial display
 updateCartEmptyMessage();
+updateCartItemsCount();

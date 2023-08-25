@@ -10,9 +10,9 @@ async function fetchProducts() {
     }
     const products = await response.json();
 
-    // Convert price string to a numeric value (e.g., "CAD 200" -> 200)
+    // Convert price string to a numeric value (e.g., "$200" -> 200)
     products.forEach((product) => {
-      const priceValue = parseFloat(product.price.split(" ")[1]);
+      const priceValue = parseFloat(product.price.split("")[1]);
       product.priceValue = priceValue;
     });
     return products;
@@ -35,8 +35,8 @@ function sortProductsByPriceDescending(products) {
 // Function to sort products by price
 function sortProductsByPrice(products, sortOrder = "asc") {
   return products.sort((a, b) => {
-    const priceValueA = parseFloat(a.price.split(" ")[1]);
-    const priceValueB = parseFloat(b.price.split(" ")[1]);
+    const priceValueA = parseFloat(a.price.split("")[1]);
+    const priceValueB = parseFloat(b.price.split("")[1]);
     return sortOrder === "asc" ? priceValueA - priceValueB : priceValueB - priceValueA;
   });
 }

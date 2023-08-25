@@ -55,7 +55,7 @@ h2 span {
 
 .header-icon {
   color: white;
-  margin: 0 6px;
+  margin: 0 10px;
   transition: color 0.3s ease;
 }
 
@@ -161,3 +161,21 @@ select .scrolled {
   font-weight: 700;
   letter-spacing: 0.26563rem;
 }
+
+.cart-icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.item-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  padding: 2px 4px;
+  z-index: 1;
+  font-size: 0.7rem;
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+}
+

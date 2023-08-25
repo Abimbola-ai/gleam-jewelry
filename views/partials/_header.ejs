@@ -134,13 +134,17 @@
             </div>
           </div>
 
-          <a href="/cart" class="header-icon"
+          <div class="cart-icon-container">
+            <a href="/cart" class="header-icon"
             ><iconify-icon
               icon="mdi:cart-outline"
               width="36"
               height="36"
             ></iconify-icon
           ></a>
+            <span class="item-count">0</span>
+          </div>
+          
 
           <select name="header-icon" id="currency">
             <option
@@ -162,5 +166,7 @@
     <!-- JS script -->
 
     <script src="./js/header.js"></script>
+    <script src="./js/cart-qty.js"></script>
+    <!-- <script src="./js/cart.js"></script> -->
   </body>
 </html>
